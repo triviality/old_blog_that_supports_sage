@@ -4,6 +4,8 @@ title: Partitions and Posets
 tag: Combinatorics
 ---
 
+This post generates the Hasse diagram of a set partition.
+
 In SAGE, you can get the set of (unordered) partitions of the $N$ element set $\{1,2,\dots,N\}$ using `SetPartitions`:
 
 <div class="sage">
