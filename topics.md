@@ -10,11 +10,11 @@ description: "An archive of posts sorted by tag."
 <!-- tag_words: {{ tag_words }} -->
 
 <div id="tags">
-  <h1>Tags</h1>
+  <h1>Topics</h1>
   <ul class="tag-box inline">
   {% for item in (0..site.tags.size) %}{% unless forloop.last %}
     {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
-    <li><a href="#{{ this_word | cgi_escape }}">{{ this_word }} <span>{{ site.tags[this_word].size }}</span></a></li>
+    <li><a href="#{{ this_word | cgi_escape }}">{{ this_word }} (<span>{{ site.tags[this_word].size }}</span>)</a></li>
   {% endunless %}{% endfor %}
   </ul>
 
