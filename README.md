@@ -1,12 +1,18 @@
 # Sage Sandbox
 
-This blog is powered by [Sage](http://www.sagemath.org/), [Sage Cell Server](http://sagecell.sagemath.org/)   and [Jekyll](https://github.com/jekyll/jekyll), based on a theme from [Jekyll Now](http://www.jekyllnow.com).
+This blog is powered by [**Sage**](http://www.sagemath.org/), [Sage Cell Server](http://sagecell.sagemath.org/)   and [Jekyll](https://github.com/jekyll/jekyll), based on a theme from [Jekyll Now](http://www.jekyllnow.com).
 
-It is a repository of sample Sage code that can be run directly in your browser.
+It is my collection of sample Sage code that can be run directly in your browser.
 
 Read more [about the Sage Cell Server](http://sagecell.sagemath.org/static/about.html), including how to embed runnable Sage code into your website. 
 
 Or sign up for a free [Sage Math Cloud](https://cloud.sagemath.com/) account!
+
+# References
+These are the tutorials I used to construct this blog:
+
+ - [Build A Blog With Jekyll And GitHub Pages](http://www.smashingmagazine.com/2014/08/01/build-blog-jekyll-github-pages/)
+ - [Embedding Sage Cell Instances](https://github.com/sagemath/sagecell/blob/master/doc/embedding.rst)
 
 # Jekyll Now
 
