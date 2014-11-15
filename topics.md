@@ -3,8 +3,7 @@ layout: default
 title: Topics
 ---
 
-<h1>{{ page.title }}</h1>
-<p>&nbsp;</p>
+## Blog Posts
 
 {% capture tags %}
   {% for tag in site.tags %}
@@ -17,9 +16,9 @@ title: Topics
   <h3 id="{{ tag }}">{{ tag }}</h3>
   <ul>
   {% for post in site.tags[tag] %}
-    <li>
-      {% include postlistitem.html %}
-    </li>
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
   </ul>
 {% endfor %}
+
+
