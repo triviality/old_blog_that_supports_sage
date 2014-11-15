@@ -4,8 +4,6 @@ title: About
 permalink: /about/
 ---
 
-# Sage Sandbox
-
 This blog is powered by [**Sage**](http://www.sagemath.org/), [Sage Cell Server](http://sagecell.sagemath.org/)   and [Jekyll](https://github.com/jekyll/jekyll), based on a theme from [Jekyll Now](http://www.jekyllnow.com).
 
 It is my collection of sample Sage code that can be run directly in your browser.
