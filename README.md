@@ -6,6 +6,8 @@ It is a repository of sample Sage code that can be run directly in your browser.
 
 Read more [about the Sage Cell Server](http://sagecell.sagemath.org/static/about.html), including how to embed runnable Sage code into your website. 
 
+Or sign up for a free [Sage Math Cloud](https://cloud.sagemath.com/) account!
+
 # Jekyll Now
 
 **Jekyll** is a static site generator that's perfect for GitHub hosted blogs ([Jekyll Repository](https://github.com/jekyll/jekyll))
