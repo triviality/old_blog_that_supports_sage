@@ -10,7 +10,7 @@ In SAGE, you can get the set of (unordered) partitions of the $N$ element set $\
   <script type="text/x-sage">
 N = 3
 P = SetPartitions(N)
-P
+P.list()
   </script>
 </div>
 
