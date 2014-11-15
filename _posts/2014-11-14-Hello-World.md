@@ -9,8 +9,8 @@ Try it out!
 
 <div class="sage">
   <script type="text/x-sage">
-@interact
-def _(a=(1, 10)):
-  print factorial(a)
+    @interact
+    def _(a=(1, 10)):
+      print factorial(a)
   </script>
 </div>
