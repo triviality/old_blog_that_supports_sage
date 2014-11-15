@@ -8,9 +8,6 @@ This blog is powered by the [Sage Cell Server](http://sagecell.sagemath.org/). Y
 Try it out!
 
 <div class="sage">
-  <script type="text/x-sage">
-    @interact
-    def _(a=(1, 10)):
-      print factorial(a)
+  <script type="text/x-sage"> 1 + 2
   </script>
 </div>
