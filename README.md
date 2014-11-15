@@ -14,6 +14,7 @@ These are the tutorials I used to construct this blog:
  - [Build A Blog With Jekyll And GitHub Pages](http://www.smashingmagazine.com/2014/08/01/build-blog-jekyll-github-pages/)
  - [Embedding Sage Cell Instances](https://github.com/sagemath/sagecell/blob/master/doc/embedding.rst)
  - [How I Created a Beautiful and Minimal Blog Using Jekyll, Github Pages, and poole](http://joshualande.com/jekyll-github-pages-poole/)
+ - [Tags Page without Plugins](http://christianspecht.de/2014/10/25/separate-pages-per-tag-category-with-jekyll-without-plugins/)
 
 # Jekyll Now
 
