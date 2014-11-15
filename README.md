@@ -1,3 +1,11 @@
+# Sage Sandbox
+
+This blog is powered by ([Sage](http://www.sagemath.org/)), ([Sage Cell Server](http://sagecell.sagemath.org/))   and ([Jekyll](https://github.com/jekyll/jekyll)), based on a theme by ([Jekyll Now](http://www.jekyllnow.com)).
+
+It is a repository of sample Sage code that can be run directly in your browser.
+
+Read more ([About the Sage Cell Server](http://sagecell.sagemath.org/static/about.html)), including how to embed runnable Sage code into your website. 
+
 # Jekyll Now
 
 **Jekyll** is a static site generator that's perfect for GitHub hosted blogs ([Jekyll Repository](https://github.com/jekyll/jekyll))
