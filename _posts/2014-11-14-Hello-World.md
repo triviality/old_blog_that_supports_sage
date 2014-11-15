@@ -11,6 +11,6 @@ Try it out!
   <script type="text/x-sage">
 @interact
 def _(a=(1, 10)):
-    print factorial(a)
+  print factorial(a)
   </script>
 </div>
