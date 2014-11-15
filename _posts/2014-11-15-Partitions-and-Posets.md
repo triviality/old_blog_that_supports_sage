@@ -18,6 +18,6 @@ Combine this with the `Poset` class to draw the Hasse diagram of the poset of pa
 <div class="sage">
   <script type="text/x-sage">
 def Partition_Poset(X):
-    return Poset((SetPartitions(X),lambda q,p: q in p.refinements()))
+  return Poset((SetPartitions(X),lambda q,p: q in p.refinements()))
   </script>
 </div>
