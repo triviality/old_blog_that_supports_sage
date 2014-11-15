@@ -19,5 +19,12 @@ Combine this with the `Poset` class to draw the Hasse diagram of the poset of pa
 <div class="sage">
   <script type="text/x-sage">
 def Partition_Poset(X):  return Poset((SetPartitions(X),lambda q,p: q in p.refinements()))
+def p_label(p):
+    out = ""
+    for block in p:
+        for elm in block:
+            out += str(elm)
+        out += "|"
+    return out[:-1]
   </script>
 </div>
