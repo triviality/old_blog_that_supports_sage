@@ -15,6 +15,7 @@ P
 </div>
 
 Combine this with the `Poset` class to draw the Hasse diagram of the poset of partitions:
+
 <div class="sage">
   <script type="text/x-sage">
 def Partition_Poset(X):
