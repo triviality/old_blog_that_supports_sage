@@ -38,7 +38,7 @@ Read on for an explanation of the code.
 
 A [**partition of a set**](http://en.wikipedia.org/wiki/Partition_of_a_set) $X$ is a collection $p$ of non-empty subsets of $X$ such that $X$ is the disjoint union of these sets.
 
-In SAGE, you can get the set of all partitions of the $N$ element set {$1,2,\dots,N$} using [`SetPartitions`](http://www.sagemath.org/doc/reference/combinat/sage/combinat/set_partition.html):
+In SAGE, you can get the set of all partitions of the $N$ element set {$1,2,\dots,N$} using [**`SetPartitions`**](http://www.sagemath.org/doc/reference/combinat/sage/combinat/set_partition.html):
 
 <div class="sage">
   <script type="text/x-sage">
@@ -72,7 +72,7 @@ for q in p.refinements():
 # Posets
 For a fixed $X$, the set $\mathcal{P}$ of all partitions of $X$ has the structure of a [**poset**](http://en.wikipedia.org/wiki/Partially_ordered_set) given by $q \leq p$ if $q$ is a refinement of $p$. 
 
-In Sage, we can construct a [`Poset`](http://www.sagemath.org/doc/reference/combinat/sage/combinat/posets/posets.html) by specifying an underlying set $P$ along with a function $f:P\times P \to$  {$\text{True},\text{False}$} where
+In Sage, we can construct a [**`Poset`**](http://www.sagemath.org/doc/reference/combinat/sage/combinat/posets/posets.html) by specifying an underlying set $P$ along with a function $f:P\times P \to$  {$\text{True},\text{False}$} where
 
 $$
 f(q,p)=
@@ -96,10 +96,3 @@ Po.show()
 </div>
 
 The final piece of code (at the top of the page) combines everything above to produce the Hasse diagram of a set. The function `Partition_Poset` first generates the set of partitions of an $N$ element set, then converts it to a poset. The function `p_label` relabels the partitions so that they look prettier. I've also tweaked some options in the `show()` method to make things look nicer.
-
-### References
-You can find out more by going to the Sage documentation for:
-
-  - 
-  - 
-
