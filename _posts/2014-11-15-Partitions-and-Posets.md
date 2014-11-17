@@ -14,7 +14,7 @@ In this post, we generates the Hasse diagram of a set partition.
 
 A [**partition of a set**](http://en.wikipedia.org/wiki/Partition_of_a_set) $X$ is a collection $p$ of non-empty subsets of $X$ such that $X$ is the disjoint union of these sets.
 
-In SAGE, you can get the set of all partitions of the $N$ element set $\{1,2,\dots,N\}$ using `SetPartitions`:
+In SAGE, you can get the set of all partitions of the $N$ element set {$1,2,\dots,N$} using `SetPartitions`:
 
 <div class="sage">
   <script type="text/x-sage">
@@ -40,15 +40,18 @@ N = 3
 P = SetPartitions(N)
 
 p = P[2] # take some partition
+print 'p = ' + str(p)
+print 'Its refinements are:'
 for q in p.refinements():
   print q
   </script>
 </div>
 
 ## Posets
-For a fixed $X$, the set $\mathcal{P}$ of all partitions of $X$ has the structure of a [partially ordered set](http://en.wikipedia.org/wiki/Partially_ordered_set) or **poset**, given by $q \leq p$ if $q$ is a refinement of $p$. 
+For a fixed $X$, the set $\mathcal{P}$ of all partitions of $X$ has the structure of a [partially ordered set](http://en.wikipedia.org/wiki/Partially_ordered_set) or **poset** given by $q \leq p$ if $q$ is a refinement of $p$. 
 
-In Sage, we can construct a poset by specifying an underlying set $P$ along with a function $f:P\times P \to \{\text{True},\text{False}\}$ given by
+In Sage, we can construct a poset by specifying an underlying set $P$ along with a function $f:P\times P \to$  {$\text{True},\text{False}$} given by
+
 $$
 f(q,p)=
 \begin{cases}
@@ -58,6 +61,7 @@ f(q,p)=
 $$
 
 The resulting poset can be visualized via its [Hasse diagram](http://en.wikipedia.org/wiki/Hasse_diagram), which is a directed graph with paths from $q \to p$ if $q \leq p$. We can generate a Hasse diagram of a poset using the `show()` method.
+
 <div class="sage">
   <script type="text/x-sage">
 N = 3
