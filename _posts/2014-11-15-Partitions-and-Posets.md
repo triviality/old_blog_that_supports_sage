@@ -102,6 +102,7 @@ The final piece of code (at the top of the page) combines everything above to pr
 
 ### References
 You can find out more by going to the Sage documentation for:
+
   - [Partitions](http://www.sagemath.org/doc/reference/combinat/sage/combinat/set_partition.html)
   - [Posets](http://www.sagemath.org/doc/reference/combinat/sage/combinat/posets/posets.html)
 
