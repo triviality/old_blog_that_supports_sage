@@ -49,12 +49,10 @@ for p in P:
   </script>
 </div>
 
-Each item in the preceding list is a partition of $X$. The elements of each partition are called **blocks**. Each block is a subset of $X$. In each partition, you can verify that the blocks are pairwise disjoint (i.e. their pairwise intersection is empty), and that their union is the whole of $X$.
-
 ### Refinements
-At the top of the list, we see the *trivial partition* consisting of just one block, $X$. At the other end, we see the *singleton partition* consisting of $|X|$ blocks, where each block contains a single element of $X$. All other partitions of $X$ fall somewhere in-between these two partitions.
+Each item in the preceding list is a partition of $X$. The elements of each partition are called **blocks**. At the top of the list, we see the *trivial partition* consisting of just one block, $X$. At the other end, we see the *singleton partition* consisting of $|X|$ blocks, where each block contains a single element of $X$. All other partitions of $X$ fall somewhere in-between these two partitions.
 
-We can make this notion of "in-betweenness" precise by defining a relation on the partitions of $X$. Let $p$ be a partition of $X$ whose blocks are $B_1,B_2,\dots,B_k$, and $q$ be another partition whose blocks are $C_1,\dots,C_m$. Then $q$ is a  **refinement** of $p$ if each $C_i$ is contained in some $B_j$. Every partition is a refinement of the trivial partition; the singleton partition is a refinement of every partition.
+We can make this notion of "in-betweenness" precise by defining a relation on the partitions of $X$. We say that $q$ is a [refinement](http://en.wikipedia.org/wiki/Partition_of_a_set#Refinement_of_partitions) of $p$ if each block of $q$ is contained in some block of $p$. 
 
 In Sage, you can see the refinements of a partition using the method `refinements()`:
 
@@ -72,9 +70,9 @@ for q in p.refinements():
 </div>
 
 # Posets
-For a fixed $X$, the set $\mathcal{P}$ of all partitions of $X$ has the structure of a [partially ordered set](http://en.wikipedia.org/wiki/Partially_ordered_set) or **poset** given by $q \leq p$ if $q$ is a refinement of $p$. 
+For a fixed $X$, the set $\mathcal{P}$ of all partitions of $X$ has the structure of a [**poset**](http://en.wikipedia.org/wiki/Partially_ordered_set) given by $q \leq p$ if $q$ is a refinement of $p$. 
 
-In Sage, we can construct a poset by specifying an underlying set $P$ along with a function $f:P\times P \to$  {$\text{True},\text{False}$} given by
+In Sage, we can construct a poset by specifying an underlying set $P$ along with a function $f:P\times P \to$  {$\text{True},\text{False}$} where
 
 $$
 f(q,p)=
@@ -84,8 +82,7 @@ f(q,p)=
 \end{cases}
 $$
 
-### The Hasse diagram
-The resulting poset can be visualized via its [Hasse diagram](http://en.wikipedia.org/wiki/Hasse_diagram), which is a directed graph with paths from $q \to p$ if $q \leq p$. We can generate a Hasse diagram of a poset using the `show()` method.
+The resulting poset can be visualized via its [**Hasse diagram**](http://en.wikipedia.org/wiki/Hasse_diagram), which is a directed graph with paths from $q \to p$ if $q \leq p$. We can generate a Hasse diagram of a poset using the `show()` method.
 
 <div class="sage">
   <script type="text/x-sage">
