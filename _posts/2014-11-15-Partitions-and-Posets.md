@@ -4,7 +4,7 @@ title: Partitions and Posets
 tag: Combinatorics
 ---
 
-In this post, we generates the Hasse diagram of a set partition.
+In this post, we generate the Hasse diagram of a set partition.
 
 ![Partitions of a 4 element set](/images/partitions.png "Partitions of a 4 element set")
 
