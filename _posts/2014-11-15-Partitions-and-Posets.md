@@ -74,6 +74,7 @@ Po.show()
 </div>
 
 This last piece of code combines everything above to produce the Hasse diagram of a set. The function `Partition_Poset` first generates the set of partitions of an $N$ element set, then converts it to a poset. The function `p_label` relabels the partitions so that they look prettier. I've also tweaked some options in the `show()` method to make things look nicer.
+
 <div class="sage">
   <script type="text/x-sage">
 N = 4
