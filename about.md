@@ -8,9 +8,9 @@ This blog is powered by [**Sage**](http://www.sagemath.org/), [Sage Cell Server]
 
 It is my collection of Sage code that can be run directly in your browser.
 
-Read more [about the Sage Cell Server](http://sagecell.sagemath.org/static/about.html), including how to embed executable Sage code into your website. Or you can clone [this repo](https://github.com/sheaves/sheaves.github.io) on Github to get started right away!
+Read more [about the Sage Cell Server](http://sagecell.sagemath.org/static/about.html), including how to embed executable Sage code into your website. Or clone [this repo](https://github.com/sheaves/sheaves.github.io) on Github to get started right away!
 
-To get even more Sage power (with lots more fancy stuff like privacy settings, collaboration, basically your own Sage server), sign up for a free [Sage Math Cloud](https://cloud.sagemath.com/) account! Or [download and run a local copy](http://www.sagemath.org/download.html) of Sage.
+To get even more Sage power (with lots more fancy stuff like privacy settings, collaboration,... basically your own Sage server), sign up for a free [Sage Math Cloud](https://cloud.sagemath.com/) account! Or [download and run a local copy](http://www.sagemath.org/download.html) of Sage.
 
 ## Sage quick links
 Here are more resources for computing with Sage:
