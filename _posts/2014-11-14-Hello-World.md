@@ -8,6 +8,6 @@ This blog is powered by the [Sage Cell Server](http://sagecell.sagemath.org/). Y
 
 Try it out!
 
-<div class="sage">
+<div id="all">
   <script type="text/x-sage"> 1 + 2  </script>
 </div>
