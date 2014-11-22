@@ -8,7 +8,7 @@ Illustrating the [Argument Principle](http://en.wikipedia.org/wiki/Argument_prin
 
 <!--more-->
 
-<div class="sage">
+<div id="auto">
   <script type="text/x-sage">
 z = var('z')  
 @interact
