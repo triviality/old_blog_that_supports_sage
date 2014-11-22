@@ -22,8 +22,25 @@
     <!-- SAGE stuff -->
     <script src="https://sagecell.sagemath.org/static/jquery.min.js"></script>
     <script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
-    <script>sagecell.makeSagecell({"inputLocation": ".sage"});</script>
     <link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+    <!-- Cell definitions -->
+    <script>$(function () {
+    // Basic Sage cell. Use <div class = "sage">
+    sagecell.makeSagecell({inputLocation: '.sage'});
+    // Auto evaluate Sage. Use <div id="auto">
+    sagecell.makeSagecell({inputLocation: '#auto', autoeval: 'True'});
+    // Only the 'Go!' button; no input displayed. Use <div id="go">
+    sagecell.makeSagecell({inputLocation:  '#go',
+                       template:       sagecell.templates.minimal,
+                       evalButtonText: 'Go!'});
+    // All languages. Use <div id = "all">
+        sagecell.makeSagecell({inputLocation: '#all', languages: sagecell.allLanguages});
+    });
+    </script>
+    <!-- Basic Sage -->
+    <script>sagecell.makeSagecell({"inputLocation": ".sage"});</script>
+    <!-- Autoeval -->
+    
   </head>
 
   <body>
