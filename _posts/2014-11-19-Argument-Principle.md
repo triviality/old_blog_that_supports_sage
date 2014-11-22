@@ -8,7 +8,7 @@ This post illustrates the [Argument Principle](http://en.wikipedia.org/wiki/Argu
 
 <!--more-->
 
-In our example, $f$ is some polynomial, and $C$ is (an arc of) a circle of radius $R$ centered at the origin.
+Let $f$ be a polynomial, and $C$ be (an arc of) a circle of radius $R$ centered at the origin.
 
 The first plot shows the domain of $f$. We plot the roots of $f$ together with $C$. Let $n_1$ be the number of roots contained within $C$.
 
