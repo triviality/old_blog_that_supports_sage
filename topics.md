@@ -31,11 +31,13 @@ description: "An archive of posts sorted by tag."
       <h3 id="{{ this_word | cgi_escape }}">{{ this_word }}</h3>
       <ul class="posts">
       {% for post in site.tags[this_word] %}
-        {% if post.title != null %}
-          <li itemscope><span class="entry-date">
-          <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
-          {{ post.date | date: "%B %d, %Y" }}</time></span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-        {% endif %}
+        {% unless post.draft %}
+          {% if post.title != null %}
+            <li itemscope><span class="entry-date">
+            <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
+            {{ post.date | date: "%B %d, %Y" }}</time></span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+          {% endif %}
+        {% endunless %}
       {% endfor %}
       </ul>
     {% endunless %}
