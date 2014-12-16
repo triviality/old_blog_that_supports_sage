@@ -33,6 +33,8 @@
     sagecell.makeSagecell({inputLocation:  '#go',
                        template:       sagecell.templates.minimal,
                        evalButtonText: 'Go!'});
+    // Linked Sage cell. Use <div id="linked">
+    sagecell.makeSagecell({inputLocation: '#linked', linked: 'True'});
     // All languages. Use <div id = "all">
         sagecell.makeSagecell({inputLocation: '#all', languages: sagecell.allLanguages});
     });
