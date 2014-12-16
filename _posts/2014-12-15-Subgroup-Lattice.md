@@ -38,7 +38,7 @@ By default, the vertex labels of the Hasse diagram will be the description of th
 We can define new labels for these vertices by defining a [dictionary](https://docs.python.org/2/tutorial/datastructures.html#dictionaries) where the keys are the original vertices and their corresponding values are our new labels.
 
 ## Labelling by generators
-One way to tell what the subgroups are is to look at its generators:
+One way to tell what the subgroups are is to look at their generators:
 
 <div id="linked">
   <script type="text/x-sage">
@@ -59,6 +59,7 @@ label_by_size = {x : str(len(x)) for x in subgroups}
 P.plot(label_elements = True, element_labels = label_by_size)
   </script>
 </div>
+
 If you ran the preceding code, you probably encountered an error message. This is because Sage currently requires that vertex labels be injective i.e. distinct vertices must have distinct labels. There's a quick but slightly ugly fix for this: just pad spaces around the labels to make them all unique:
 
 <div id="linked">
@@ -76,6 +77,7 @@ Fortunately, Sage has a method for describing the structure of a small group: `H
 *Un*fortunately, this method requires the [GAP](http://www.gap-system.org/) group database, which is not installed with the Sagecell version of Sage. However, the free [SageMathCloud](https://cloud.sagemath.com/) service's installation of Sage *does* have the group database installed, so you can try the following code there. This code was used to produce the image at the start of this post:
 
 *(This cell is a standalone cell and is not linked to the rest of the cells in this post)*
+
 <div class="sage">
   <script type="text/x-sage">
 # Define group and list of subgroups
