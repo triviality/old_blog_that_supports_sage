@@ -6,6 +6,8 @@ tag: Complex Analysis
 
 This post illustrates the [Argument Principle](http://en.wikipedia.org/wiki/Argument_principle).
 
+!["Image of a circle in the first quadrant under the map $f(z) = z^4 + z^3 + 5z^2 + 2z + 4$"](/images/Argument.png "Image of a circle in the first quadrant under the map $f(z) = z^4 + z^3 + 5z^2 + 2z + 4$")
+
 <!--more-->
 
 Let $f$ be a polynomial, and $C$ be (an arc of) a circle of radius $R$ centered at the origin.
