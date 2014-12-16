@@ -102,6 +102,7 @@ G_Poset.plot(vertex_colors = colors, element_labels = label, vertex_size= 800, v
   </script>
 </div>
 
+# More examples
 Try playing around with different groups and different labelling methods!
 
 <div id="auto">
@@ -139,3 +140,11 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
     P.plot(label_elements=label_elements, element_labels = element_labels).show()    
   </script>
 </div>
+
+And here are some questions that you might be able to answer by playing around with subgroup lattices:
+
+- In the code, I've technically only defined the [poset](http://en.wikipedia.org/wiki/Partially_ordered_set) of subgroups. However, it turns out the poset of subgroups is also always a  [lattice](http://en.wikipedia.org/wiki/Lattice_%28order%29). Why?
+- When is the subgroup lattice also [distributive](http://en.wikipedia.org/wiki/Distributive_lattice)?
+- When is the subgroup lattice a [chain](http://en.wikipedia.org/wiki/Total_order)?
+
+In the next post, we'll add some color to the subgroup of lattices by coloring the subgroups according to properties they have.
