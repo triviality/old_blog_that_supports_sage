@@ -14,7 +14,7 @@ This is the first in a series of posts on visualizing groups via their [lattice 
 
 One way of getting a better understanding of a group is by considering its subgroups. The lattice of subgroups (more precisely, the [Hasse diagram](http://en.wikipedia.org/wiki/Hasse_diagram) of this lattice) gives us a way to visualize how these subgroups relate to each other and to their parent group.
 
-<div id="auto">
+<div class="sage">
   <script type="text/x-sage">
 # Define group and generate list of subgroups of the group
 G = DihedralGroup(4)
