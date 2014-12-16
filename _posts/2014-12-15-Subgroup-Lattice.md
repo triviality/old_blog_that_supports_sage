@@ -15,6 +15,7 @@ This is the first in a series of posts on visualizing groups via their [lattice 
 One way of getting a better understanding of a group is by considering its subgroups. The lattice of subgroups (more precisely, the [Hasse diagram](http://en.wikipedia.org/wiki/Hasse_diagram) of this lattice) gives us a way to visualize how these subgroups relate to each other and to their parent group.
 
 *(The code cells in this page are linked, and may not work properly if executed out of order)*
+
 <div id="linked">
   <script type="text/x-sage">
 # Define group and generate list of subgroups of the group
@@ -38,6 +39,7 @@ We can define new labels for these vertices by defining a [dictionary](https://d
 
 ## Labelling by generators
 One way to tell what the subgroups are is to look at its generators:
+
 <div id="linked">
   <script type="text/x-sage">
 # Define labels
@@ -50,6 +52,7 @@ P.plot(label_elements = True, element_labels = label_by_gens)
 
 ## Labelling by cardinalities
 Or we could label the subgroups by their cardinalities:
+
 <div id="linked">
   <script type="text/x-sage">
 label_by_size = {x : str(len(x)) for x in subgroups}
@@ -57,6 +60,7 @@ P.plot(label_elements = True, element_labels = label_by_size)
   </script>
 </div>
 If you ran the preceding code, you probably encountered an error message. This is because Sage currently requires that vertex labels be injective i.e. distinct vertices must have distinct labels. There's a quick but slightly ugly fix for this: just pad spaces around the labels to make them all unique:
+
 <div id="linked">
   <script type="text/x-sage">
 label_by_size = {subgroups[i] : " "*i + str(len(subgroups[i])) + " "*i for i in range(len(subgroups))}
@@ -92,8 +96,9 @@ G_Poset.plot(vertex_colors = colors, element_labels = label, vertex_size= 800, v
   </script>
 </div>
 
-Try playing around with different groups and different labelling methods:
-<div class="sage">
+Try playing around with different groups and different labelling methods!
+
+<div id="auto">
   <script type="text/x-sage">
 # Some small groups
 KQ   = [KleinFourGroup(), QuaternionGroup()]
