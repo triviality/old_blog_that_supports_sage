@@ -25,7 +25,7 @@ f = lambda h,k: h.is_subgroup(k)
 
 # Define and display the poset
 P = Poset((subgroups, f))
-P.plot(label_elements=False)
+P.plot(label_elements=False, vertex_shape= 'H', vertex_size = 800)
   </script>
 </div>
 
@@ -46,7 +46,7 @@ P = Poset((G.subgroups(), lambda h,k: h.is_subgroup(k)))
 label_by_gens = {x : str(x.gens())[1:-1] for x in G.subgroups()}
 
 # Display the poset with new labels
-P.plot(label_elements = True, element_labels = label_by_gens)
+P.plot(label_elements = True, element_labels = label_by_gens, vertex_shape= 'H', vertex_size = 800)
   </script>
 </div>
 
@@ -59,7 +59,7 @@ G = DihedralGroup(4)
 P = Poset((G.subgroups(), lambda h,k: h.is_subgroup(k)))
   
 label_by_size = {x : str(len(x)) for x in G.subgroups()}
-P.plot(label_elements = True, element_labels = label_by_size)
+P.plot(label_elements = True, element_labels = label_by_size, vertex_shape= 'H', vertex_size = 800)
   </script>
 </div>
 
@@ -71,7 +71,7 @@ G = DihedralGroup(4)
 P = Poset((G.subgroups(), lambda h,k: h.is_subgroup(k)))
   
 label_by_size = {G.subgroups()[i] :"." + " "*i + str(len(G.subgroups()[i])) + " "*i + "." for i in range(len(G.subgroups()))}
-P.plot(label_elements = True, element_labels = label_by_size)
+P.plot(label_elements = True, element_labels = label_by_size, vertex_shape= 'H', vertex_size = 800)
   </script>
 </div>
 
@@ -137,7 +137,7 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
     
     # Define and display poset
     P = Poset((subgroups, lambda h,k: h.is_subgroup(k) ))
-    P.plot(label_elements=label_elements, element_labels = element_labels).show()    
+    P.plot(label_elements=label_elements, element_labels = element_labels, vertex_shape= 'H', vertex_size = 800).show()    
   </script>
 </div>
 
