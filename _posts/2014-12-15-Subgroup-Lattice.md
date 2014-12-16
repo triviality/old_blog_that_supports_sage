@@ -71,7 +71,7 @@ If you ran the preceding code, you probably encountered an error message. This i
 G = DihedralGroup(4)
 P = Poset((G.subgroups(), lambda h,k: h.is_subgroup(k)))
   
-label_by_size = {G.subgroups()[i] : " "*i + str(len(G.subgroups()[i])) + " "*i for i in range(len(G.subgroups()))}
+label_by_size = {G.subgroups()[i] :"." + " "*i + str(len(G.subgroups()[i])) + " "*i + "." for i in range(len(G.subgroups()))}
 P.plot(label_elements = True, element_labels = label_by_size)
   </script>
 </div>
@@ -93,12 +93,12 @@ subgroups = G.subgroups()
 label = {subgroups[i]: "." +" "*(0+i) + subgroups[i].structure_description()  + " "*(0+i) + "." for i in range(len(subgroups))}
 
 # Color normal subgroups green and the rest pink
-colors = {'lightgreen':[label[x] for x in subs if x.is_normal()],
-          'pink':[label[x] for x in subs if not x.is_normal()]
+colors = {'lightgreen':[label[x] for x in subgroups if x.is_normal()],
+          'pink':[label[x] for x in subgroups if not x.is_normal()]
          }
 
 # Display poset
-G_Poset = Poset((subs,lambda h,k: h.is_subgroup(k)))
+G_Poset = Poset((subgroups,lambda h,k: h.is_subgroup(k)))
 G_Poset.plot(vertex_colors = colors, element_labels = label, vertex_size= 800, vertex_shape='H').show()
   </script>
 </div>
@@ -111,7 +111,7 @@ Try playing around with different groups and different labelling methods!
 KQ   = [KleinFourGroup(), QuaternionGroup()]
 Symm = [SymmetricGroup(N) for N in [1,2,3]]
 Alte = [AlternatingGroup(N) for N in [3,4]]
-Cycl = [CyclicPermutationGroup(N) for N in [2,4,6,8,9,12,16,60]]
+Cycl = [CyclicPermutationGroup(N) for N in [2,4,6,8,9,12,30,60]]
 Dihe = [DihedralGroup(N) for N in range(1,9)]
 
 group_list = KQ + Symm + Alte + Cycl + Dihe
@@ -131,7 +131,7 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
     elif Label == 'Generators':        
         element_labels = {x : str(x.gens()) for x in subgroups}
     elif Label == 'Cardinality':
-        element_labels = {subgroups[i] : " "*i + str(len(subgroups[i])) + " "*i for i in range(len(subgroups))}
+        element_labels = {subgroups[i] : "." + " "*i + str(len(subgroups[i])) + " "*i + "." for i in range(len(subgroups))}
     elif Label == 'Structure Description (only in SageMathCloud)':
         element_labels = {subgroups[i]: "." +" "*(0+i) + subgroups[i].structure_description()  + " "*(0+i) + "." for i in range(len(subgroups))}
     
