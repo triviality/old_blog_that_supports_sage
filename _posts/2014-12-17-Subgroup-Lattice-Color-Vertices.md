@@ -38,7 +38,7 @@ Now suppose we wish to know which subgroups are [normal](http://en.wikipedia.org
   <script type="text/x-sage">
 # Define a coloring dictionary
 color = {'lightgreen':[label[x] for x in subgroups if x.is_normal()],
-        'pink':[label[x] for x in subgroups if not x.is_normal()]}
+        'white':[label[x] for x in subgroups if not x.is_normal()]}
 
 # Display the poset
 P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colors = color)
@@ -47,25 +47,49 @@ P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colo
 
 Coloring takes place after labelling, so when we're defining the color dictionary, we have to use the (re)labelled vertices rather than the original vertices. Hence the use of `label[x]` instead of just `x`.
 
-## Abelian subgroups
-The rest of this post will just be variations on the same theme. Basically, we just have to create a color dictionary based on some property we want to highlight. Suppose we want [abelian](http://en.wikipedia.org/wiki/Abelian_group) subgroups instead:
+Here are some more examples. They're all just variations of the above.
+
+## Abelian subgroups and the center
+Let's say we want to highlight the [abelian](http://en.wikipedia.org/wiki/Abelian_group) subgroups, with special emphasis on the [center](http://en.wikipedia.org/wiki/Center_%28group_theory%29) of the group. We can do this with a slight modification to the color dictionary:
 
 <div class="linked">
   <script type="text/x-sage">
-# Define a coloring dictionary
-color = {'lightgreen':[label[x] for x in subgroups if x.is_abelian()],
-        'pink':[label[x] for x in subgroups if not x.is_abelian()]}
+color = {'lightgreen':[label[x] for x in subgroups if x != G.center() and x.is_abelian()],
+        'white':[label[x] for x in subgroups if not x.is_abelian()],
+        'yellow':[label[G.center()]]
+}
 
-# Display the poset
+P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colors = color)
+  </script>
+</div>
+
+## Maximal subgroups and the Frattini subgroup
+The [Frattini subgroup](http://en.wikipedia.org/wiki/Frattini_subgroup) is the intersection of all the [maximal subgroups](http://en.wikipedia.org/wiki/Maximal_subgroup) of $G$. We can see this by highlighting the Frattini and maximal subgroups.
+
+Sage has a built-in function for getting the Frattini subgroup. To get the maximal subgroups, however, we'll have to find the elements [covered](http://en.wikipedia.org/wiki/Covering_relation) by the [greatest element (or top)](http://en.wikipedia.org/wiki/Greatest_element) of the poset $P$.
+
+<div class="linked">
+  <script type="text/x-sage">
+# Maximal subgroups
+maximals = [x for x in subgroups if P.covers(x,P.top())]
+# Frattini subgroup
+frattini = G.frattini_subgroup()
+
+color = {'lightgreen':[label[x] for x in maximals],
+        'white':[label[x] for x in subgroups if x not in maximals + [frattini]],
+        'lightblue':[label[frattini]]
+}
+
 P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colors = color)
   </script>
 </div>
 
 ## Sylow subgroups
-Of course, we can have more than 2 colors. Let's say we want to highlight the [Sylow $p$-subgroups](http://mathworld.wolfram.com/Sylowp-Subgroup.html) of our group (and leave the non-Sylow subgroups white, say). 
-In Sage, `G.sylow_subgroup(p)` returns *one* Sylow $p$-subgroup. To get *all* the Sylow $p$-subgroups, we'll take all conjugates of this Sylow subgroup (since [all Sylow $p$-subgroups are conjugate](http://en.wikipedia.org/wiki/Sylow_theorems#Theorems))
+Getting the [Sylow $p$-subgroups](http://mathworld.wolfram.com/Sylowp-Subgroup.html) takes a little more work, since Sage doesn't have a single function that generates all the Sylow subgroups at once.
 
-We also have to list the primes that divide the order of the group (and list some colors as well).
+In Sage, `G.sylow_subgroup(p)` returns *one* Sylow $p$-subgroups. To get *all* the Sylow $p$-subgroups, we'll take all conjugates of this Sylow subgroup (since [all Sylow $p$-subgroups are conjugate](http://en.wikipedia.org/wiki/Sylow_theorems#Theorems))
+
+By running over the primes that divide the order of the group, we can generate the Sylow $p$-subgroups for various $p$.
 
 <div class="linked">
   <script type="text/x-sage">
@@ -80,8 +104,8 @@ print "primes: " + str(primes)
 # List Sylow p-subgroups for each p
 sylow = {}
 for p in primes:
-    P = G.sylow_subgroup(p)
-    sylow[p] = list(set([G.subgroup(P.conjugate(g)) for g in G]))
+    a_sylow_p = G.sylow_subgroup(p)
+    sylow[p] = list(set([G.subgroup(a_sylow_p.conjugate(g)) for g in G]))
 
 # List remaining subgroups
 allsylow = sum(sylow.values(),[]) # combine all the sylow subgroups into one list
@@ -97,11 +121,7 @@ P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colo
   </script>
 </div>
 
-## The center
+# More examples
+*Coming soon!)
 
-## The Frattini subgroup
-
-## Central series
-
-## Composition series
-
+In the next post, we'll look at labelling edges as well. This is particularly useful if we want to determine the if $G$ is solvable, nilpotent etc.
