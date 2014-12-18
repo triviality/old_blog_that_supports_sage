@@ -158,6 +158,8 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
     elif Label == 'Structure Description (requires database_gap)':
         element_labels = {subgroups[i]: "." +" "*floor(i/2) + subgroups[i].structure_description()  + " "*ceil(i/2) + "." for i in range(len(subgroups))}
     
+    label = element_labels
+    
     # Define colors
     if Color == 'None':
         color = 'white'
