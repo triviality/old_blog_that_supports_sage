@@ -72,10 +72,11 @@ Sage has a built-in function for getting the Frattini subgroup. To get the maxim
 
 <div class="linked">
   <script type="text/x-sage">
-# Maximal subgroups
-maximals = [x for x in subgroups if P.covers(x,P.top())]
 # Frattini subgroup
 frattini = G.frattini_subgroup()
+# Maximal subgroups
+maximals = [x for x in subgroups if P.covers(x,P.top()) and x not in [frattini]]
+
 
 color = {'lightgreen':[label[x] for x in maximals],
         'white':[label[x] for x in subgroups if x not in maximals + [frattini]],
@@ -89,9 +90,7 @@ P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colo
 ## Sylow subgroups
 Getting the [Sylow $p$-subgroups](http://mathworld.wolfram.com/Sylowp-Subgroup.html) takes a little more work, since Sage doesn't have a single function that generates all the Sylow subgroups at once.
 
-In Sage, `G.sylow_subgroup(p)` returns *one* Sylow $p$-subgroups. To get *all* the Sylow $p$-subgroups, we could take all conjugates of this Sylow subgroup (since [all Sylow $p$-subgroups are conjugate](http://en.wikipedia.org/wiki/Sylow_theorems#Theorems)). A faster way, however, is to use the fact that the cardinality of all Sylow $p$-subgroups is the maximal $p^{th}$ power dividing $|G|$.
-
-By running over the primes that divide $|G|$, we can generate the Sylow $p$-subgroups for various $p$.
+In Sage, `G.sylow_subgroup(p)` returns *one* Sylow $p$-subgroups. To get *all* the Sylow $p$-subgroups, we could take all conjugates of this Sylow subgroup (since [all Sylow $p$-subgroups are conjugate](http://en.wikipedia.org/wiki/Sylow_theorems#Theorems)). A faster way, however, is to use the fact that the cardinality of all Sylow $p$-subgroups is the maximal $p^{th}$ power dividing the order of $G$.
 
 <div class="linked">
   <script type="text/x-sage">
@@ -173,8 +172,8 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
         'white':[label[x] for x in subgroups if not x.is_abelian()],
         'yellow':[label[G.center()]]}
     elif Color == 'Maximal and Frattini':
-        maximals = [x for x in subgroups if P.covers(x,P.top())]
         frattini = G.frattini_subgroup()
+        maximals = [x for x in subgroups if P.covers(x,P.top()) and x not in [frattini]]
         color = {'lightgreen':[label[x] for x in maximals],
         'white':[label[x] for x in subgroups if x not in maximals + [frattini]],
         'lightblue':[label[x] for x in subgroups if x in [frattini]]}
