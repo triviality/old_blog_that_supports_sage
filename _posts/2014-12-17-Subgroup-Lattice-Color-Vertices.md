@@ -197,4 +197,4 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
   </script>
 </div>
 
-In the next post, we'll look at labelling edges as well. This is particularly useful if we want to determine the if $G$ is solvable, nilpotent etc.
+In the next post, we'll look at labelling edges. This is particularly useful if we want to determine if $G$ has  [subgroup series](http://en.wikipedia.org/wiki/Subgroup_series) with certain properties.
