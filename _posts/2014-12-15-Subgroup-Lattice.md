@@ -109,7 +109,7 @@ group_list = KQ + Symm + Alte + Cycl + Dicy + Dihe
 
 @interact
 def subgroup_lattices(Group = selector(values = group_list, buttons=False),
-                      Label = selector(values =['None','Generators', 'Cardinality','Structure Description (only in SageMathCloud)'], default='Cardinality', buttons=False)):
+                      Label = selector(values =['None','Generators', 'Cardinality','Structure Description (requires database_gap)'], default='Cardinality', buttons=False)):
     # Define group and list of subgroups
     G = Group
     subgroups = G.subgroups()
@@ -123,7 +123,7 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
         element_labels = {x : str(x.gens())[1:-1] for x in subgroups}
     elif Label == 'Cardinality':
         element_labels = {subgroups[i] : "." + " "*floor(i/2) + str(len(subgroups[i])) + " "*ceil(i/2) + "." for i in range(len(subgroups))}
-    elif Label == 'Structure Description (only in SageMathCloud)':
+    elif Label == 'Structure Description (requires database_gap)':
         element_labels = {subgroups[i]: "." +" "*(0+i) + subgroups[i].structure_description()  + " "*(0+i) + "." for i in range(len(subgroups))}
     
     # Define and display poset
@@ -132,7 +132,7 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
   </script>
 </div>
 
-And here are some questions that you might be able to answer by playing around with subgroup lattices:
+And here are some questions that might arise while playing around with subgroup lattices:
 
 - In the code, I've technically only defined the [poset](http://en.wikipedia.org/wiki/Partially_ordered_set) of subgroups. However, it turns out the poset of subgroups is also always a  [lattice](http://en.wikipedia.org/wiki/Lattice_%28order%29). Why?
 - When is the subgroup lattice also [distributive](http://en.wikipedia.org/wiki/Distributive_lattice)?
