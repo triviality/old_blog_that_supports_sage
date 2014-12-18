@@ -6,7 +6,7 @@ tag: Algebra
 
 In my [previous post]({% post_url 2014-12-15-Subgroup-Lattice %}), I showed how to use Sage to generate the subgroup lattice of a group, and define labels for the subgroups. In this post, I'll demonstrate how to color subgroups with different colors according to some desired property.
 
-![Lattice of the dicyclic group $Dic_3$](/images/D3Lattice.png "Lattice of the dicyclic group $Dic_3$")
+![Lattice of the dicyclic group $Dic_3$](/images/Dic3Lattice.png "Lattice of the dicyclic group $Dic_3$")
 
 <!--more-->
 
