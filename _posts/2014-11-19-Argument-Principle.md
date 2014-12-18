@@ -18,7 +18,7 @@ The second plot shows the range of $f$. We plot $f(C)$, along with a marker at t
 
 You can verify that $n_1 = n_2$. As you vary the radius $R$, observe how $C$ and $f(C)$ change, and how this affects $n_1$ and $n_2$.
 
-<div id="auto">
+<div class="auto">
   <script type="text/x-sage">
 z,t = var('z, t')  
 @interact
