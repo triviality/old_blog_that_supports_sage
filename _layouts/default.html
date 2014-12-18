@@ -35,6 +35,8 @@
                        evalButtonText: 'Go!'});
     // Linked Sage cell. Use <div class ="linked">
     sagecell.makeSagecell({inputLocation: '.linked', linked: 'True'});
+    // Linked Sage cell with autoeval. Use <div class ="linked_auto">
+    sagecell.makeSagecell({inputLocation: '.linked', linked: 'True', autoeval: 'True'});
     // All languages. Use <div class = "all">
         sagecell.makeSagecell({inputLocation: '.all', languages: sagecell.allLanguages});
     });
