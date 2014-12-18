@@ -124,7 +124,7 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
     elif Label == 'Cardinality':
         element_labels = {subgroups[i] : "." + " "*floor(i/2) + str(len(subgroups[i])) + " "*ceil(i/2) + "." for i in range(len(subgroups))}
     elif Label == 'Structure Description (requires database_gap)':
-        element_labels = {subgroups[i]: "." +" "*(0+i) + subgroups[i].structure_description()  + " "*(0+i) + "." for i in range(len(subgroups))}
+        element_labels = {subgroups[i]: "." +" "*floor(i/2) + subgroups[i].structure_description()  + " "*ceil(i/2) + "." for i in range(len(subgroups))}
     
     # Define and display poset
     P = Poset((subgroups, lambda h,k: h.is_subgroup(k) ))
