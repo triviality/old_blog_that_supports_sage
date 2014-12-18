@@ -4,7 +4,7 @@ title: Lattice of Subgroups
 tag: Algebra
 ---
 
-This is the first in a series of posts on visualizing groups via their [lattice of subgroups](http://en.wikipedia.org/wiki/Lattice_of_subgroups).
+This is the first in a series of posts on visualizing groups via their lattice of subgroups.
 
 ![Lattice of the dihedral group $D_4$](/images/D4LatticeWhite.png "Lattice of the dihedral group $D_4$.")
 
@@ -12,7 +12,7 @@ This is the first in a series of posts on visualizing groups via their [lattice 
 
 # Displaying the Lattice of Subgroups
 
-One way of getting a better understanding of a group is by considering its subgroups. The lattice of subgroups (more precisely, the [Hasse diagram](http://en.wikipedia.org/wiki/Hasse_diagram) of this lattice) gives us a way to visualize how these subgroups relate to each other and to their parent group. Here's how to do it in Sage:
+One way of getting a better understanding of a group is by considering its subgroups. The [lattice of subgroups](http://en.wikipedia.org/wiki/Lattice_of_subgroups) (more precisely, the [Hasse diagram](http://en.wikipedia.org/wiki/Hasse_diagram) of this lattice) gives us a way to visualize how these subgroups relate to each other and to their parent group. Here's how to do it in Sage:
 
 *(The Sage cells in this post are linked, so things may not work if you don't execute them in order.)*
 
