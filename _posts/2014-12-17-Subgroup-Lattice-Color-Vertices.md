@@ -148,7 +148,8 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
     # Define labels
     label_elements = True
     if Label == 'None':
-        element_labels = {x: str(x) for x in subgroups}
+        label_elements = False
+        element_labels = None
     elif Label == 'Generators':        
         element_labels = {x : str(x.gens())[1:-1] for x in subgroups}
     elif Label == 'Cardinality':
@@ -156,7 +157,10 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
     elif Label == 'Structure Description (requires database_gap)':
         element_labels = {subgroups[i]: "." +" "*floor(i/2) + subgroups[i].structure_description()  + " "*ceil(i/2) + "." for i in range(len(subgroups))}
     
-    label = element_labels
+    if label_elements:
+        label = element_labels
+    else:
+        label = {x : x for x in subgroups}
     
     # Define colors
     if Color == 'None':
@@ -192,7 +196,7 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
             color[c] = [label[x] for x in subgroups if x in sylow[q]]
         
     # Display poset
-    P.plot(label_elements=label_elements, element_labels = element_labels, vertex_shape= 'H', vertex_size = 800, vertex_colors = color).show()    
+    P.plot(label_elements=label_elements, element_labels = element_labels, vertex_shape= 'H', vertex_size = 800, vertex_colors = color).show()
   </script>
 </div>
 
