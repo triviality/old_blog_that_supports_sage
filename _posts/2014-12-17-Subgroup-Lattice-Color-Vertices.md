@@ -142,9 +142,10 @@ some_colors = ['lightgreen','pink','yellow','lightblue']
 def subgroup_lattices(Group = selector(values = group_list, buttons=False),
                       Label = selector(values =['None','Generators','Cardinality','Structure Description (requires database_gap)'], default='Cardinality', buttons=False),
                       Color = selector(values =['None','Normal','Abelian and Center','Maximal and Frattini', 'Sylow'], default='Abelian and Center', buttons=False)):
-    # Define group and list of subgroups
+    # Define group and poset of subgroups
     G = Group
     subgroups = G.subgroups()
+    P = Poset((subgroups, lambda h,k: h.is_subgroup(k) ))
     
     # Define labels
     label_elements = True
@@ -191,8 +192,7 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
         for c, p in zip(some_colors, primes):
             color[c] = [label[x] for x in subgroups if x in sylow[p]]   
         
-    # Define and display poset
-    P = Poset((subgroups, lambda h,k: h.is_subgroup(k) ))
+    # Display poset
     P.plot(label_elements=label_elements, element_labels = element_labels, vertex_shape= 'H', vertex_size = 800, vertex_colors = color).show()    
   </script>
 </div>
