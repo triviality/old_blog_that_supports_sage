@@ -2,7 +2,6 @@
 layout: post
 title: Lattice of Subgroups II - Coloring vertices
 draft_tag: Algebra
-draft : true
 ---
 
 In my [previous post]({% post_url 2014-12-15-Subgroup-Lattice %}), I showed how to use Sage to generate the subgroup lattice of a group, and define labels for the subgroups. In this post, I'll demonstrate how to color subgroups with different colors according to some desired property.
