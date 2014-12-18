@@ -122,6 +122,6 @@ P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colo
 </div>
 
 # More examples
-*Coming soon!)
+*Coming soon!*
 
 In the next post, we'll look at labelling edges as well. This is particularly useful if we want to determine the if $G$ is solvable, nilpotent etc.
