@@ -79,7 +79,7 @@ frattini = G.frattini_subgroup()
 
 color = {'lightgreen':[label[x] for x in maximals],
         'white':[label[x] for x in subgroups if x not in maximals + [frattini]],
-        'lightblue':[label[frattini]]
+        'lightblue':[label[x] for x in subgroups if x in [frattini]]
 }
 
 P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colors = color)
@@ -89,9 +89,9 @@ P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colo
 ## Sylow subgroups
 Getting the [Sylow $p$-subgroups](http://mathworld.wolfram.com/Sylowp-Subgroup.html) takes a little more work, since Sage doesn't have a single function that generates all the Sylow subgroups at once.
 
-In Sage, `G.sylow_subgroup(p)` returns *one* Sylow $p$-subgroups. To get *all* the Sylow $p$-subgroups, we'll take all conjugates of this Sylow subgroup (since [all Sylow $p$-subgroups are conjugate](http://en.wikipedia.org/wiki/Sylow_theorems#Theorems))
+In Sage, `G.sylow_subgroup(p)` returns *one* Sylow $p$-subgroups. To get *all* the Sylow $p$-subgroups, we could take all conjugates of this Sylow subgroup (since [all Sylow $p$-subgroups are conjugate](http://en.wikipedia.org/wiki/Sylow_theorems#Theorems)). A faster way, however, is to use the fact that the cardinality of all Sylow $p$-subgroups is the maximal $p^{th}$ power dividing $|G|$.
 
-By running over the primes that divide the order of the group, we can generate the Sylow $p$-subgroups for various $p$.
+By running over the primes that divide $|G|$, we can generate the Sylow $p$-subgroups for various $p$.
 
 <div class="linked">
   <script type="text/x-sage">
@@ -100,23 +100,21 @@ some_colors = ['lightgreen','pink','yellow','lightblue']
 
 # Get prime factors of |G|
 N = G.cardinality()
-primes = N.prime_divisors()
-print "primes: " + str(primes)
+prime_factors = [p^e for p,e in list(N.factor())]
 
 # List Sylow p-subgroups for each p
 sylow = {}
-for p in primes:
-    a_sylow_p = G.sylow_subgroup(p)
-    sylow[p] = list(set([G.subgroup(a_sylow_p.conjugate(g)) for g in G]))
-
+for q in prime_factors:
+    sylow[q] = [x for x in subgroups if x.cardinality() == q]
+    
 # List remaining subgroups
 allsylow = sum(sylow.values(),[]) # combine all the sylow subgroups into one list
 nonsylow = [x for x in subgroups if x not in allsylow]
 
 # Define colors
 color = {'white' : [label[x] for x in nonsylow]}
-for c, p in zip(some_colors, primes):
-    color[c] = [label[x] for x in subgroups if x in sylow[p]]
+for c, q in zip(some_colors, prime_factors):
+    color[c] = [label[x] for x in subgroups if x in sylow[q]]
 
 # Display the poset
 P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colors = color)
@@ -176,21 +174,23 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
         frattini = G.frattini_subgroup()
         color = {'lightgreen':[label[x] for x in maximals],
         'white':[label[x] for x in subgroups if x not in maximals + [frattini]],
-        'lightblue':[label[frattini]]}
+        'lightblue':[label[x] for x in subgroups if x in [frattini]]}
     elif Color == 'Sylow': 
-        primes = G.cardinality().prime_divisors()
+        prime_factors = [p^e for p,e in list(G.cardinality().factor())]
+        
         # List Sylow p-subgroups for each p
         sylow = {}
-        for p in primes:
-            a_sylow_p = G.sylow_subgroup(p)
-            sylow[p] = list(set([G.subgroup(a_sylow_p.conjugate(g)) for g in G]))
+        for q in prime_factors:
+            sylow[q] = [x for x in subgroups if x.cardinality() == q]
+            
         # List remaining subgroups
         allsylow = sum(sylow.values(),[]) # combine all the sylow subgroups into one list
         nonsylow = [x for x in subgroups if x not in allsylow]
+        
         # Define colors
         color = {'white' : [label[x] for x in nonsylow]}
-        for c, p in zip(some_colors, primes):
-            color[c] = [label[x] for x in subgroups if x in sylow[p]]   
+        for c, q in zip(some_colors, prime_factors):
+            color[c] = [label[x] for x in subgroups if x in sylow[q]]
         
     # Display poset
     P.plot(label_elements=label_elements, element_labels = element_labels, vertex_shape= 'H', vertex_size = 800, vertex_colors = color).show()    
