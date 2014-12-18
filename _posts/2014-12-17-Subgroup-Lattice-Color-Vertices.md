@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lattice of Subgroups II : Coloring vertices
+title: Lattice of Subgroups II - Coloring vertices
 tag: Algebra
 ---
 
