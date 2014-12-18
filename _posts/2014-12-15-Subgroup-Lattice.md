@@ -14,7 +14,7 @@ This is the first in a series of posts on visualizing groups via their [lattice 
 
 One way of getting a better understanding of a group is by considering its subgroups. The lattice of subgroups (more precisely, the [Hasse diagram](http://en.wikipedia.org/wiki/Hasse_diagram) of this lattice) gives us a way to visualize how these subgroups relate to each other and to their parent group. Here's how to do it in Sage:
 
-*(The Sage cells in this post are linked, so things may not work if you don't execute them in order. You have to execute the following cell for the rest to work.)*
+*(The Sage cells in this post are linked, so things may not work if you don't execute them in order.)*
 
 <div class="linked">
   <script type="text/x-sage">
@@ -67,7 +67,7 @@ If you ran the preceding code, you probably encountered an error message. This i
 <div class = "linked">
   <script type="text/x-sage">
 # Label by size
-label = {subgroups[i] :"." + " "*i + str(len(subgroups[i])) + " "*i + "." for i in range(len(subgroups()))}
+label = {subgroups[i] :"." + " "*i + str(len(subgroups[i])) + " "*i + "." for i in range(len(subgroups))}
 P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800)
   </script>
 </div>
