@@ -66,6 +66,7 @@ Of course, we can have more than 2 colors. Let's say we want to highlight the [S
 In Sage, `G.sylow_subgroup(p)` returns *one* Sylow $p$-subgroup. To get *all* the Sylow $p$-subgroups, we'll take all conjugates of this Sylow subgroup (since [all Sylow $p$-subgroups are conjugate](http://en.wikipedia.org/wiki/Sylow_theorems#Theorems))
 
 We also have to list the primes that divide the order of the group (and list some colors as well).
+
 <div class="linked">
   <script type="text/x-sage">
 # Choose some colors we like (can choose more to be safe, in case we have many prime factors)
