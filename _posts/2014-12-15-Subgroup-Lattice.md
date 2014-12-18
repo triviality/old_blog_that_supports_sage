@@ -41,11 +41,11 @@ One way to tell what the subgroups are is to look at their generators:
 
 <div class="linked">
   <script type="text/x-sage">
-# Define labels
-label_by_gens = {x : str(x.gens())[1:-1] for x in G.subgroups()}
+# Label by generators
+label = {x : str(x.gens())[1:-1] for x in subgroups}
 
 # Display the poset with new labels
-P.plot(label_elements = True, element_labels = label_by_gens, vertex_shape= 'H', vertex_size = 800)
+P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800)
   </script>
 </div>
 
@@ -56,8 +56,9 @@ Alternatively, we could label the subgroups by their cardinalities:
 
 <div class="linked">
   <script type="text/x-sage">
-label_by_size = {x : str(len(x)) for x in G.subgroups()}
-P.plot(label_elements = True, element_labels = label_by_size, vertex_shape= 'H', vertex_size = 800)
+# Label by size
+label = {x : str(len(x)) for x in subgroups}
+P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800)
   </script>
 </div>
 
@@ -65,7 +66,8 @@ If you ran the preceding code, you probably encountered an error message. This i
 
 <div class = "linked">
   <script type="text/x-sage">
-label_by_size = {G.subgroups()[i] :"." + " "*i + str(len(G.subgroups()[i])) + " "*i + "." for i in range(len(G.subgroups()))}
+# Label by size
+label = {subgroups[i] :"." + " "*i + str(len(subgroups[i])) + " "*i + "." for i in range(len(subgroups()))}
 P.plot(label_elements = True, element_labels = label_by_size, vertex_shape= 'H', vertex_size = 800)
   </script>
 </div>
