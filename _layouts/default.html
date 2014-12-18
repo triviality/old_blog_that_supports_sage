@@ -27,16 +27,16 @@
     <script>$(function () {
     // Basic Sage cell. Use <div class = "sage">
     sagecell.makeSagecell({inputLocation: '.sage'});
-    // Auto evaluate Sage. Use <div id="auto">
-    sagecell.makeSagecell({inputLocation: '#auto', autoeval: 'True'});
-    // Only the 'Go!' button; no input displayed. Use <div id="go">
-    sagecell.makeSagecell({inputLocation:  '#go',
+    // Auto evaluate Sage. Use <div class="auto">
+    sagecell.makeSagecell({inputLocation: '.auto', autoeval: 'True'});
+    // Only the 'Go!' button; no input displayed. Use <div class="go">
+    sagecell.makeSagecell({inputLocation:  '.go',
                        template:       sagecell.templates.minimal,
                        evalButtonText: 'Go!'});
-    // Linked Sage cell. Use <div id="linked">
-    sagecell.makeSagecell({inputLocation: '#linked', linked: 'True'});
-    // All languages. Use <div id = "all">
-        sagecell.makeSagecell({inputLocation: '#all', languages: sagecell.allLanguages});
+    // Linked Sage cell. Use <div class ="linked">
+    sagecell.makeSagecell({inputLocation: '.linked', linked: 'True'});
+    // All languages. Use <div class = "all">
+        sagecell.makeSagecell({inputLocation: '.all', languages: sagecell.allLanguages});
     });
     </script>
     <!-- Basic Sage -->
