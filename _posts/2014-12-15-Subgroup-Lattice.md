@@ -14,7 +14,9 @@ This is the first in a series of posts on visualizing groups via their [lattice 
 
 One way of getting a better understanding of a group is by considering its subgroups. The lattice of subgroups (more precisely, the [Hasse diagram](http://en.wikipedia.org/wiki/Hasse_diagram) of this lattice) gives us a way to visualize how these subgroups relate to each other and to their parent group. Here's how to do it in Sage:
 
-<div class="sage">
+*(The Sage cells in this post are linked, so things may not work if you don't execute them in order. You have to execute the following cell for the rest to work.)*
+
+<div class="linked">
   <script type="text/x-sage">
 # Define group and generate list of subgroups of the group
 G = DihedralGroup(4)
@@ -37,11 +39,8 @@ Without labels, it can be hard to tell what subgroups we're looking at. We can d
 ## Labelling by generators
 One way to tell what the subgroups are is to look at their generators:
 
-<div class="sage">
+<div class="linked">
   <script type="text/x-sage">
-G = DihedralGroup(4)
-P = Poset((G.subgroups(), lambda h,k: h.is_subgroup(k)))
-  
 # Define labels
 label_by_gens = {x : str(x.gens())[1:-1] for x in G.subgroups()}
 
@@ -50,14 +49,13 @@ P.plot(label_elements = True, element_labels = label_by_gens, vertex_shape= 'H',
   </script>
 </div>
 
-## Labelling by cardinalities
-Or we could label the subgroups by their cardinalities:
+This isn't very pretty, and just knowing the generators doesn't give us much intuition about the group.
 
-<div class="sage">
+## Labelling by cardinalities
+Alternatively, we could label the subgroups by their cardinalities:
+
+<div class="linked">
   <script type="text/x-sage">
-G = DihedralGroup(4)
-P = Poset((G.subgroups(), lambda h,k: h.is_subgroup(k)))
-  
 label_by_size = {x : str(len(x)) for x in G.subgroups()}
 P.plot(label_elements = True, element_labels = label_by_size, vertex_shape= 'H', vertex_size = 800)
   </script>
@@ -65,20 +63,15 @@ P.plot(label_elements = True, element_labels = label_by_size, vertex_shape= 'H',
 
 If you ran the preceding code, you probably encountered an error message. This is because Sage currently requires that vertex labels be injective i.e. distinct vertices must have distinct labels. There's a quick but slightly ugly fix for this: just pad spaces around the labels to make them all unique:
 
-<div class = "sage">
+<div class = "linked">
   <script type="text/x-sage">
-G = DihedralGroup(4)
-P = Poset((G.subgroups(), lambda h,k: h.is_subgroup(k)))
-  
 label_by_size = {G.subgroups()[i] :"." + " "*i + str(len(G.subgroups()[i])) + " "*i + "." for i in range(len(G.subgroups()))}
 P.plot(label_elements = True, element_labels = label_by_size, vertex_shape= 'H', vertex_size = 800)
   </script>
 </div>
 
 ## Labelling by structure description
-However, unless you are already very familiar with many examples of finite groups, just knowing the cardinality or the generators doesn't tell you very much about the subgroup. 
-
-Fortunately, Sage has a method for describing the structure of a small group: `H.structure_description()` where `H` is the group in question.
+However, cardinalities still don't tell me very much about the subgroup. Fortunately, Sage has a method for describing the structure of a small group: `H.structure_description()` where `H` is the group in question.
 
 *Un*fortunately, this method requires the [GAP](http://www.gap-system.org/) group database, which is not installed with the Sagecell version of Sage. However, the free [SageMathCloud](https://cloud.sagemath.com/) service's installation of Sage *does* have the group database installed, so you can try the following code there. This code was used to produce the image at the start of this post:
 
