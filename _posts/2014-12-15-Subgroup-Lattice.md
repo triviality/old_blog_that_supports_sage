@@ -98,7 +98,7 @@ G_Poset.plot(vertex_colors = colors, element_labels = label, vertex_size= 800, v
 # More examples
 Try playing around with different groups and different labelling methods!
 
-<div id="auto">
+<div class="auto">
   <script type="text/x-sage">
 # Some small groups
 KQ   = [KleinFourGroup(), QuaternionGroup()]
