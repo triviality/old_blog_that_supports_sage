@@ -4,7 +4,7 @@ title: Archive
 ---
 
 {% for post in site.posts %}
- {% unless post.draft %}
+ {% if post.draft_tag == null %}
   * {{ post.date | date_to_string }} &raquo; [ {{ post.title }} ]({{ post.url }})
- {% endunless %}
+ {% endif %}
 {% endfor %}
