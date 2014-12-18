@@ -6,6 +6,8 @@ tag: Algebra
 
 In my [previous post]({% post_url 2014-12-15-Subgroup-Lattice %}), I showed how to use Sage to generate the subgroup lattice of a group, and define labels for the subgroups. In this post, I'll demonstrate how to color subgroups with different colors according to some desired property.
 
+![Lattice of the dicyclic group $Dic_3$](/images/D3Lattice.png "Lattice of the dicyclic group $Dic_3$")
+
 <!--more-->
 
 First, let's rerun the code from the previous post. We'll choose a group we like and generate its poset. For this post, I'll label the subgroups by their cardinality. If you're trying this code in [SageMathCloud](https://cloud.sagemath.com/) or your own version of  Sage that has the `database_gap` package installed, I strongly recommend labelling the subgroups using `structure_description()` instead).
@@ -22,8 +24,8 @@ subgroups = G.subgroups()
 f = lambda h,k: h.is_subgroup(k)
 
 # Define labels (structure_description requires database_gap package)
-label = {subgroups[i] :"." + " "*i + str(len(subgroups[i])) + " "*i + "." for i in range(len(subgroups))}
-# label = {subgroups[i]: "." +" "*(0+i) + subgroups[i].structure_description()  + " "*(0+i) + "." for i in range(len(subgroups))}
+label = {subgroups[i] :"." + " "*floor(i/2) + str(len(subgroups[i])) + " "*ceil(i/2) + "." for i in range(len(subgroups))}
+# label = {subgroups[i]: "." +" "*floor(i/2) + subgroups[i].structure_description()  + " "*ceil(i/2) + "." for i in range(len(subgroups))}
 
 # Define and display the poset
 P = Poset((subgroups, f))
@@ -122,6 +124,75 @@ P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colo
 </div>
 
 # More examples
-*Coming soon!*
+<div class="auto">
+  <script type="text/x-sage">
+# Some small groups
+KQ   = [KleinFourGroup(), QuaternionGroup()]
+Symm = [SymmetricGroup(N) for N in [1,2,3]]
+Alte = [AlternatingGroup(N) for N in [3,4]]
+Cycl = [CyclicPermutationGroup(N) for N in [8,12,30,60]]
+Dicy = [DiCyclicGroup(N) for N in [3,4,5]]
+Dihe = [DihedralGroup(N) for N in [4,5,6,7,8]]
+
+group_list = KQ + Symm + Alte + Cycl + Dicy + Dihe
+
+some_colors = ['lightgreen','pink','yellow','lightblue']
+
+@interact
+def subgroup_lattices(Group = selector(values = group_list, buttons=False),
+                      Label = selector(values =['None','Generators','Cardinality','Structure Description (requires database_gap)'], default='Cardinality', buttons=False),
+                      Color = selector(values =['None','Normal','Abelian and Center','Maximal and Frattini', 'Sylow'], default='Abelian and Center', buttons=False)):
+    # Define group and list of subgroups
+    G = Group
+    subgroups = G.subgroups()
+    
+    # Define labels
+    label_elements = True
+    if Label == 'None':
+        label_elements = False
+        element_labels = None
+    elif Label == 'Generators':        
+        element_labels = {x : str(x.gens())[1:-1] for x in subgroups}
+    elif Label == 'Cardinality':
+        element_labels = {subgroups[i] : "." + " "*floor(i/2) + str(len(subgroups[i])) + " "*ceil(i/2) + "." for i in range(len(subgroups))}
+    elif Label == 'Structure Description (requires database_gap)':
+        element_labels = {subgroups[i]: "." +" "*floor(i/2) + subgroups[i].structure_description()  + " "*ceil(i/2) + "." for i in range(len(subgroups))}
+    
+    # Define colors
+    if Color == 'None':
+        color = 'white'
+    elif Color == 'Normal':
+        color = {'lightgreen':[label[x] for x in subgroups if x.is_normal()],
+        'white':[label[x] for x in subgroups if not x.is_normal()]}
+    elif Color == 'Abelian and Center':
+        color = {'lightgreen':[label[x] for x in subgroups if x != G.center() and x.is_abelian()],
+        'white':[label[x] for x in subgroups if not x.is_abelian()],
+        'yellow':[label[G.center()]]}
+    elif Color == 'Maximal and Frattini':
+        maximals = [x for x in subgroups if P.covers(x,P.top())]
+        frattini = G.frattini_subgroup()
+        color = {'lightgreen':[label[x] for x in maximals],
+        'white':[label[x] for x in subgroups if x not in maximals + [frattini]],
+        'lightblue':[label[frattini]]}
+    elif Color == 'Sylow': 
+        primes = G.cardinality().prime_divisors()
+        # List Sylow p-subgroups for each p
+        sylow = {}
+        for p in primes:
+            a_sylow_p = G.sylow_subgroup(p)
+            sylow[p] = list(set([G.subgroup(a_sylow_p.conjugate(g)) for g in G]))
+        # List remaining subgroups
+        allsylow = sum(sylow.values(),[]) # combine all the sylow subgroups into one list
+        nonsylow = [x for x in subgroups if x not in allsylow]
+        # Define colors
+        color = {'white' : [label[x] for x in nonsylow]}
+        for c, p in zip(some_colors, primes):
+            color[c] = [label[x] for x in subgroups if x in sylow[p]]   
+        
+    # Define and display poset
+    P = Poset((subgroups, lambda h,k: h.is_subgroup(k) ))
+    P.plot(label_elements=label_elements, element_labels = element_labels, vertex_shape= 'H', vertex_size = 800, vertex_colors = color).show()    
+  </script>
+</div>
 
 In the next post, we'll look at labelling edges as well. This is particularly useful if we want to determine the if $G$ is solvable, nilpotent etc.
