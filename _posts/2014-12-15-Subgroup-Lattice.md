@@ -68,7 +68,7 @@ If you ran the preceding code, you probably encountered an error message. This i
   <script type="text/x-sage">
 # Label by size
 label = {subgroups[i] :"." + " "*i + str(len(subgroups[i])) + " "*i + "." for i in range(len(subgroups()))}
-P.plot(label_elements = True, element_labels = label_by_size, vertex_shape= 'H', vertex_size = 800)
+P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800)
   </script>
 </div>
 
