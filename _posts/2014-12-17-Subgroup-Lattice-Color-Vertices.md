@@ -148,8 +148,7 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
     # Define labels
     label_elements = True
     if Label == 'None':
-        label_elements = False
-        element_labels = None
+        element_labels = {x: str(x) for x in subgroups}
     elif Label == 'Generators':        
         element_labels = {x : str(x.gens())[1:-1] for x in subgroups}
     elif Label == 'Cardinality':
