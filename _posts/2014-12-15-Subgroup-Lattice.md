@@ -16,7 +16,7 @@ One way of getting a better understanding of a group is by considering its subgr
 
 *(The Sage cells in this post are linked, so things may not work if you don't execute them in order.)*
 
-<div class="linked">
+<div class="linked_auto">
   <script type="text/x-sage">
 # Define group and generate list of subgroups of the group
 G = DihedralGroup(4)
@@ -39,7 +39,7 @@ Without labels, it can be hard to tell what subgroups we're looking at. We can d
 ## Labelling by generators
 One way to tell what the subgroups are is to look at their generators:
 
-<div class="linked">
+<div class="linked_auto">
   <script type="text/x-sage">
 # Label by generators
 label = {x : str(x.gens())[1:-1] for x in subgroups}
@@ -54,7 +54,7 @@ This isn't very pretty, and just knowing the generators doesn't give us much int
 ## Labelling by cardinalities
 Alternatively, we could label the subgroups by their cardinalities:
 
-<div class="linked">
+<div class="linked_auto">
   <script type="text/x-sage">
 # Label by size
 label = {x : str(len(x)) for x in subgroups}
@@ -64,7 +64,7 @@ P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colo
 
 If you ran the preceding code, you probably encountered an error message. This is because Sage currently requires that vertex labels be injective i.e. distinct vertices must have distinct labels. There's a quick but slightly ugly fix for this: just pad spaces around the labels to make them all unique:
 
-<div class = "linked">
+<div class = "linked_auto">
   <script type="text/x-sage">
 # Label by size
 label = {subgroups[i] :"." + " "*floor(i/2) + str(len(subgroups[i])) + " "*ceil(i/2) + "." for i in range(len(subgroups))}
