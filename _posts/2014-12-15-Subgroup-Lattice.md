@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Lattice of Subgroups
-tag: Algebra
+tag: Algebra, Combinatorics
 ---
 
 This is the first in a series of posts on visualizing groups via their lattice of subgroups.
