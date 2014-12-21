@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Lattice of Subgroups II - Coloring Vertices
-tags: 
+tag: 
 - Algebra
 - Combinatorics
 ---
