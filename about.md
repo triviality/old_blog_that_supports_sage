@@ -19,7 +19,3 @@ Here are more resources for computing with Sage:
   - [**Documentation**](http://www.sagemath.org/doc/index.html): Includes a quick tutorial, as well as a full reference manual.
   - [**Interactive examples**](http://wiki.sagemath.org/interact/): This page contains lots more examples, from various fields of math and science.
   - [**Ask Sagemath**](http://ask.sagemath.org/questions/): Get answers to Sage-related questions here.
-
-### Contact me
-
-[wonglz@uw.edu](mailto:wonglz@uw.edu)
