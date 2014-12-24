@@ -20,7 +20,7 @@ In your own little room (or on top of a hill),
 Let your pendulum sway (in its time, in its way),
 And watch as the pen draws your worries away!
 
-*Click to choose a color*
+*Click inside the colored box to choose a color. Then click outside and watch it update.*
 
 <div class="auto">
   <script type="text/x-sage">
@@ -29,7 +29,7 @@ c = 0.05
 p = -0.15
 k = 0.05
 @interact
-def _(u=color_selector(default=(.5,.7,.5), label = '')):
+def _(u=color_selector(default=(.5,.7,.5), label = 'Color:')):
     x(t) = (sin(t*2*pi) + sin((1-c + u[2]*c*2)*t*2*pi) + p*pi)*exp(-d*t)
     y(t) = (sin((1-c+ u[0]*c*2)*t*2*pi + k*u[1]*pi) + cos((1-c + u[2]*c*2)*t*2*pi) + p*pi)*exp(-d*t)
     
