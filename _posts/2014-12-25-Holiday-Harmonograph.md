@@ -6,6 +6,8 @@ tag: Misc.
 *(Guest post from the Annals of Harmonography)*
 ![#138783](/images/harmonograph.png)
 
+<!--more-->
+
 When it's snowing outside (or maybe not),
 
 And your feet are cold (or maybe hot),
