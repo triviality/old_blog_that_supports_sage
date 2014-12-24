@@ -7,18 +7,30 @@ draft_tag: Misc.
 ![#138783](/images/harmonograph.png)
 
 When it's snowing outside (or maybe not),
+
 And your feet are cold (or maybe hot),
+
 When it's dark as day (or bright as night),
+
 And your heart is heavy (and head is light),
+
 What should you do (what should you say)
+
 To make it all right (to make it okay)?
 
+
 Just pick up a pen (a pencil will do),
+
 Set up a swing (or [three](http://www.karlsims.com/harmonograph/), or two),
+
 And while the world spins (or comes to a still),
+
 In your own little room (or on top of a hill),
+
 Let your pendulum sway (in its time, in its way),
+
 And watch as the pen draws your worries away!
+
 
 *Click inside the colored box to choose a color. Then click outside and watch it update.*
 
