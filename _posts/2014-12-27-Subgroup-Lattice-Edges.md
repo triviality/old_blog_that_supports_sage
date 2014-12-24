@@ -17,7 +17,7 @@ Coloring edges is almost as simple as [coloring vertices]({% post_url 2014-12-17
 ## Generating small groups
 As we've done in previous posts, let's start by choosing a group and generate its lattice of subgroups. This can be done by referring to this list of [constructions for every group of order less than 32 ](http://www.sagemath.org/doc/constructions/groups.html#construction-instructions-for-every-group-of-order-less-than-32). These instructions allow us to construct every group on Wikipedia's [list of small groups](http://en.wikipedia.org/wiki/List_of_small_groups)! 
 
-For this post, we'll use $G = C_3 \lhd C_8$ (or $\mathbb{Z}_3 \lhd \mathbb{Z}_8$). First, we'll generate $G$ and display it's poset of subgroups. For simplicity, we'll label by cardinality, and we won't color the vertices.
+For this post, we'll use $G = C_3 \rtimes C_8$ (or $\mathbb{Z}_3 \rtimes \mathbb{Z}_8$). First, we'll generate $G$ and display it's poset of subgroups. For simplicity, we'll label by cardinality, and we won't color the vertices.
 
 *(The Sage cells in this post are linked, so things may not work if you don't execute them in order.)*
 
@@ -53,4 +53,16 @@ However, checking whether a particular series of subgroups is a subnormal series
 
 The edges of the [Hasse diagram](http://en.wikipedia.org/wiki/Hasse_diagram) of a poset are the pairs $(h,k)$ where $h$ is [covered by](http://en.wikipedia.org/wiki/Covering_relation) $k$ in the poset. This means that $h < k$, with nothing else in between. We thus obtain all the edges of a Hasse diagram by calling `P.cover_relations()` on the poset $P$.
 
-To color edges of a graph, we create a dictionary `edge_colors` whose keys are colors, and values are edges that we want to im 
+To color edges of a graph, we create a dictionary `edge_colors`:
+
+<div class="linked">
+  <script type="text/x-sage">
+# Define edge colors
+edge_colors = {'teal': [(label[u],label[v]) for u,v in P.cover_relations() if u.is_normal(v)],
+        'lightgray': [(label[u],label[v]) for u,v in P.cover_relations() if not u.is_normal(v)]}
+
+P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, edge_colors = edge_colors, layout= 'acyclic')        
+  </script>
+</div>
+
+
