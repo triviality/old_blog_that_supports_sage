@@ -18,7 +18,7 @@ What should you do (what should you say)
 
 To make it all right (to make it okay)?
 
-
+.
 
 Just pick up a pen (a pencil will do),
 
@@ -32,9 +32,11 @@ Let your pendulum sway (in its time, in its way),
 
 And watch as the pen draws your worries away!
 
+.
 
+.
 
-*Click inside the colored box to choose a color. Then click outside and watch it update.*
+*(Click inside the colored box to choose a color. Then click outside and watch it update.)*
 
 <div class="auto_out">
   <script type="text/x-sage">
