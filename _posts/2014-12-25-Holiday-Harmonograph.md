@@ -3,9 +3,24 @@ layout: post
 title: Holiday Harmonograph
 draft_tag: Misc.
 ---
-
 *(Guest post from the Annals of Harmonography)*
+![#138783](/images/harmonograph.png)
 
+When it's snowing outside (or maybe not),
+And your feet are cold (or maybe hot),
+When it's dark as day (or bright as night),
+And your heart is heavy (and head is light),
+What should you do (what should you say)
+To make it all right (to make it okay)?
+
+Just pick up a pen (a pencil will do),
+Set up a swing (or [three](http://www.karlsims.com/harmonograph/), or two),
+And while the world spins (or comes to a still),
+In your own little room (or on top of a hill),
+Let your pendulum sway (in its time, in its way),
+And watch as the pen draws your worries away!
+
+*Click to choose a color*
 <div class="auto">
   <script type="text/x-sage">
 d = 0.05
@@ -21,5 +36,9 @@ def _(u=color_selector(default=(.5,.7,.5), label = '')):
   </script>
 </div>
 
+### Related Articles:
 
-
+- 7 celebrities and their harmonographs
+- What your harmonograph says about you
+- 10 tips for a happier harmonograph
+- Harmonograph secrets... revealed!
