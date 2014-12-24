@@ -21,6 +21,7 @@ Let your pendulum sway (in its time, in its way),
 And watch as the pen draws your worries away!
 
 *Click to choose a color*
+
 <div class="auto">
   <script type="text/x-sage">
 d = 0.05
