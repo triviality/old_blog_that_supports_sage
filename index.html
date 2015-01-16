@@ -9,7 +9,7 @@ This blog is powered by the [Sage Cell Server](http://sagecell.sagemath.org/). Y
 </div>
 
 <div class="posts">
-  {% for post in site.posts limit:3 %}
+  {% for post in site.posts limit:5 %}
     {% if post.draft_tag == null %}
       <article class="post">    
         
@@ -24,3 +24,5 @@ This blog is powered by the [Sage Cell Server](http://sagecell.sagemath.org/). Y
     {% endif %}
   {% endfor %}
 </div>
+
+[ALL POSTS]({% post_url archive %})
