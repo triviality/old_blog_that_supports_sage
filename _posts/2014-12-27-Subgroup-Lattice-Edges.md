@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Lattice of Subgroups III - Labelling and Coloring Edges
+title: Lattice of Subgroups III - Coloring Edges
 draft_tag: 
 - Algebra
 - Combinatorics
 ---
 
-This post will cover the labelling and coloring of edges in the lattice of subgroups of a group. This is useful if one wants to know whether a group has any series of a certain type (e.g. normal, subnormal, central, etc.).
+This post will cover the coloring of edges in the lattice of subgroups of a group. 
 
 ![Lattice of subgroups of $C3:C8$](/images/C3semiC8.png)
 
@@ -44,12 +44,10 @@ P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colo
   </script>
 </div>
 
-## Subnormal Series
-A [subnormal series](http://en.wikipedia.org/wiki/Subgroup_series#Normal_series.2C_subnormal_series) is a series of subgroups where each subgroup is a normal subgroup of the next group in the series.
-
+## Coloring edges
 In the [previous post]({% post_url 2014-12-17-Subgroup-Lattice-Color-Vertices %}), we colored vertices according to whether the corresponding subgroup was normal (or abelian, or a Sylow subgroup, etc.) These are properties that depend only on each individual subgroup.
 
-However, checking whether a particular series of subgroups is a subnormal series requires checking *pairs* of subgroups to see whether one is a normal subgroup of the other. This suggests that we color *edges* according to whether one of its endpoints is a normal subgroup of the other endpoint.
+However, suppose we want to see the subnormal series of the group. A [subnormal series](http://en.wikipedia.org/wiki/Subgroup_series#Normal_series.2C_subnormal_series) is a series of subgroups where each subgroup is a normal subgroup of the next group in the series. Checking whether a particular series of subgroups is a subnormal series requires checking *pairs* of subgroups to see whether one is a normal subgroup of the other. This suggests that we color *edges* according to whether one of its endpoints is a normal subgroup of the other endpoint.
 
 The edges of the [Hasse diagram](http://en.wikipedia.org/wiki/Hasse_diagram) of a poset are the pairs $(h,k)$ where $h$ is [covered by](http://en.wikipedia.org/wiki/Covering_relation) $k$ in the poset. This means that $h < k$, with nothing else in between. We thus obtain all the edges of a Hasse diagram by calling `P.cover_relations()` on the poset $P$.
 
@@ -61,8 +59,11 @@ To color edges of a graph, we create a dictionary `edge_colors`:
 edge_colors = {'teal': [(label[u],label[v]) for u,v in P.cover_relations() if u.is_normal(v)],
         'lightgray': [(label[u],label[v]) for u,v in P.cover_relations() if not u.is_normal(v)]}
 
-P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, edge_colors = edge_colors, layout= 'acyclic')        
+P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, edge_colors = edge_colors, layout= 'acyclic', vertex_colors = "white")        
   </script>
 </div>
 
+## Up next...
+This is the last post describing relatively simple things one can do to visualize subgroup lattices (or more generally, posets) in Sage. In the next post, I'll write code to label edges. Doing this requires extracting the Hasse diagram of a poset as a graph and modifying the edge labels. Also, subgroup lattices tend to get unwieldy for large groups. In the next post, we'll restrict our attention to conjugacy classes of subgroups, rather than all subgroups.
 
+After that, I hope to write a bit about doing some simple representation theory things in Sage.
