@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Lattice of Subgroups III - Coloring Edges
-draft_tag: 
+tag: 
 - Algebra
 - Combinatorics
 ---
