@@ -63,7 +63,7 @@ P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, edge_colors
   </script>
 </div>
 
-## Up next...
+### Up next...
 This is the last post describing relatively simple things one can do to visualize subgroup lattices (or more generally, posets) in Sage. In the next post, I'll write code to label edges. Doing this requires extracting the Hasse diagram of a poset as a graph and modifying the edge labels. Also, subgroup lattices tend to get unwieldy for large groups. In the next post, we'll restrict our attention to conjugacy classes of subgroups, rather than all subgroups.
 
 After that, I hope to write a bit about doing some simple representation theory things in Sage.
