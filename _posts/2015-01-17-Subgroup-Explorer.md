@@ -169,7 +169,7 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
                     gplot._pos[v], rgbcolor=(0,0,0), zorder=8))
 
             # Display!
-            gplot.show(figsize=(6,6))
+            gplot.show(figsize=(10,10))
   </script>
 </div>
 
@@ -320,7 +320,7 @@ def subgroup_class_lattices(Cardinality= 6):
                     gplot._pos[v], rgbcolor=(0,0,0), zorder=8))
 
             # Display!
-            gplot.show(figsize=(6,6))
+            gplot.show(figsize=(10,10))
   </script>
 </div>            
 
