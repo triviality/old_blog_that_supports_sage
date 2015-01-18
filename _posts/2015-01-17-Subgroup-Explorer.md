@@ -77,7 +77,7 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
                             Edge_Colors = selector(values = ['Is normal subgroup of','None',]), 
                             Edge_Labels = selector(values =['Contains','Contained by', 'Both','None',])):
             # Define vertex colors
-            if Vertex_Colors is not 'None':
+            if Vertex_Colors != 'None':
                 vertex_colors = defaultdict(list)
                 for cc in sub_classes:
                     # Color non-normal subgroups white
@@ -97,7 +97,7 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
                 vertex_colors = 'white'
 
             # Define edge colors
-            if Edge_Colors is not 'None':
+            if Edge_Colors != 'None':
                 edge_colors = {'#60D6D6':[],'lightgray':[]}
                 for cc1,cc2 in poset.cover_relations():
                     h1 = cc1[0]
@@ -130,7 +130,7 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
 
             # Set edge labels
             label_edges = True
-            if Edge_Labels is 'Contained by':
+            if Edge_Labels == 'Contained by':
                 for cc1,cc2,label in graph.edges():
                     # Count number of subgroups in cc2 that a fixed representative of cc1 is contained by
                     count = sum([cc1[0].is_subgroup(h2) for h2 in cc2])    
@@ -138,7 +138,7 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
                         graph.set_edge_label(cc1,cc2,'')
                     else:
                         graph.set_edge_label(cc1,cc2,'  ' + str(count))
-            elif Edge_Labels is 'Contains':        
+            elif Edge_Labels == 'Contains':        
                 for cc1,cc2,label in graph.edges():
                     # Count number of subgroups in cc1 that a fixed representative of cc2 contains
                     count = sum([h1.is_subgroup(cc2[0]) for h1 in cc1])
@@ -146,7 +146,7 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
                         graph.set_edge_label(cc1,cc2,'')
                     else:
                         graph.set_edge_label(cc1,cc2,'  ' + str(count))
-            elif Edge_Labels is 'Both':    
+            elif Edge_Labels == 'Both':    
                 for cc1,cc2,label in graph.edges():
                     # Both of the above
                     count1 = sum([cc1[0].is_subgroup(h2) for h2 in cc2])
@@ -224,7 +224,7 @@ def subgroup_class_lattices(Cardinality= 6):
                             Edge_Colors = selector(values = ['Is normal subgroup of','None',]), 
                             Edge_Labels = selector(values =['Contains','Contained by', 'Both','None',])):
             # Define vertex colors
-            if Vertex_Colors is not 'None':
+            if Vertex_Colors != 'None':
                 vertex_colors = defaultdict(list)
                 for cc in sub_classes:
                     # Color non-normal subgroups white
@@ -244,7 +244,7 @@ def subgroup_class_lattices(Cardinality= 6):
                 vertex_colors = 'white'
 
             # Define edge colors
-            if Edge_Colors is not 'None':
+            if Edge_Colors != 'None':
                 edge_colors = {'#60D6D6':[],'lightgray':[]}
                 for cc1,cc2 in poset.cover_relations():
                     h1 = cc1[0]
@@ -281,7 +281,7 @@ def subgroup_class_lattices(Cardinality= 6):
 
             # Set edge labels
             label_edges = True
-            if Edge_Labels is 'Contained by':
+            if Edge_Labels == 'Contained by':
                 for cc1,cc2,label in graph.edges():
                     # Count number of subgroups in cc2 that a fixed representative of cc1 is contained by
                     count = sum([cc1[0].is_subgroup(h2) for h2 in cc2])    
@@ -289,7 +289,7 @@ def subgroup_class_lattices(Cardinality= 6):
                         graph.set_edge_label(cc1,cc2,'')
                     else:
                         graph.set_edge_label(cc1,cc2,'  ' + str(count))
-            elif Edge_Labels is 'Contains':        
+            elif Edge_Labels == 'Contains':        
                 for cc1,cc2,label in graph.edges():
                     # Count number of subgroups in cc1 that a fixed representative of cc2 contains
                     count = sum([h1.is_subgroup(cc2[0]) for h1 in cc1])
@@ -297,7 +297,7 @@ def subgroup_class_lattices(Cardinality= 6):
                         graph.set_edge_label(cc1,cc2,'')
                     else:
                         graph.set_edge_label(cc1,cc2,'  ' + str(count))
-            elif Edge_Labels is 'Both':    
+            elif Edge_Labels == 'Both':    
                 for cc1,cc2,label in graph.edges():
                     # Both of the above
                     count1 = sum([cc1[0].is_subgroup(h2) for h2 in cc2])
