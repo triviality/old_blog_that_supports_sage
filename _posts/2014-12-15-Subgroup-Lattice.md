@@ -79,7 +79,7 @@ However, cardinalities still don't tell me very much about the subgroup. Fortuna
 
 *Un*fortunately, this method requires the [GAP](http://www.gap-system.org/) group database, which is not installed with the Sagecell version of Sage. However, the free [SageMathCloud](https://cloud.sagemath.com/) service's installation of Sage *does* have the group database installed, so you can try the following code there. This code was used to produce the image at the start of this post:
 
-<div class="sage">
+<div class="no_eval">
   <script type="text/x-sage">
 # Define group and list of subgroups
 G = DihedralGroup(4)
