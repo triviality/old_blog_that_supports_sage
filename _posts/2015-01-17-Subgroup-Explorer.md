@@ -18,7 +18,7 @@ Instead of showing the full subgroup lattice, which can get messy for large grou
 
 The edge labels indicate how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class **contains**, or how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class is **contained by**. The labels are omitted if these numbers are 1. The edge colors indicate whether the subgroups in the "smaller" conjugacy class are normal subgroups of those in "larger" conjugacy class.
 
-In the image above, each subgroup conjugate to `C3 x (C5 : C4)` (the colon stands for [semi-direct product](http://en.wikipedia.org/wiki/Semidirect_product) and is usually written $\rtimes$) contains 5 subgroups isomorphic to `C12` and 1 subgroup isomorphic to `C3 x D5`. The edge colors indicate that `C3 x D5` is a normal subgroup of `C3 x (C5:C4)` whereas `C12` is not.
+In the image above, the group `C3 x (C5 : C4)` (the colon stands for [semi-direct product](http://en.wikipedia.org/wiki/Semidirect_product) and is usually written $\rtimes$) contains 5 subgroups isomorphic to `C12` and 1 subgroup isomorphic to `C3 x D5`. The edge colors indicate that `C3 x D5` is a normal subgroup of `C3 x (C5:C4)` whereas `C12` is not.
 
 Click **Go!** below to refresh the viewer, or if it doesn't load.
 
