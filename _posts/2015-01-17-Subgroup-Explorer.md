@@ -10,11 +10,12 @@ tag:
 
 Here's an interactive subgroup explorer for all groups of size up to 32. It's powered by Sage and GAP, and allows you to view the subgroup conjugacy classes of a group from your browser. 
 
+<!--more-->
+
 Instead of showing the full subgroup lattice, which can get messy for large groups, it only shows the conjugacy classes of subgroups (i.e. all subgroups that are conjugate are combined into a single vertex).
 
 The edge labels indicate how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class **contains**, or how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class is **contained by**. The labels are omitted if these numbers are 1.
 
-<!--more-->
 
 <div class="auto">
   <script type="text/x-sage">
