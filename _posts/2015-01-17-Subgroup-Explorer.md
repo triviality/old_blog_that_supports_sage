@@ -160,7 +160,7 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
 
 
             # Generate graph_plot object
-            gplot = graph.graphplot(vertex_labels=None,layout='acyclic',vertex_colors = vertex_colors, edge_colors = edge_colors, edge_labels = label_edges, vertex_size = 800, vertex_shape = 'H')
+            gplot = graph.graphplot(vertex_labels=None,layout='acyclic',vertex_colors = vertex_colors, edge_colors = edge_colors, edge_labels = label_edges, vertex_size = 1000)
 
             # Set vertex labels
             gplot._plot_components['vertex_labels'] = []
@@ -311,7 +311,7 @@ def subgroup_class_lattices(Cardinality= 6):
 
 
             # Generate graph_plot object
-            gplot = graph.graphplot(vertex_labels=None,layout='acyclic',vertex_colors = vertex_colors, edge_colors = edge_colors, edge_labels = label_edges, vertex_size = 800, vertex_shape = 'H')
+            gplot = graph.graphplot(vertex_labels=None,layout='acyclic',vertex_colors = vertex_colors, edge_colors = edge_colors, edge_labels = label_edges, vertex_size = 1000)
 
             # Set vertex labels
             gplot._plot_components['vertex_labels'] = []
