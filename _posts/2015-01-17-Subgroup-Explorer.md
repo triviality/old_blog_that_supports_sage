@@ -1,10 +1,20 @@
 ---
 layout: post
 title: Subgroup Explorer
-draft_tag: 
+tag: 
 - Algebra
 - Combinatorics
 ---
+
+![Subgroup Explorer](/images/SubgroupExplorer.png)
+
+Here's an interactive subgroup explorer for all groups of size up to 32. It's powered by Sage and GAP, and allows you to view the subgroup conjugacy classes of a group from your browser. 
+
+Instead of showing the full subgroup lattice, which can get messy for large groups, it only shows the conjugacy classes of subgroups (i.e. all subgroups that are conjugate are combined into a single vertex).
+
+The edge labels indicate how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class **contains**, or how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class is **contained by**. The labels are omitted if these numbers are 1.
+
+<!--more-->
 
 <div class="auto">
   <script type="text/x-sage">
@@ -152,3 +162,157 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
   </script>
 </div>
 
+
+And here's a version that you can run on [SageMathCloud](https://cloud.sagSageMathCloudemath.com). It offers more flexibility (you can type in cardinalities > 32), and also uses the structure description of the group as a label, rather than just the cardinality. Don't try running it here, however, since the SageCellServer doesn't have the `database_gap` package installed.
+
+<div class="sage">
+  <script type="text/x-sage">
+from collections import defaultdict
+
+def subgroup_conj_classes(G):
+    """
+    Returns [cc_1, cc_2, ... cc_n] : each cc_i is a list containing subgroups of G that belong to the same conjugacy class.
+    """
+    ccs = G._gap_().ConjugacyClassesSubgroups()
+    return [tuple([G.subgroup(gap_group = H) for H in cc.Elements()]) for cc in ccs]
+
+def are_subgroups(cc1,cc2):
+    """
+    Returns True if some element of cc1 is a subgroup of an element of cc2.
+    """    
+    # Choose the shorter list to iterate over
+    if len(cc1) <= len(cc2):
+        h2 = cc2[0]
+        for h1 in cc1:
+            if h1.is_subgroup(h2):
+                return True
+    else:
+        h1 = cc1[0]
+        for h2 in cc2:
+            if h1.is_subgroup(h2):
+                return True
+    return False
+
+@interact
+def subgroup_class_lattices(Cardinality= 6):
+    group_list = {Cardinality: {}}
+    for G_gap in gap.AllSmallGroups(Cardinality):
+        G = PermutationGroup(list(gap.GeneratorsOfGroup(G_gap.AsPermGroup())))
+        group_list[Cardinality][G.structure_description()] = str(G.gens())
+    @interact
+    def group_select(Group = selector(values = group_list[Cardinality].keys())):
+        # Generate group
+        G = PermutationGroup(gap(group_list[Cardinality][Group]))
+        
+        # Poset of conjugacy classes
+        sub_classes = subgroup_conj_classes(G)
+        poset = Poset((sub_classes,are_subgroups)) 
+        
+        @interact
+        def display_options(Vertex_Colors = selector(values = ['Normal (green), Commutator (pink), Center (blue)','None']), 
+                            Edge_Colors = selector(values = ['Is normal subgroup of','None',]), 
+                            Edge_Labels = selector(values =['Contains','Contained by', 'Both','None',])):
+            # Define vertex colors
+            if Vertex_Colors is not 'None':
+                vertex_colors = defaultdict(list)
+                for cc in sub_classes:
+                    # Color non-normal subgroups white
+                    if not cc[0].is_normal():
+                        vertex_colors['white'].append(cc)
+                    else:
+                        # Color the commutator subgroup pink
+                        if cc[0] == G.subgroup(G.commutator().gens()):
+                            vertex_colors['pink'].append(cc)
+                        # Color the center lightblue
+                        elif cc[0] == G.center():
+                            vertex_colors['lightblue'].append(cc)
+                        # Color all other normal subgroups green
+                        else:
+                            vertex_colors['lightgreen'].append(cc)
+            else:
+                vertex_colors = 'white'
+
+            # Define edge colors
+            if Edge_Colors is not 'None':
+                edge_colors = {'#60D6D6':[],'lightgray':[]}
+                for cc1,cc2 in poset.cover_relations():
+                    h1 = cc1[0]
+
+                    # Color by whether elts of cc1 are normal subgroups of elts of cc2
+                    is_normal = False
+                    for h2 in cc2:
+                        if h1.is_subgroup(h2) and h1.is_normal(h2):
+                            edge_colors['#60D6D6'].append((cc1,cc2))
+                            is_normal = True
+                            break
+                    if not is_normal:
+                        edge_colors['lightgray'].append((cc1,cc2))
+            else:
+                edge_colors = None
+
+            # Define vertex labels
+            vertex_labels = {cc : cc[0].structure_description() for cc in sub_classes}
+            #vertex_labels = {cc : cc[0].cardinality() for cc in sub_classes}
+
+            #### END OF CUSTOM DISPLAY OPTIONS
+
+            # Define heights, if poset is ranked
+            rank_function = poset.rank_function()
+            if rank_function:
+                heights = defaultdict(list)
+                for i in poset:
+                    heights[rank_function(i)].append(i)
+            else:
+                heights = None
+
+            # Generate Hasse diagram
+            graph = poset.hasse_diagram()
+
+            # Set edge labels
+            label_edges = True
+            if Edge_Labels is 'Contained by':
+                for cc1,cc2,label in graph.edges():
+                    # Count number of subgroups in cc2 that a fixed representative of cc1 is contained by
+                    count = sum([cc1[0].is_subgroup(h2) for h2 in cc2])    
+                    if count == 1:
+                        graph.set_edge_label(cc1,cc2,'')
+                    else:
+                        graph.set_edge_label(cc1,cc2,'  ' + str(count))
+            elif Edge_Labels is 'Contains':        
+                for cc1,cc2,label in graph.edges():
+                    # Count number of subgroups in cc1 that a fixed representative of cc2 contains
+                    count = sum([h1.is_subgroup(cc2[0]) for h1 in cc1])
+                    if count == 1:
+                        graph.set_edge_label(cc1,cc2,'')
+                    else:
+                        graph.set_edge_label(cc1,cc2,'  ' + str(count))
+            elif Edge_Labels is 'Both':    
+                for cc1,cc2,label in graph.edges():
+                    # Both of the above
+                    count1 = sum([cc1[0].is_subgroup(h2) for h2 in cc2])
+                    count2 = sum([h1.is_subgroup(cc2[0]) for h1 in cc1])
+                    if count1 == 1 and count2 == 1:
+                        graph.set_edge_label(cc1,cc2,'')
+                    else:
+                        graph.set_edge_label(cc1,cc2,'  ' + '{},{}'.format(count1,count2))
+            else:
+                label_edges = False
+
+
+            # Generate graph_plot object
+            gplot = graph.graphplot(vertex_labels=None,layout='acyclic',vertex_colors = vertex_colors, edge_colors = edge_colors, edge_labels = label_edges, vertex_size = 800, vertex_shape = 'H')
+
+            # Set vertex labels
+            gplot._plot_components['vertex_labels'] = []
+            for v in gplot._nodelist:
+                gplot._plot_components['vertex_labels'].append(text(vertex_labels[v],
+                    gplot._pos[v], rgbcolor=(0,0,0), zorder=8))
+
+            # Display!
+            gplot.show(figsize=(6,6))
+  </script>
+</div>            
+
+Finally, while verifying the results of this program, I found an error in [this book](http://www.cambridge.org/us/academic/subjects/mathematics/algebra/representations-groups-computational-approach)!
+The correction has been pencilled in. The original number printed was 1.
+![A5 Lattice](/images/A5Lattice_Compare.png)
