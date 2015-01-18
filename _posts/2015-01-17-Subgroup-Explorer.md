@@ -14,6 +14,8 @@ I've written an interactive subgroup explorer for all groups of size up to 32. I
 
 Instead of showing the full subgroup lattice, which can get messy for large groups, it only shows the [conjugacy classes of subgroups](http://en.wikipedia.org/wiki/Conjugacy_class#Conjugacy_of_subgroups_and_general_subsets) (i.e. all subgroups that are conjugate are combined into a single vertex).
 
+[Normal subgroups](http://en.wikipedia.org/wiki/Normal_subgroup) are colored green. Additionally, the [center](http://en.wikipedia.org/wiki/Center_%28group_theory%29) is blue while the [commutator subgroup](http://en.wikipedia.org/wiki/Commutator_subgroup) is pink.
+
 The edge labels indicate how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class **contains**, or how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class is **contained by**. The labels are omitted if these numbers are 1. The edge colors indicate whether the subgroups in the "smaller" conjugacy class are normal subgroups of those in "larger" conjugacy class.
 
 In the image above, each subgroup conjugate to `C3 x (C5 : C4)` (the colon stands for [semi-direct product](http://en.wikipedia.org/wiki/Semidirect_product) and is usually written $\rtimes$) contains 5 subgroups isomorphic to `C12` and 1 subgroup isomorphic to `C3 x D5`. The edge colors indicate that `C3 x D5` is a normal subgroup of `C3 x (C5:C4)` whereas `C12` is not.
