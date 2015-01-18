@@ -16,9 +16,9 @@ Instead of showing the full subgroup lattice, which can get messy for large grou
 
 The edge labels indicate how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class **contains**, or how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class is **contained by**. The labels are omitted if these numbers are 1.
 
-Here goes:
+Click **Go!** below to refresh the viewer, or if it doesn't load.
 
-<div class="auto">
+<div class="go">
   <script type="text/x-sage">
 from collections import defaultdict
 
@@ -102,8 +102,13 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
                 edge_colors = None
 
             # Define vertex labels
-            #vertex_labels = {cc : cc[0].structure_description() for cc in sub_classes}
-            vertex_labels = {cc : cc[0].cardinality() for cc in sub_classes}
+            vertex_labels = {sub_classes[0] : '1', sub_classes[-1] : Group}
+            if len(sub_classes)>2:
+                for cc in sub_classes[1:-1]:
+                    for desc,gens in group_list[cc[0].cardinality()].items():
+                        if cc[0].is_isomorphic(PermutationGroup(gap(gens))):
+                            vertex_labels[cc] = desc
+                            break
 
             #### END OF CUSTOM DISPLAY OPTIONS
 
@@ -165,7 +170,7 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
 </div>
 
 
-And here's a version that you can run on [SageMathCloud](https://cloud.sagSageMathCloudemath.com). It offers more flexibility (you can type in cardinalities > 32), and also uses the structure description of the group as a label, rather than just the cardinality. This was used to produce the image at the top of the post.
+And here's a version that you can run on [SageMathCloud](https://cloud.sagSageMathCloudemath.com). It allows you to input much larger groups. This was used to produce the image at the top of the post.
 
 Don't try running it here, however, since the SageCellServer doesn't have the `database_gap` package installed.
 
