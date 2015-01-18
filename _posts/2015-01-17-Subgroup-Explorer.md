@@ -165,7 +165,9 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
 </div>
 
 
-And here's a version that you can run on [SageMathCloud](https://cloud.sagSageMathCloudemath.com). It offers more flexibility (you can type in cardinalities > 32), and also uses the structure description of the group as a label, rather than just the cardinality. Don't try running it here, however, since the SageCellServer doesn't have the `database_gap` package installed.
+And here's a version that you can run on [SageMathCloud](https://cloud.sagSageMathCloudemath.com). It offers more flexibility (you can type in cardinalities > 32), and also uses the structure description of the group as a label, rather than just the cardinality. This was used to produce the image at the top of the post.
+
+Don't try running it here, however, since the SageCellServer doesn't have the `database_gap` package installed.
 
 <div class="sage">
   <script type="text/x-sage">
