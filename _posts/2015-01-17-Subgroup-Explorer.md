@@ -8,18 +8,9 @@ tag:
 
 ![Subgroup Explorer](/images/SubgroupExplorer.png "Subgroup Lattice Generator")
 
-I've written an interactive subgroup explorer for all groups of size up to 32. It's powered by Sage and GAP, and allows you to view the subgroup conjugacy classes of a group from your browser.
+I've written a subgroup lattice generator for all groups of size up to 32. It's powered by Sage and GAP, and allows you to view the lattice of subgroups or subgroup conjugacy classes of a group from your browser.
 
 <!--more-->
-
-Instead of showing the full subgroup lattice, which can get messy for large groups, it only shows the [conjugacy classes of subgroups](http://en.wikipedia.org/wiki/Conjugacy_class#Conjugacy_of_subgroups_and_general_subsets) (i.e. all subgroups that are conjugate are combined into a single vertex).
-
-[Normal subgroups](http://en.wikipedia.org/wiki/Normal_subgroup) are colored green. Additionally, the [center](http://en.wikipedia.org/wiki/Center_%28group_theory%29) is blue while the [commutator subgroup](http://en.wikipedia.org/wiki/Commutator_subgroup) is pink.
-
-The edge labels indicate how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class **contains**, or how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class is **contained by**. The labels are omitted if these numbers are 1. The edge colors indicate whether the subgroups in the "smaller" conjugacy class are normal subgroups of those in "larger" conjugacy class.
-
-In the image above, the group `C3 x (C5 : C4)` (the colon stands for [semi-direct product](http://en.wikipedia.org/wiki/Semidirect_product) and is usually written $\rtimes$) contains 5 subgroups isomorphic to `C12` and 1 subgroup isomorphic to `C3 x D5`. The edge colors indicate that `C3 x D5` is a normal subgroup of `C3 x (C5:C4)` whereas `C12` is not. A table of letters in the group descriptions can be found [here](http://groupprops.subwiki.org/wiki/GAP:StructureDescription#Aspects_of_structure_description).
-
 Click **Go!** below to refresh the viewer, or if it doesn't load.
 
 <div class="go">
@@ -62,7 +53,7 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
         # Poset of conjugacy classes
         sub_classes = subgroup_conj_classes(G)
         poset = Poset((sub_classes,are_subgroups)) 
-        
+
         # Define vertex labels
         vertex_labels = {sub_classes[0] : '1', sub_classes[-1] : Group}
         if len(sub_classes)>2:
@@ -70,111 +61,196 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
                 for desc,gens in group_list[cc[0].cardinality()].items():
                     if cc[0].is_isomorphic(PermutationGroup(gap(gens))):
                         vertex_labels[cc] = desc
-                        break        
-        
+                        break                
         @interact
-        def display_options(Vertex_Colors = selector(values = ['Normal (green), Commutator (pink), Center (blue)','None']), 
-                            Edge_Colors = selector(values = ['Is normal subgroup of','None',]), 
-                            Edge_Labels = selector(values =['Contains','Contained by', 'Both','None',])):
-            # Define vertex colors
-            if Vertex_Colors != 'None':
-                vertex_colors = defaultdict(list)
-                for cc in sub_classes:
-                    # Color non-normal subgroups white
-                    if not cc[0].is_normal():
-                        vertex_colors['white'].append(cc)
-                    else:
-                        # Color the commutator subgroup pink
-                        if cc[0] == G.subgroup(G.commutator().gens()):
-                            vertex_colors['pink'].append(cc)
-                        # Color the center lightblue
-                        elif cc[0] == G.center():
-                            vertex_colors['lightblue'].append(cc)
-                        # Color all other normal subgroups green
-                        else:
-                            vertex_colors['lightgreen'].append(cc)
-            else:
-                vertex_colors = 'white'
-
-            # Define edge colors
-            if Edge_Colors != 'None':
-                edge_colors = {'#60D6D6':[],'lightgray':[]}
+        def display_options(Show = selector(values = ['Conjugacy classes of subgroups', 'All subgroups']), 
+                            Vertex_Colors = selector(values = ['Normal (green), Commutator (pink), Center (blue)','None'], label = 'Vertex colors'), 
+                            Edge_Colors = selector(values = ['Is normal subgroup of','None',], label = 'Edge colors'), 
+                            Edge_Labels = selector(values =['Contains','Contained by', 'Both','None',], label = 'Edge labels (N/A if showing all subgroups)')):        
+            if Show == 'All subgroups':
+                # Poset of all subgroups
+                subgroups = [h for cc in sub_classes for h in cc ]
+                covers = []
                 for cc1,cc2 in poset.cover_relations():
-                    h1 = cc1[0]
+                    for h1 in cc1:
+                        for h2 in cc2:
+                            if h1.is_subgroup(h2):
+                                covers.append([h1,h2])
 
-                    # Color by whether elts of cc1 are normal subgroups of elts of cc2
-                    is_normal = False
-                    for h2 in cc2:
-                        if h1.is_subgroup(h2) and h1.is_normal(h2):
-                            edge_colors['#60D6D6'].append((cc1,cc2))
-                            is_normal = True
-                            break
-                    if not is_normal:
-                        edge_colors['lightgray'].append((cc1,cc2))
-            else:
-                edge_colors = None
+                full_poset = Poset((subgroups,covers),cover_relations = True)
 
-            #### END OF CUSTOM DISPLAY OPTIONS
+                # Vertex labels, inherited from conjugacy class labels            
+                vertex_labels_full = {}
+                for cc in sub_classes:
+                    for h in cc:
+                        vertex_labels_full[h] = vertex_labels[cc]
 
-            # Define heights, if poset is ranked
-            rank_function = poset.rank_function()
-            if rank_function:
-                heights = defaultdict(list)
-                for i in poset:
-                    heights[rank_function(i)].append(i)
-            else:
-                heights = None
+                # Define vertex colors
+                if Vertex_Colors != 'None':
+                    vertex_colors = defaultdict(list)
+                    for h in subgroups:
+                        # Color non-normal subgroups white
+                        if not h.is_normal():
+                            vertex_colors['white'].append(h)
+                        else:
+                            # Color the commutator subgroup pink
+                            if h == G.subgroup(G.commutator().gens()):
+                                vertex_colors['pink'].append(h)
+                            # Color the center lightblue
+                            elif h == G.center():
+                                vertex_colors['lightblue'].append(h)
+                            # Color all other normal subgroups green
+                            else:
+                                vertex_colors['lightgreen'].append(h)
+                else:
+                    vertex_colors = 'white'
 
-            # Generate Hasse diagram
-            graph = poset.hasse_diagram()
+                # Define edge colors
+                if Edge_Colors != 'None':
+                    # Color by whether elts of h is a normal subgroups of k
+                    edge_colors = defaultdict(list)
+                    for h,k in full_poset.cover_relations():
+                        if h.is_normal(k):
+                            edge_colors['#60D6D6'].append((h,k))
+                        else:
+                            edge_colors['lightgray'].append((h,k))
+                        h1 = cc1[0]
+                else:
+                    edge_colors = None                   
 
-            # Set edge labels
-            label_edges = True
-            if Edge_Labels == 'Contained by':
-                for cc1,cc2,label in graph.edges():
-                    # Count number of subgroups in cc2 that a fixed representative of cc1 is contained by
-                    count = sum([cc1[0].is_subgroup(h2) for h2 in cc2])    
-                    if count == 1:
-                        graph.set_edge_label(cc1,cc2,'')
-                    else:
-                        graph.set_edge_label(cc1,cc2,'  ' + str(count))
-            elif Edge_Labels == 'Contains':        
-                for cc1,cc2,label in graph.edges():
-                    # Count number of subgroups in cc1 that a fixed representative of cc2 contains
-                    count = sum([h1.is_subgroup(cc2[0]) for h1 in cc1])
-                    if count == 1:
-                        graph.set_edge_label(cc1,cc2,'')
-                    else:
-                        graph.set_edge_label(cc1,cc2,'  ' + str(count))
-            elif Edge_Labels == 'Both':    
-                for cc1,cc2,label in graph.edges():
-                    # Both of the above
-                    count1 = sum([cc1[0].is_subgroup(h2) for h2 in cc2])
-                    count2 = sum([h1.is_subgroup(cc2[0]) for h1 in cc1])
-                    if count1 == 1 and count2 == 1:
-                        graph.set_edge_label(cc1,cc2,'')
-                    else:
-                        graph.set_edge_label(cc1,cc2,'  ' + '{},{}'.format(count1,count2))
-            else:
-                label_edges = False
+                #### END OF CUSTOM DISPLAY OPTIONS
+
+                # Define heights, if poset is ranked
+                rank_function = full_poset.rank_function()
+                if rank_function:
+                    heights = defaultdict(list)
+                    for i in full_poset:
+                        heights[rank_function(i)].append(i)
+                else:
+                    heights = None
+
+                # Generate Hasse diagram
+                graph = full_poset.hasse_diagram()
+
+                # Generate graph_plot object
+                gplot = graph.graphplot(vertex_labels=None,layout='acyclic',vertex_colors = vertex_colors, edge_colors = edge_colors, vertex_size = 800)
+
+                # Set vertex labels
+                gplot._plot_components['vertex_labels'] = []
+                for v in gplot._nodelist:
+                    gplot._plot_components['vertex_labels'].append(text(vertex_labels_full[v],
+                        gplot._pos[v], rgbcolor=(0,0,0), zorder=8))
+
+                # Display!
+                gplot.show(figsize=(7,7))            
+
+            else: # Show == 'Conjugacy classes of subgroups'
+                # Define vertex colors
+                if Vertex_Colors != 'None':
+                    vertex_colors = defaultdict(list)
+                    for cc in sub_classes:
+                        # Color non-normal subgroups white
+                        if not cc[0].is_normal():
+                            vertex_colors['white'].append(cc)
+                        else:
+                            # Color the commutator subgroup pink
+                            if cc[0] == G.subgroup(G.commutator().gens()):
+                                vertex_colors['pink'].append(cc)
+                            # Color the center lightblue
+                            elif cc[0] == G.center():
+                                vertex_colors['lightblue'].append(cc)
+                            # Color all other normal subgroups green
+                            else:
+                                vertex_colors['lightgreen'].append(cc)
+                else:
+                    vertex_colors = 'white'
+
+                # Define edge colors
+                if Edge_Colors != 'None':
+                    edge_colors = {'#60D6D6':[],'lightgray':[]}
+                    for cc1,cc2 in poset.cover_relations():
+                        h1 = cc1[0]
+
+                        # Color by whether elts of cc1 are normal subgroups of elts of cc2
+                        is_normal = False
+                        for h2 in cc2:
+                            if h1.is_subgroup(h2) and h1.is_normal(h2):
+                                edge_colors['#60D6D6'].append((cc1,cc2))
+                                is_normal = True
+                                break
+                        if not is_normal:
+                            edge_colors['lightgray'].append((cc1,cc2))
+                else:
+                    edge_colors = None
+
+                #### END OF CUSTOM DISPLAY OPTIONS
+
+                # Define heights, if poset is ranked
+                rank_function = poset.rank_function()
+                if rank_function:
+                    heights = defaultdict(list)
+                    for i in poset:
+                        heights[rank_function(i)].append(i)
+                else:
+                    heights = None
+
+                # Generate Hasse diagram
+                graph = poset.hasse_diagram()
+
+                # Set edge labels
+                label_edges = True
+                if Edge_Labels == 'Contained by':
+                    for cc1,cc2,label in graph.edges():
+                        # Count number of subgroups in cc2 that a fixed representative of cc1 is contained by
+                        count = sum([cc1[0].is_subgroup(h2) for h2 in cc2])    
+                        if count == 1:
+                            graph.set_edge_label(cc1,cc2,'')
+                        else:
+                            graph.set_edge_label(cc1,cc2,'  ' + str(count))
+                elif Edge_Labels == 'Contains':        
+                    for cc1,cc2,label in graph.edges():
+                        # Count number of subgroups in cc1 that a fixed representative of cc2 contains
+                        count = sum([h1.is_subgroup(cc2[0]) for h1 in cc1])
+                        if count == 1:
+                            graph.set_edge_label(cc1,cc2,'')
+                        else:
+                            graph.set_edge_label(cc1,cc2,'  ' + str(count))
+                elif Edge_Labels == 'Both':    
+                    for cc1,cc2,label in graph.edges():
+                        # Both of the above
+                        count1 = sum([cc1[0].is_subgroup(h2) for h2 in cc2])
+                        count2 = sum([h1.is_subgroup(cc2[0]) for h1 in cc1])
+                        if count1 == 1 and count2 == 1:
+                            graph.set_edge_label(cc1,cc2,'')
+                        else:
+                            graph.set_edge_label(cc1,cc2,'  ' + '{},{}'.format(count1,count2))
+                else:
+                    label_edges = False
 
 
-            # Generate graph_plot object
-            gplot = graph.graphplot(vertex_labels=None,layout='acyclic',vertex_colors = vertex_colors, edge_colors = edge_colors, edge_labels = label_edges, vertex_size = 1000)
+                # Generate graph_plot object
+                gplot = graph.graphplot(vertex_labels=None,layout='acyclic',vertex_colors = vertex_colors, edge_colors = edge_colors, edge_labels = label_edges, vertex_size = 1000)
 
-            # Set vertex labels
-            gplot._plot_components['vertex_labels'] = []
-            for v in gplot._nodelist:
-                gplot._plot_components['vertex_labels'].append(text(vertex_labels[v],
-                    gplot._pos[v], rgbcolor=(0,0,0), zorder=8))
+                # Set vertex labels
+                gplot._plot_components['vertex_labels'] = []
+                for v in gplot._nodelist:
+                    gplot._plot_components['vertex_labels'].append(text(vertex_labels[v],
+                        gplot._pos[v], rgbcolor=(0,0,0), zorder=8))
 
-            # Display!
-            gplot.show(figsize=(7,7))
+                # Display!
+                gplot.show(figsize=(7,7))
   </script>
 </div>
 
+[Normal subgroups](http://en.wikipedia.org/wiki/Normal_subgroup) are colored green. Additionally, the [center](http://en.wikipedia.org/wiki/Center_%28group_theory%29) is blue while the [commutator subgroup](http://en.wikipedia.org/wiki/Commutator_subgroup) is pink.
 
-Below is the code for a better version that you can run on [SageMathCloud](https://cloud.sagSageMathCloudemath.com). It allows you to input much larger groups. This was used to produce the image at the top of the post. Don't try running it here, however, since the SageCellServer doesn't have the `database_gap` package installed.
+Showing the full subgroup lattice can get messy for large groups. If the option `Conjugacy classes of subgroups` is selected, the viewer only shows the [conjugacy classes of subgroups](http://en.wikipedia.org/wiki/Conjugacy_class#Conjugacy_of_subgroups_and_general_subsets) (i.e. all subgroups that are conjugate are combined into a single vertex).
+
+The edge labels indicate how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class **contains**, or how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class is **contained by**. The labels are omitted if these numbers are 1. The edge colors indicate whether the subgroups in the "smaller" conjugacy class are normal subgroups of those in "larger" conjugacy class.
+
+In the image at the top of the post, the group `C15 : C4` (the colon stands for [semi-direct product](http://en.wikipedia.org/wiki/Semidirect_product) and is usually written $\rtimes$) contains 5 subgroups isomorphic to `C3 : C4`, which in turn contains 3 subgroups isomorphic to `C4` and 1 subgroup isomorphic to `C6` (the 5 belows to another edge). The edge colors indicate that `C6` is a normal subgroup of `C3 : C3` whereas `C4` is not. For further information on group descriptors, click [here](http://groupprops.subwiki.org/wiki/GAP:StructureDescription#Aspects_of_structure_description).
+
+And here's the code for a version that you can run on [SageMathCloud](https://cloud.sagSageMathCloudemath.com). It allows you to input much larger groups. This was used to produce the image at the top of the post. Don't try running it here, however, since the SageCellServer doesn't have the `database_gap` package installed.
 
 <div class="no_eval">
   <script type="text/x-sage">
@@ -204,6 +280,7 @@ def are_subgroups(cc1,cc2):
                 return True
     return False
 
+
 @interact
 def subgroup_class_lattices(Cardinality= 6):
     group_list = {Cardinality: {}}
@@ -220,107 +297,180 @@ def subgroup_class_lattices(Cardinality= 6):
         poset = Poset((sub_classes,are_subgroups)) 
         
         @interact
-        def display_options(Vertex_Colors = selector(values = ['Normal (green), Commutator (pink), Center (blue)','None']), 
-                            Edge_Colors = selector(values = ['Is normal subgroup of','None',]), 
-                            Edge_Labels = selector(values =['Contains','Contained by', 'Both','None',])):
-            # Define vertex colors
-            if Vertex_Colors != 'None':
-                vertex_colors = defaultdict(list)
-                for cc in sub_classes:
-                    # Color non-normal subgroups white
-                    if not cc[0].is_normal():
-                        vertex_colors['white'].append(cc)
-                    else:
-                        # Color the commutator subgroup pink
-                        if cc[0] == G.subgroup(G.commutator().gens()):
-                            vertex_colors['pink'].append(cc)
-                        # Color the center lightblue
-                        elif cc[0] == G.center():
-                            vertex_colors['lightblue'].append(cc)
-                        # Color all other normal subgroups green
-                        else:
-                            vertex_colors['lightgreen'].append(cc)
-            else:
-                vertex_colors = 'white'
-
-            # Define edge colors
-            if Edge_Colors != 'None':
-                edge_colors = {'#60D6D6':[],'lightgray':[]}
+        def display_options(Show = selector(values = ['Conjugacy classes of subgroups', 'All subgroups']), 
+                            Vertex_Colors = selector(values = ['Normal (green), Commutator (pink), Center (blue)','None'], label = 'Vertex colors'), 
+                            Edge_Colors = selector(values = ['Is normal subgroup of','None',], label = 'Edge colors'), 
+                            Edge_Labels = selector(values =['Contains','Contained by', 'Both','None',], label = 'Edge labels (N/A if showing all subgroups)')):
+            if Show == 'All subgroups':
+                # Poset of all subgroups
+                subgroups = [h for cc in sub_classes for h in cc ]
+                covers = []
                 for cc1,cc2 in poset.cover_relations():
-                    h1 = cc1[0]
+                    for h1 in cc1:
+                        for h2 in cc2:
+                            if h1.is_subgroup(h2):
+                                covers.append([h1,h2])
 
-                    # Color by whether elts of cc1 are normal subgroups of elts of cc2
-                    is_normal = False
-                    for h2 in cc2:
-                        if h1.is_subgroup(h2) and h1.is_normal(h2):
-                            edge_colors['#60D6D6'].append((cc1,cc2))
-                            is_normal = True
-                            break
-                    if not is_normal:
-                        edge_colors['lightgray'].append((cc1,cc2))
-            else:
-                edge_colors = None
+                full_poset = Poset((subgroups,covers),cover_relations = True)
+                
+                # Define vertex colors
+                if Vertex_Colors is not 'None':
+                    vertex_colors = defaultdict(list)
+                    for h in subgroups:
+                        # Color non-normal subgroups white
+                        if not h.is_normal():
+                            vertex_colors['white'].append(h)
+                        else:
+                            # Color the commutator subgroup pink
+                            if h == G.subgroup(G.commutator().gens()):
+                                vertex_colors['pink'].append(h)
+                            # Color the center lightblue
+                            elif h == G.center():
+                                vertex_colors['lightblue'].append(h)
+                            # Color all other normal subgroups green
+                            else:
+                                vertex_colors['lightgreen'].append(h)
+                else:
+                    vertex_colors = 'white'
 
-            # Define vertex labels
-            vertex_labels = {cc : cc[0].structure_description() for cc in sub_classes}
-            #vertex_labels = {cc : cc[0].cardinality() for cc in sub_classes}
+                # Define edge colors
+                if Edge_Colors is not 'None':
+                    edge_colors = {'#60D6D6':[],'lightgray':[]}
+                    for h,k in full_poset.cover_relations():
+                        if h.is_normal(k):
+                            edge_colors['#60D6D6'].append((h,k))
+                        else:
+                            edge_colors['lightgray'].append((h,k))
+                else:
+                    edge_colors = None
 
-            #### END OF CUSTOM DISPLAY OPTIONS
+                # Define vertex labels
+                vertex_labels = {h : h.structure_description() for h in subgroups}
 
-            # Define heights, if poset is ranked
-            rank_function = poset.rank_function()
-            if rank_function:
-                heights = defaultdict(list)
-                for i in poset:
-                    heights[rank_function(i)].append(i)
-            else:
-                heights = None
+                #### END OF CUSTOM DISPLAY OPTIONS
 
-            # Generate Hasse diagram
-            graph = poset.hasse_diagram()
+                # Define heights, if poset is ranked
+                rank_function = full_poset.rank_function()
+                if rank_function:
+                    heights = defaultdict(list)
+                    for i in full_poset:
+                        heights[rank_function(i)].append(i)
+                else:
+                    heights = None
 
-            # Set edge labels
-            label_edges = True
-            if Edge_Labels == 'Contained by':
-                for cc1,cc2,label in graph.edges():
-                    # Count number of subgroups in cc2 that a fixed representative of cc1 is contained by
-                    count = sum([cc1[0].is_subgroup(h2) for h2 in cc2])    
-                    if count == 1:
-                        graph.set_edge_label(cc1,cc2,'')
-                    else:
-                        graph.set_edge_label(cc1,cc2,'  ' + str(count))
-            elif Edge_Labels == 'Contains':        
-                for cc1,cc2,label in graph.edges():
-                    # Count number of subgroups in cc1 that a fixed representative of cc2 contains
-                    count = sum([h1.is_subgroup(cc2[0]) for h1 in cc1])
-                    if count == 1:
-                        graph.set_edge_label(cc1,cc2,'')
-                    else:
-                        graph.set_edge_label(cc1,cc2,'  ' + str(count))
-            elif Edge_Labels == 'Both':    
-                for cc1,cc2,label in graph.edges():
-                    # Both of the above
-                    count1 = sum([cc1[0].is_subgroup(h2) for h2 in cc2])
-                    count2 = sum([h1.is_subgroup(cc2[0]) for h1 in cc1])
-                    if count1 == 1 and count2 == 1:
-                        graph.set_edge_label(cc1,cc2,'')
-                    else:
-                        graph.set_edge_label(cc1,cc2,'  ' + '{},{}'.format(count1,count2))
-            else:
-                label_edges = False
+                # Generate Hasse diagram
+                graph = full_poset.hasse_diagram()
+
+                # Generate graph_plot object
+                gplot = graph.graphplot(vertex_labels=None,layout='acyclic',vertex_colors = vertex_colors, edge_colors = edge_colors, vertex_size = 1000)
+
+                # Set vertex labels
+                gplot._plot_components['vertex_labels'] = []
+                for v in gplot._nodelist:
+                    gplot._plot_components['vertex_labels'].append(text(vertex_labels[v],
+                        gplot._pos[v], rgbcolor=(0,0,0), zorder=8))
+
+                # Display!
+                gplot.show(figsize=(10,10))
+                
+            else: # Show = 'Conjugacy classes of subgroups'
+                # Define vertex colors
+                if Vertex_Colors is not 'None':
+                    vertex_colors = defaultdict(list)
+                    for cc in sub_classes:
+                        # Color non-normal subgroups white
+                        if not cc[0].is_normal():
+                            vertex_colors['white'].append(cc)
+                        else:
+                            # Color the commutator subgroup pink
+                            if cc[0] == G.subgroup(G.commutator().gens()):
+                                vertex_colors['pink'].append(cc)
+                            # Color the center lightblue
+                            elif cc[0] == G.center():
+                                vertex_colors['lightblue'].append(cc)
+                            # Color all other normal subgroups green
+                            else:
+                                vertex_colors['lightgreen'].append(cc)
+                else:
+                    vertex_colors = 'white'
+
+                # Define edge colors
+                if Edge_Colors is not 'None':
+                    edge_colors = {'#60D6D6':[],'lightgray':[]}
+                    for cc1,cc2 in poset.cover_relations():
+                        h1 = cc1[0]
+
+                        # Color by whether elts of cc1 are normal subgroups of elts of cc2
+                        is_normal = False
+                        for h2 in cc2:
+                            if h1.is_subgroup(h2) and h1.is_normal(h2):
+                                edge_colors['#60D6D6'].append((cc1,cc2))
+                                is_normal = True
+                                break
+                        if not is_normal:
+                            edge_colors['lightgray'].append((cc1,cc2))
+                else:
+                    edge_colors = None
+
+                # Define vertex labels
+                vertex_labels = {cc : cc[0].structure_description() for cc in sub_classes}
+
+                #### END OF CUSTOM DISPLAY OPTIONS
+
+                # Define heights, if poset is ranked
+                rank_function = poset.rank_function()
+                if rank_function:
+                    heights = defaultdict(list)
+                    for i in poset:
+                        heights[rank_function(i)].append(i)
+                else:
+                    heights = None
+
+                # Generate Hasse diagram
+                graph = poset.hasse_diagram()
+
+                # Set edge labels
+                label_edges = True
+                if Edge_Labels == 'Contained by':                
+                    for cc1,cc2,label in graph.edges():
+                        # Count number of subgroups in cc2 that a fixed representative of cc1 is contained by
+                        count = sum([cc1[0].is_subgroup(h2) for h2 in cc2])    
+                        if count == 1:
+                            graph.set_edge_label(cc1,cc2,'')
+                        else:
+                            graph.set_edge_label(cc1,cc2,'  ' + str(count))
+                elif Edge_Labels == 'Contains':        
+                    for cc1,cc2,label in graph.edges():
+                        # Count number of subgroups in cc1 that a fixed representative of cc2 contains
+                        count = sum([h1.is_subgroup(cc2[0]) for h1 in cc1])
+                        if count == 1:
+                            graph.set_edge_label(cc1,cc2,'')
+                        else:
+                            graph.set_edge_label(cc1,cc2,'  ' + str(count))
+                elif Edge_Labels == 'Both':    
+                    for cc1,cc2,label in graph.edges():
+                        # Both of the above
+                        count1 = sum([cc1[0].is_subgroup(h2) for h2 in cc2])
+                        count2 = sum([h1.is_subgroup(cc2[0]) for h1 in cc1])
+                        if count1 == 1 and count2 == 1:
+                            graph.set_edge_label(cc1,cc2,'')
+                        else:
+                            graph.set_edge_label(cc1,cc2,'  ' + '{},{}'.format(count1,count2))
+                else:
+                    label_edges = False
 
 
-            # Generate graph_plot object
-            gplot = graph.graphplot(vertex_labels=None,layout='acyclic',vertex_colors = vertex_colors, edge_colors = edge_colors, edge_labels = label_edges, vertex_size = 1000)
+                # Generate graph_plot object
+                gplot = graph.graphplot(vertex_labels=None,layout='acyclic',vertex_colors = vertex_colors, edge_colors = edge_colors, edge_labels = label_edges, vertex_size = 1000)
 
-            # Set vertex labels
-            gplot._plot_components['vertex_labels'] = []
-            for v in gplot._nodelist:
-                gplot._plot_components['vertex_labels'].append(text(vertex_labels[v],
-                    gplot._pos[v], rgbcolor=(0,0,0), zorder=8))
+                # Set vertex labels
+                gplot._plot_components['vertex_labels'] = []
+                for v in gplot._nodelist:
+                    gplot._plot_components['vertex_labels'].append(text(vertex_labels[v],
+                        gplot._pos[v], rgbcolor=(0,0,0), zorder=8))
 
-            # Display!
-            gplot.show(figsize=(7,7))
+                # Display!
+                gplot.show(figsize=(7,7))
   </script>
 </div>            
 
