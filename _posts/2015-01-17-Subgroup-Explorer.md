@@ -8,13 +8,15 @@ tag:
 
 ![Subgroup Explorer](/images/SubgroupExplorer.png)
 
-Below is an interactive subgroup explorer for all groups of size up to 32. It's powered by Sage and GAP, and allows you to view the subgroup conjugacy classes of a group from your browser.
+I've written an interactive subgroup explorer for all groups of size up to 32. It's powered by Sage and GAP, and allows you to view the subgroup conjugacy classes of a group from your browser.
 
 <!--more-->
 
-Instead of showing the full subgroup lattice, which can get messy for large groups, it only shows the conjugacy classes of subgroups (i.e. all subgroups that are conjugate are combined into a single vertex).
+Instead of showing the full subgroup lattice, which can get messy for large groups, it only shows the [conjugacy classes of subgroups](http://en.wikipedia.org/wiki/Conjugacy_class#Conjugacy_of_subgroups_and_general_subsets) (i.e. all subgroups that are conjugate are combined into a single vertex).
 
-The edge labels indicate how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class **contains**, or how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class is **contained by**. The labels are omitted if these numbers are 1.
+The edge labels indicate how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class **contains**, or how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class is **contained by**. The labels are omitted if these numbers are 1. The edge colors indicate whether the subgroups in the "smaller" conjugacy class are normal subgroups of those in "larger" conjugacy class.
+
+In the image above, each subgroup conjugate to `C5 : C4` (the colon stands for [semi-direct product](http://en.wikipedia.org/wiki/Semidirect_product) and is usually written $\rtimes$) contains 5 subgroups isomorphic to `C4` and 5 subgroups isomorphic to the dihedral group `D5`. The edge colors indicate that `D5` is a normal subgroup of `C5:C4` whereas `C4` is not.
 
 Click **Go!** below to refresh the viewer, or if it doesn't load.
 
@@ -170,9 +172,7 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
 </div>
 
 
-And here's a version that you can run on [SageMathCloud](https://cloud.sagSageMathCloudemath.com). It allows you to input much larger groups. This was used to produce the image at the top of the post.
-
-Don't try running it here, however, since the SageCellServer doesn't have the `database_gap` package installed.
+Below is the code for a better version that you can run on [SageMathCloud](https://cloud.sagSageMathCloudemath.com). It allows you to input much larger groups. This was used to produce the image at the top of the post. Don't try running it here, however, since the SageCellServer doesn't have the `database_gap` package installed.
 
 <div class="no_eval">
   <script type="text/x-sage">
