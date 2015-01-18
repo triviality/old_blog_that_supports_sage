@@ -174,7 +174,7 @@ And here's a version that you can run on [SageMathCloud](https://cloud.sagSageMa
 
 Don't try running it here, however, since the SageCellServer doesn't have the `database_gap` package installed.
 
-<div class="sage">
+<div class="no_eval">
   <script type="text/x-sage">
 from collections import defaultdict
 
