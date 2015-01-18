@@ -63,10 +63,10 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
                         vertex_labels[cc] = desc
                         break                
         @interact
-        def display_options(Show = selector(values = ['Conjugacy classes of subgroups', 'All subgroups']), 
-                            Vertex_Colors = selector(values = ['Normal, commutator, center','None'], label = 'Vertex colors'), 
-                            Edge_Colors = selector(values = ['Is normal subgroup of','None',], label = 'Edge colors'), 
-                            Edge_Labels = selector(values =['Contains','Contained by', 'Both','None',], label = 'Edge labels')):        
+        def display_options(Show = selector(values = ['Conj. classes', 'All subgroups']), 
+                            Vertex_Colors = selector(values = ['Normal, commutator, center','None']), 
+                            Edge_Colors = selector(values = ['Is normal subgroup of','None',]), 
+                            Edge_Labels = selector(values =['Contains','Contained by', 'Both','None',])):        
             if Show == 'All subgroups':
                 # Poset of all subgroups
                 subgroups = [h for cc in sub_classes for h in cc ]
