@@ -59,6 +59,15 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
         sub_classes = subgroup_conj_classes(G)
         poset = Poset((sub_classes,are_subgroups)) 
         
+        # Define vertex labels
+        vertex_labels = {sub_classes[0] : '1', sub_classes[-1] : Group}
+        if len(sub_classes)>2:
+            for cc in sub_classes[1:-1]:
+                for desc,gens in group_list[cc[0].cardinality()].items():
+                    if cc[0].is_isomorphic(PermutationGroup(gap(gens))):
+                        vertex_labels[cc] = desc
+                        break        
+        
         @interact
         def display_options(Vertex_Colors = selector(values = ['Normal (green), Commutator (pink), Center (blue)','None']), 
                             Edge_Colors = selector(values = ['Is normal subgroup of','None',]), 
@@ -100,15 +109,6 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
                         edge_colors['lightgray'].append((cc1,cc2))
             else:
                 edge_colors = None
-
-            # Define vertex labels
-            vertex_labels = {sub_classes[0] : '1', sub_classes[-1] : Group}
-            if len(sub_classes)>2:
-                for cc in sub_classes[1:-1]:
-                    for desc,gens in group_list[cc[0].cardinality()].items():
-                        if cc[0].is_isomorphic(PermutationGroup(gap(gens))):
-                            vertex_labels[cc] = desc
-                            break
 
             #### END OF CUSTOM DISPLAY OPTIONS
 
