@@ -319,4 +319,4 @@ def subgroup_class_lattices(Cardinality= 6):
 
 Finally, while verifying the results of this program, I found an error in [this book](http://www.cambridge.org/us/academic/subjects/mathematics/algebra/representations-groups-computational-approach)!
 The correction has been pencilled in. The original number printed was 1.
-![A5 Lattice](/images/A5Lattice_CompareSmall.png)
+![A5 Lattice](/images/A5Lattice_CompareSmall.jpg)
