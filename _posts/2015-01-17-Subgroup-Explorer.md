@@ -6,7 +6,7 @@ tag:
 - Combinatorics
 ---
 
-![Subgroup Explorer](/images/SubgroupExplorer.png)
+![Subgroup Explorer](/images/SubgroupExplorer.png "Subgroup Lattice Generator")
 
 I've written an interactive subgroup explorer for all groups of size up to 32. It's powered by Sage and GAP, and allows you to view the subgroup conjugacy classes of a group from your browser.
 
@@ -326,4 +326,4 @@ def subgroup_class_lattices(Cardinality= 6):
 
 Finally, while verifying the results of this program, I found an error in [this book](http://www.cambridge.org/us/academic/subjects/mathematics/algebra/representations-groups-computational-approach)!
 The correction has been pencilled in. The original number printed was 1.
-![A5 Lattice](/images/A5Lattice_CompareSmall.jpg)
+![A5 Lattice](/images/A5Lattice_CompareSmall.jpg "A5 Subgroup Lattice")
