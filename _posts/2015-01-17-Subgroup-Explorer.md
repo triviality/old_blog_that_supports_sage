@@ -8,7 +8,7 @@ tag:
 
 ![Subgroup Explorer](/images/SubgroupExplorer.png)
 
-Here's an interactive subgroup explorer for all groups of size up to 32. It's powered by Sage and GAP, and allows you to view the subgroup conjugacy classes of a group from your browser. 
+Below is an interactive subgroup explorer for all groups of size up to 32. It's powered by Sage and GAP, and allows you to view the subgroup conjugacy classes of a group from your browser.
 
 <!--more-->
 
@@ -16,6 +16,7 @@ Instead of showing the full subgroup lattice, which can get messy for large grou
 
 The edge labels indicate how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class **contains**, or how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class is **contained by**. The labels are omitted if these numbers are 1.
 
+Here goes:
 
 <div class="auto">
   <script type="text/x-sage">
