@@ -14,7 +14,7 @@ This is the first of a series of posts about working with group representations 
 Given a group $G$, a linear representation of $G$ is a group homomorphism $\rho: G \to \mathrm{GL}(V)$ 
 such that 
 
--> $\rho(g h) = \rho(g) \rho(h) \forall g,h \in G$.  <-
+p=. $\rho(g h) = \rho(g) \rho(h) \forall g,h \in G$.
 
 To define a representation in SAGE, we thus need some function that takes group elements as input and returns matrices as output.
 
