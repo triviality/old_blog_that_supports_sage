@@ -127,7 +127,7 @@ for g in D4:
 One can verify that this does indeed give the same matrices as the Wikipedia example, albeit in a different order.
 
 ## We can do better!
-All the representations we've defined so far aren't very satisfying! For the last example, we required the special property that all elements in $D_4$ have the form $r^i s^j$. In general, it isn't always easy to express a given group element in terms of the group's generators (this is know as the [word problem](http://en.wikipedia.org/wiki/Word_problem_for_groups){:target="_blank"}).
+All the representations we've defined so far aren't very satisfying! For the last example, we required the special property that all elements in $D_4$ have the form $r^i s^j$. In general, it isn't always easy to express a given group element in terms of the group's generators (this is known as the [word problem](http://en.wikipedia.org/wiki/Word_problem_for_groups){:target="_blank"}).
 
 We've also been constructing representations in a rather ad-hoc manner. Is there a more general way to construct representations? And how many are representations are there?
 
