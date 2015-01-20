@@ -12,7 +12,9 @@ This is the first of a series of posts about working with group representations 
 ## Basic Definitions
 
 Given a group $G$, a linear representation of $G$ is a group homomorphism $\rho: G \to \mathrm{GL}(V)$ 
-such that $\rho(g h) = \rho(g) \rho(h) \forall g,h \in G$. 
+such that 
+
+-> $\rho(g h) = \rho(g) \rho(h) \forall g,h \in G$.  <-
 
 To define a representation in SAGE, we thus need some function that takes group elements as input and returns matrices as output.
 
@@ -52,7 +54,7 @@ for g in G:
 </div>
 
 ### Permutation representation
-This isn't very interesting. However, we also know that $S_3$ is the group of permutations of the 3-element set {$1,2,3$}. We can associate to each permutation a [permutation matrix](http://en.wikipedia.org/wiki/Permutation_matrix). Sage already has this implemented for us, via the method `matrix()` for a group element `g`:
+This isn't very interesting. However, we also know that $S_3$ is the group of permutations of the 3-element set {$1,2,3$}. We can associate to each permutation a [permutation matrix](http://en.wikipedia.org/wiki/Permutation_matrix){:target="_blank"}. Sage already has this implemented for us, via the method `matrix()` for a group element `g`:
 
 <div class="linked">
   <script type="text/x-sage">
@@ -79,11 +81,11 @@ for g in G:
 </div>
 
 ### Defining a representation from generators
-We could define permutation representations so easily only because Sage has them built in. But what if we had some other representation that we'd like to work with in Sage? Take the [dihedral group](http://en.wikipedia.org/wiki/Dihedral_group){:target="_blank"} $D_4$. Wikipedia tells us that this group has [a certain matrix representation](http://en.wikipedia.org/wiki/Dihedral_group#Matrix_representation). How can we recreate this in Sage?
+We could define permutation representations so easily only because Sage has them built in. But what if we had some other representation that we'd like to work with in Sage? Take the [dihedral group](http://en.wikipedia.org/wiki/Dihedral_group){:target="_blank"} $D_4$. Wikipedia tells us that this group has [a certain matrix representation](http://en.wikipedia.org/wiki/Dihedral_group#Matrix_representation){:target="_blank"}. How can we recreate this in Sage?
 
-We could hard-code the relevant matrices into a [dictionary](https://docs.python.org/2/tutorial/datastructures.html#dictionaries). Whenever we want the representation of a particular group element, we just have to look for the group element in the dictionary. However, typing all these matrices can be time-consuming, especially if the group is large.
+We could hard-code the relevant matrices into a [dictionary](https://docs.python.org/2/tutorial/datastructures.html#dictionaries){:target="_blank"}. Whenever we want the representation of a particular group element, we just have to look for the group element in the dictionary. However, typing all these matrices can be time-consuming, especially if the group is large.
 
-But remember that representations are group homomorphisms. If we've defined $\rho(g)$ and $\rho(h)$, then we can get $\rho(gh)$ simply by multiplying the matrices $\rho(g)$ and $\rho(h)$! If we have a [set of generators](http://en.wikipedia.org/wiki/Generating_set_of_a_group) of a group, then we only need to define $\rho$ on these generators. Let's do that for the generators of $D_4$:
+But remember that representations are group homomorphisms. If we've defined $\rho(g)$ and $\rho(h)$, then we can get $\rho(gh)$ simply by multiplying the matrices $\rho(g)$ and $\rho(h)$! If we have a [set of generators](http://en.wikipedia.org/wiki/Generating_set_of_a_group){:target="_blank"} of a group, then we only need to define $\rho$ on these generators. Let's do that for the generators of $D_4$:
 
 <div class="linked">
   <script type="text/x-sage">
@@ -93,7 +95,7 @@ D4.gens()
   </script>
 </div>
 
-We see that $D_4$ has a generating set of 2 elements (note: the method `gens()` need not returning a *minimal* generating set). Let's call these $r$ and $s$. These correspond to $R_1$ and $S_0$ in the [Wikipedia example](http://en.wikipedia.org/wiki/Dihedral_group#Matrix_representation), so let's initialize our representation with the matrices corresponding to these elements:
+We see that $D_4$ has a generating set of 2 elements (note: the method `gens()` need not returning a *minimal* generating set). Let's call these $r$ and $s$. These correspond to $R_1$ and $S_0$ in the [Wikipedia example](http://en.wikipedia.org/wiki/Dihedral_group#Matrix_representation){:target="_blank"}, so let's initialize our representation with the matrices corresponding to these elements:
 
 <div class="linked">
   <script type="text/x-sage">
@@ -127,7 +129,7 @@ for g in D4:
 One can verify that this does indeed give the same matrices, albeit in a different order.
 
 ## We need something better!
-All the representations we've defined so far aren't very satisfying! For the last example, we required the special property that all elements in $D_4$ have the form $r^i s^j$. In general, it isn't always easy to express a given group element in terms of the group's generators (this is know as the [word problem](http://en.wikipedia.org/wiki/Word_problem_for_groups)).
+All the representations we've defined so far aren't very satisfying! For the last example, we required the special property that all elements in $D_4$ have the form $r^i s^j$. In general, it isn't always easy to express a given group element in terms of the group's generators (this is know as the [word problem](http://en.wikipedia.org/wiki/Word_problem_for_groups){:target="_blank"}).
 
 We've also been constructing representations in a rather ad-hoc manner. Is there a more general way to construct representations? And how many are representations are there?
 
