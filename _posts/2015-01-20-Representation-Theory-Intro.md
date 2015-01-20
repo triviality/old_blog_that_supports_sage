@@ -5,23 +5,20 @@ draft_tag:
 - Algebra
 ---
 
-# Representation Theory in SAGE
-
 This is the first of a series of posts about working with group representations in SAGE.
+
+<!--more-->
 
 ## Basic Definitions
 
-Given a group $G$, a linear representation of $G$ is a group homomorphism from $G$ into the general linear group of a vector space $V$ i.e.
-
-$\rho: G \to \mathrm(GL)(V)$
-
+Given a group $G$, a linear representation of $G$ is a group homomorphism $\rho: G \to \mathrm{GL}(V)$ 
 such that $\rho(g h) = \rho(g) \rho(h) \forall g,h \in G$. 
 
-Various places refer to $\rho$, $V$, or the tuple $(V,\rho)$ as a representation; this shouldn't cause any confusion, as it's usually clear from context whether we are referring to a map or a vector space.
-
-For our purposes, we will assume that $G$ is finite and $V$ is an $n$-dimensional vector space over $\mathbb{C}$. Then $\mathrm{GL}(V)$ is isomorphic to the invertible $n \times n$ matrices over $\mathbb{C}$, which we will denote $\mathrm{GL}_n \mathbb{C}$.
-
 To define a representation in SAGE, we thus need some function that takes group elements as input and returns matrices as output.
+
+Various authors refer to the map $\rho$, the vector space $V$, or the tuple $(V,\rho)$ as a representation; this shouldn't cause any confusion, as it's usually clear from context whether we are referring to a map or a vector space. When I need to be extra precise, I'll use $(V,\rho)$.
+
+For our purposes, we will assume that $G$ is a finite group and $V$ is an $n$-dimensional vector space over $\mathbb{C}$. Then $\mathrm{GL}(V)$ is isomorphic to the invertible $n \times n$ matrices over $\mathbb{C}$, which we will denote $\mathrm{GL}_n \mathbb{C}$.
 
 ## Some simple examples
 
@@ -40,7 +37,7 @@ def triv(g):
 
 g = G.an_element()
 
-print triv(g)
+show(triv(g))
   </script>
 </div>
 
@@ -50,12 +47,12 @@ We can verify that this is indeed a group homomorphism (warning: There are 6 ele
   <script type="text/x-sage">
 for g in G:
     for h in G:
-        triv(g*h) == triv(g)*triv(h)  
+        print triv(g*h) == triv(g)*triv(h)  
   </script>
 </div>
 
 ### Permutation representation
-This isn't very interesting. However, we also know that $S_3$ is the group of permutations of the 3-element set $\{1,2,3\}$. We can associate to each permutation a [permutation matrix](http://en.wikipedia.org/wiki/Permutation_matrix). Sage already has this implemented for us, via the method `matrix()` for a group element `g`:
+This isn't very interesting. However, we also know that $S_3$ is the group of permutations of the 3-element set {$1,2,3$}. We can associate to each permutation a [permutation matrix](http://en.wikipedia.org/wiki/Permutation_matrix). Sage already has this implemented for us, via the method `matrix()` for a group element `g`:
 
 <div class="linked">
   <script type="text/x-sage">
@@ -64,10 +61,11 @@ def perm(g):
 
 g = G.an_element()
 
-print g
-perm(g)
+show(perm(g))
   </script>
 </div>
+
+*Qn: From the permutation matrix, can you tell which permutation $g$ corresponds to?*
 
 We can again verify that this is indeed a representation. Let's not print out all the output; instead, we'll only print something if it is *not* a representation. If nothing pops up, then we're fine:
 
@@ -81,7 +79,7 @@ for g in G:
 </div>
 
 ### Defining a representation from generators
-We could define permutation representations so easily only because Sage has them built in. But what if we had some other representation that we'd like to work with in Sage? Let's say our group is the [dihedral group](http://en.wikipedia.org/wiki/Dihedral_group) $D_4$. Wikipedia tells us that this group has [a certain matrix representation](http://en.wikipedia.org/wiki/Dihedral_group#Matrix_representation). How can we recreate this in Sage?
+We could define permutation representations so easily only because Sage has them built in. But what if we had some other representation that we'd like to work with in Sage? Take the [dihedral group](http://en.wikipedia.org/wiki/Dihedral_group){:target="_blank"} $D_4$. Wikipedia tells us that this group has [a certain matrix representation](http://en.wikipedia.org/wiki/Dihedral_group#Matrix_representation). How can we recreate this in Sage?
 
 We could hard-code the relevant matrices into a [dictionary](https://docs.python.org/2/tutorial/datastructures.html#dictionaries). Whenever we want the representation of a particular group element, we just have to look for the group element in the dictionary. However, typing all these matrices can be time-consuming, especially if the group is large.
 
