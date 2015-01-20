@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Representation Theory in Sage - Basics
-draft_tag: 
+tag: 
 - Algebra
 ---
 
@@ -14,7 +14,7 @@ This is the first of a series of posts about working with group representations 
 Given a group $G$, a linear representation of $G$ is a group homomorphism $\rho: G \to \mathrm{GL}(V)$ 
 such that 
 
-<p style="text-align: center"> $\rho(g h) = \rho(g) \rho(h) \forall g,h \in G$. </p>
+<p style="text-align: center"> $\rho(g h) = \rho(g) \rho(h)$   $\forall g,h \in G$. </p>
 
 To define a representation in SAGE, we thus need some function that takes group elements as input and returns matrices as output.
 
@@ -102,7 +102,7 @@ We see that $D_4$ has a generating set of 2 elements (note: the method `gens()` 
 r,s = D4.gens()
 wiki_rep = {r : matrix([[0,-1],[1,0]]), s : matrix([[1,0],[0,-1]])}
 
-wiki_rep[r]
+show(wiki_rep[r])
   </script>
 </div>
 
@@ -112,23 +112,21 @@ We know that elements of $D_4$ can be written $r^is^j$, where $i = 0,1,2,3$ and 
 
 <div class="linked">
   <script type="text/x-sage">
+# Populate dictionary
 for i in range(4):
     for j in range(2):
         wiki_rep[r^i * s^j] = wiki_rep[r]^i * wiki_rep[s]^j
-  </script>
-</div>
 
-Let’s see if these matrices agree with the Wikipedia example:
-<div class="linked">
-  <script type="text/x-sage">
+# Check!
 for g in D4:
     show(wiki_rep[g])
+        
   </script>
 </div>
 
-One can verify that this does indeed give the same matrices, albeit in a different order.
+One can verify that this does indeed give the same matrices as the Wikipedia example, albeit in a different order.
 
-## We need something better!
+## We can do better!
 All the representations we've defined so far aren't very satisfying! For the last example, we required the special property that all elements in $D_4$ have the form $r^i s^j$. In general, it isn't always easy to express a given group element in terms of the group's generators (this is know as the [word problem](http://en.wikipedia.org/wiki/Word_problem_for_groups){:target="_blank"}).
 
 We've also been constructing representations in a rather ad-hoc manner. Is there a more general way to construct representations? And how many are representations are there?
