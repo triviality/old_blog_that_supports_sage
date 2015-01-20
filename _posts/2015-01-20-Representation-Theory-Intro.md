@@ -5,7 +5,7 @@ tag:
 - Algebra
 ---
 
-This is the first of a series of posts about working with group representations in SAGE.
+This is the first of a series of posts about working with group representations in Sage.
 
 <!--more-->
 
@@ -16,7 +16,7 @@ such that
 
 <p style="text-align: center"> $\rho(g h) = \rho(g) \rho(h)$   $\forall g,h \in G$. </p>
 
-To define a representation in SAGE, we thus need some function that takes group elements as input and returns matrices as output.
+To define a representation in Sage, we thus need some function that takes group elements as input and returns matrices as output.
 
 Various authors refer to the map $\rho$, the vector space $V$, or the tuple $(V,\rho)$ as a representation; this shouldn't cause any confusion, as it's usually clear from context whether we are referring to a map or a vector space. When I need to be extra precise, I'll use $(V,\rho)$.
 
