@@ -54,7 +54,7 @@ for g in G:
 </div>
 
 ### Permutation representation
-This isn't very interesting. However, we also know that $S_3$ is the group of permutations of the 3-element set {$1,2,3$}. We can associate to each permutation a [permutation matrix](http://en.wikipedia.org/wiki/Permutation_matrix){:target="_blank"}. Sage already has this implemented for us, via the method `matrix()` for a group element `g`:
+This isn't very interesting. However, we also know that $S_3$ is the group of permutations of the 3-element set {$1,2,3$}. We can associate to each permutation a [permutation matrix](http://mathworld.wolfram.com/PermutationMatrix.html){:target="_blank"}. Sage already has this implemented for us, via the method `matrix()` for a group element `g`:
 
 <div class="linked">
   <script type="text/x-sage">
