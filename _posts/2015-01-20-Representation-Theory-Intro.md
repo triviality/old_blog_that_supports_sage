@@ -99,7 +99,9 @@ We see that $D_4$ has a generating set of 2 elements (note: the method `gens()` 
 
 <div class="linked">
   <script type="text/x-sage">
+r,s = D4.gens()  
 D4_dict = {}
+
 # Populate dictionary
 for i in range(4):
     for j in range(2):
