@@ -136,4 +136,4 @@ All the representations we've defined so far aren't very satisfying! For the las
 
 We've also been constructing representations in a rather ad-hoc manner. Is there a more general way to construct representations? And how many are representations are there?
 
-In the next post, I'll run through two simple ways of combining existing representations to get new ones: the direct sum and the tensor product. I'll also define *irreducible* representations, and state some results that will shed some light on the above questions.
+In the [next post]({% post_url 2015-01-24-Representation-Theory-Sums-Products%}), I'll run through two simple ways of combining existing representations to get new ones: the direct sum and the tensor product. I'll also define *irreducible* representations, and state some results that will shed some light on the above questions.
