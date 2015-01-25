@@ -95,32 +95,35 @@ D4.gens()
   </script>
 </div>
 
-We see that $D_4$ has a generating set of 2 elements (note: the method `gens()` need not returning a *minimal* generating set). Let's call these $r$ and $s$. These correspond to $R_1$ and $S_0$ in the [Wikipedia example](http://en.wikipedia.org/wiki/Dihedral_group#Matrix_representation){:target="_blank"}, so let's initialize our representation with the matrices corresponding to these elements:
+We see that $D_4$ has a generating set of 2 elements (note: the method `gens()` need not return a *minimal* generating set, but in this case, we do get a minimal generating set). Let's call these $r$ and $s$. We know that elements of $D_4$ can be written $r^is^j$, where $i = 0,1,2,3$ and $j = 0,1$. We first run through all such pairs $(i,j)$ to record which group elements are given by which $(i,j)$:
 
 <div class="linked">
   <script type="text/x-sage">
-r,s = D4.gens()
-wiki_rep = {r : matrix([[0,-1],[1,0]]), s : matrix([[1,0],[0,-1]])}
-
-show(wiki_rep[r])
-  </script>
-</div>
-
-Notice the square brackets used in accessing a dictionary: `wiki_rep[r]` (versus a function call, which would be written `wiki_rep(r)`). Now we just need to populate the dictionary `wiki_rep` with the other group elements. 
-
-We know that elements of $D_4$ can be written $r^is^j$, where $i = 0,1,2,3$ and $j = 0,1$. Running through all pairs $(i,j)$ should give us the whole group:
-
-<div class="linked">
-  <script type="text/x-sage">
+D4_dict = {}
 # Populate dictionary
 for i in range(4):
     for j in range(2):
-        wiki_rep[r^i * s^j] = wiki_rep[r]^i * wiki_rep[s]^j
+        D4_dict[r^i * s^j] = (i,j)
 
 # Check!
 for g in D4:
-    show(wiki_rep[g])
-        
+    show(D4_dict[g])
+  </script>
+</div>
+
+Now for $g = r^i s^j \in D_4$, we can define $\rho(g) = \rho(r)^i \rho(s)^j$ and we will get a representation of $D_4$. We need only choose the matrices we want for $\rho(r)$ and $\rho(s)$.
+
+$r$ and $s$ correspond to $R_1$ and $S_0$, resp., in the [Wikipedia example](http://en.wikipedia.org/wiki/Dihedral_group#Matrix_representation){:target="_blank"}, so let's use their matrix representations to generate our representation:
+
+<div class="linked">
+  <script type="text/x-sage">
+def wiki_rep(g):
+    i,j = D4_dict[g]
+    return matrix([[0,-1],[1,0]])^i * matrix([[1,0],[0,-1]])^j
+
+# Check!
+for g in D4:
+    show(wiki_rep(g))
   </script>
 </div>
 
