@@ -83,7 +83,7 @@ for g in G:
 ### Defining a representation from generators
 We could define permutation representations so easily only because Sage has them built in. But what if we had some other representation that we'd like to work with in Sage? Take the [dihedral group](http://en.wikipedia.org/wiki/Dihedral_group){:target="_blank"} $D_4$. Wikipedia tells us that this group has [a certain matrix representation](http://en.wikipedia.org/wiki/Dihedral_group#Matrix_representation){:target="_blank"}. How can we recreate this in Sage?
 
-We could hard-code the relevant matrices into a [dictionary](https://docs.python.org/2/tutorial/datastructures.html#dictionaries){:target="_blank"}. Whenever we want the representation of a particular group element, we just have to look for the group element in the dictionary. However, typing all these matrices can be time-consuming, especially if the group is large.
+We could hard-code the relevant matrices in our function definition. However, typing all these matrices can be time-consuming, especially if the group is large.
 
 But remember that representations are group homomorphisms. If we've defined $\rho(g)$ and $\rho(h)$, then we can get $\rho(gh)$ simply by multiplying the matrices $\rho(g)$ and $\rho(h)$! If we have a [set of generators](http://en.wikipedia.org/wiki/Generating_set_of_a_group){:target="_blank"} of a group, then we only need to define $\rho$ on these generators. Let's do that for the generators of $D_4$:
 
@@ -95,7 +95,7 @@ D4.gens()
   </script>
 </div>
 
-We see that $D_4$ has a generating set of 2 elements (note: the method `gens()` need not return a *minimal* generating set, but in this case, we do get a minimal generating set). Let's call these $r$ and $s$. We know that elements of $D_4$ can be written $r^is^j$, where $i = 0,1,2,3$ and $j = 0,1$. We first run through all such pairs $(i,j)$ to record which group elements are given by which $(i,j)$:
+We see that $D_4$ has a generating set of 2 elements (note: the method `gens()` need not return a *minimal* generating set, but in this case, we do get a minimal generating set). Let's call these $r$ and $s$. We know that elements of $D_4$ can be written $r^is^j$, where $i = 0,1,2,3$ and $j = 0,1$. We first run through all such pairs $(i,j)$ to create a [dictionary](https://docs.python.org/2/tutorial/datastructures.html#dictionaries){:target="_blank"} that tells us which group elements are given by which $(i,j)$:
 
 <div class="linked">
   <script type="text/x-sage">
