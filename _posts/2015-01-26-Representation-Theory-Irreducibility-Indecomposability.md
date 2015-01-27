@@ -47,7 +47,11 @@ $$
 = {\rho_1(g) v_1 \choose \rho_2(g) v_2}.
 $$
 
-Let $V_1$ be the subspace of $V$ corresponding to vectors of the form ${v_1 \choose 0}$. We see that $\rho(g) v \in V_1 \,\, \forall g \in G,  v \in V_1$. Observe that this will still be true if $\rho(g)$ has the block upper-triangular form
+Let $V_1$ be the subspace of $V$ corresponding to vectors of the form ${v_1 \choose 0}$. Then 
+
+$$\rho(g) v = \rho_1(g) v_1 \in V_1 \,\, \forall g \in G,  v \in V_1.$ 
+
+Observe that this will still be true if $\rho(g)$ has the block upper-triangular form
 
 $$
 \rho(g) = 
