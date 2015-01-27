@@ -36,7 +36,7 @@ and indecomposable otherwise. Here, $P$ is a change of basis matrix and conjugat
 
 ## Reducibility
 
-Notice that if $\rho(g)$ were block diagonal, then for $v \in V$
+Notice that if $\rho(g)$ were block diagonal, then writing $v \in V$ as ${v_1 \choose v_2}$, where $v_1$ and $v_2$ are vectors whose dimensions agree with the blocks of $\rho(g)$, we see that
 
 $$
 \rho(g)v = 
@@ -47,11 +47,7 @@ $$
 = {\rho_1(g) v_1 \choose \rho_2(g) v_2}.
 $$
 
-(We have written $v$ as ${v_1 \choose v_2}$, where $v_1$ and $v_2$ are vectors whose dimensions agree with the blocks of $\rho(g)$).
-
-Letting $V_1$ be the subspace of $V$ corresponding to vectors of the form ${v_1 \choose 0}$, we see that $\rho(g) v \in V_1 \,\, \forall g \in G,  v \in V_1$.
-
-Observe that this will still be true if $\rho(g)$ has the block upper-triangular form
+Let $V_1$ be the subspace of $V$ corresponding to vectors of the form ${v_1 \choose 0}$. We see that $\rho(g) v \in V_1 \,\, \forall g \in G,  v \in V_1$. Observe that this will still be true if $\rho(g)$ has the block upper-triangular form
 
 $$
 \rho(g) = 
