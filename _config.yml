@@ -37,7 +37,7 @@ google_analytics: UA-56773660-1
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url: 
+url: http://sheaves.github.io
 
 excerpt_separator: <!--more--> 
 # If you're hosting your site at a Project repository on GitHub pages 
@@ -50,7 +50,9 @@ baseurl: ""
 # !! You don't need to change any of the configuration flags below !!
 #
 
-markdown: kramdown
+markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
 highlighter: pygments
 permalink: /:title/
 
