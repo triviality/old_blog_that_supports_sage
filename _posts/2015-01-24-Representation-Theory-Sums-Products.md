@@ -116,7 +116,7 @@ It turns out that Q1 is a much more interesting question to ask than Q2.
 
 A (very poor) analogy of this situation is the problem of "building up" natural numbers. We have two ways of building up new integers from old: we can either add numbers, or multiply them. Given a number $n$, it's easy (and not very interesting) to find smaller numbers that add up to $n$. However, [finding numbers whose product is $n$](http://en.wikipedia.org/wiki/Integer_factorization){:target="_blank"} is *much much* harder (especially for large $n$) and much more [rewarding](http://en.wikipedia.org/wiki/Algebraic_number_theory){:target="_blank"}. Prime numbers also play a special role in the latter case: every positive integer has a unique factorization into primes.
 
-The analogy is a poor one (not least because the roles of "sum" and "product" are switched!). For one, tensor product decompositions are not really as easy as writing a number as a sum of other numbers. However, the analogy motivates the question 
+The analogy is a poor one (not least because the roles of "sum" and "product" are switched!). However, it motivates the question 
 
 - What are the analogues of "primes" for representations?
 
