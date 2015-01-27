@@ -20,6 +20,7 @@ $$
 $$
 
 A representation $(V,\rho)$ is **decomposable** if there is an invertible matrix $P$ such that
+
 $$
 P^{-1}\rho(g)P = 
 \begin{pmatrix}
@@ -27,19 +28,56 @@ P^{-1}\rho(g)P =
 0 & \rho_2(g)
 \end{pmatrix}, \,\, \forall g \in G.
 $$
-$P$ is a change of basis matrix, and conjugating by $P$ changes from the standard basis to the basis given by the columns of $P$. We can thus say that $(V,\rho)$ is decomposable if there is a basis of $V$ such that each $\rho(g)$ takes the same block diagonal form in that basis.
+
+$P$ is a change of basis matrix, and conjugating by $P$ changes from the standard basis to the basis given by the columns of $P$. The above is equivalent to saying that $(V,\rho)$ is decomposable if there is a basis of $V$ such that each $\rho(g)$ takes the same block diagonal form in that basis.
 
 If $(V,\rho)$ does not admit such a decomposition, it is **indecomposable**.
 
 ## Reducibility
-Suppose we have a represenation $(V,\rho)$ of a group $G$. For a subspace $W \subset V$, we might ask whether 
+Notice that if $\rho(g)$ were block diagonal, then for $v \in V$
 
-$$\rho(g)w \in W \,, \forall g \in G, w \in W.$$
+$$
+\rho(g)v = 
+\begin{pmatrix}
+\rho_1(g) & 0 \\
+0 & \rho_2(g)
+\end{pmatrix}{v_1 \choose v_2}
+= {\rho_1(g) v_1 \choose \rho_2(g) v_2}.
+$$
 
-If this is the case, we say that $W$ is a $G$-**invariant** subspace of $V$, and $(W,\rho)$ is a  **subrepresentation** of $(V,\rho)$.
+(We have written $v$ as ${v_1 \choose v_2}$, where $v_1$ and $v_2$ are vectors whose dimensions agree with the blocks of $\rho(g)$).
+
+Letting $V_1$ be the subspace of $V$ corresponding to vectors of the form ${v_1 \choose 0}$, we see that $\rho(g) v \in V_1 \,\, \forall g \in G,  v \in V_1$.
+
+Observe that this will still be true if $\rho(g)$ has the block upper-triangular form
+
+$$
+\rho(g) = 
+\begin{pmatrix}
+\rho_1(g) & * \\
+0 & \rho_2(g)
+\end{pmatrix}, \,\, \forall g \in G
+$$
+
+where $*$ stands for matrices that may or may not be $0$ (we might have different matrices for differnt $g \in G$).
+
+More generally, if we have a subspace $W \subset V$ such that
+
+$$\rho(g)w \in W \,\, \forall g \in G, w \in W,$$
+
+we say that $W$ is a $G$-**invariant** subspace of $V$, and $(W,\rho)$ is a  **subrepresentation** of $(V,\rho)$.
 
 Any representation $(V,\rho)$ has at least two subrepresentations: $(0,\rho)$ and $(V,\rho)$. If there are no other subrepresentations, then $(V,\rho)$ is [**irreducible**](http://en.wikipedia.org/wiki/Irreducible_representation){:target="_blank"}. Otherwise, it is **reducible**.
 
+Equivalently, $(V,\rho)$ is reducible if there is an invertible matrix $P$ such that
+
+$$
+P^{-1}\rho(g)P = 
+\begin{pmatrix}
+\rho_1(g) & * \\
+0 & \rho_2(g)
+\end{pmatrix}, \,\, \forall g \in G.
+$$
 
 
 
