@@ -42,7 +42,10 @@ show(wiki_rep(g))
 
 ## Direct Sums
 
-If $(V_1,\rho_1), (V_2,\rho_2)$ are representation of $G$, the [direct sum](http://groupprops.subwiki.org/wiki/Direct_sum_of_linear_representations){:target="_blank"} of these representations is $(V_1 \oplus V_2, \rho)$, where $\rho$ sends $g \in G$ to the [block diagonal matrix](http://en.wikipedia.org/wiki/Block_matrix#Block_diagonal_matrices){:target="_blank"} $\left(\begin{array}{cc} \rho_1(g) & 0 \\ 0 & \rho_2(g) \end{array}\right)$. Here $\rho_1(g), \rho_2(g)$ and the "zeros" are all *matrices*.
+If $(V_1,\rho_1), (V_2,\rho_2)$ are representation of $G$, the [direct sum](http://groupprops.subwiki.org/wiki/Direct_sum_of_linear_representations){:target="_blank"} of these representations is $(V_1 \oplus V_2, \rho)$, where $\rho$ sends $g \in G$ to the [block diagonal matrix](http://en.wikipedia.org/wiki/Block_matrix#Block_diagonal_matrices){:target="_blank"} 
+| $\rho_1(g)$ | 0 |
+| 0 | $\rho_2(g)$ | 
+. Here $\rho_1(g), \rho_2(g)$ and the "zeros" are all *matrices*.
 
 It's best to illustrate with an example. We can define a function `direct_sum` in Sage that takes two representations and returns their direct sum.
 
