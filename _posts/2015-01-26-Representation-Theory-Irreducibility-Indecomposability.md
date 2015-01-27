@@ -61,7 +61,7 @@ $$
 \end{pmatrix}, \,\, \forall g \in G
 $$
 
-where $*$ represents an arbitrary matrix (possibly different for each $g \in G$). If $*$ is not the zero matrix for some $g$, then we will still have $\rho(g) v \in V_1 \,\, \forall v \in V_1$, but we no longer have $\rho(g) v \in V_2 \,\, \forall v \in V_2$. In this case, we say that $V_1$ is a subrepresentation of $V$ whereas $V_2$ is not.
+where $ \* $ represents an arbitrary matrix (possibly different for each $g \in G$). If $\*$ is not the zero matrix for some $g$, then we will still have $\rho(g) v \in V_1 \,\, \forall v \in V_1$, but we no longer have $\rho(g) v \in V_2 \,\, \forall v \in V_2$. In this case, we say that $V_1$ is a subrepresentation of $V$ whereas $V_2$ is not.
 
 Formally, if we have a subspace $W \subset V$ such that
 
