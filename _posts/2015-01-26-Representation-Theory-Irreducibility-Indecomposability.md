@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Irreducible and Indecomposable Representations
-draft_tag: 
+tag: 
 - Algebra
 ---
 
@@ -87,7 +87,7 @@ and irreducible otherwise.
 
 Note that a decomposable representation is also reducible, but the converse is not generally true.
 (Equivalently: an irreducible representation is also indecomposable, but the converse is not generally true.)
-[Maschke's Theorem](http://en.wikipedia.org/wiki/Maschke%27s_theorem) tells us that the converse is true over fields of characteristic zero! 
+[Maschke's Theorem](http://en.wikipedia.org/wiki/Maschke%27s_theorem){:target="_blank"} tells us that the converse is true over fields of characteristic zero! 
 
 In other words, suppose $V$ is a vector space over a field of characteristic zero, say $\mathbb{C}$, and $(V,\rho)$ has a subrepresentation $(W_1,\rho)$. Then there is a subspace $W_2 \subset V$ such that $(V,\rho)$ is given by the direct sum of $(W_1,\rho)$ and $(W_2,\rho)$. Such a $W_2$ is called a direct complement of $W_1$.
 
@@ -95,7 +95,41 @@ Since we will be working over $\mathbb{C}$, we can thus treat (in)decomposabilit
 
 ## Schur's Lemma
 
-Given representations $(V_1,\rho_1),(V_2,\rho_2)$ of $G$, a 
+How may we detect (ir)reducible representations? We'll make use of the following linear algebraic properties:
+
+Given an eigenvalue $\lambda$ of a matrix $A \in \mathbb{C}^{n \times n}$, its $\lambda$-eigenspace is
+
+$$
+E_\lambda = \{v \in \mathbb{C}^n: Av = \lambda v \}.
+$$
+
+Clearly, each eigenspace is an invariant subspace of $A$. Now suppose we have another matrix $B \in \mathbb{C}^{n \times n}$ such that $AB = BA$, then $B$ preserves the eigenspaces of $A$ as well. To see this, take $v \in E_\lambda$, then
+
+$$
+A(Bv) = B(Av) = B(\lambda v) = \lambda (Bv),
+$$
+
+so $Bv \in E_\lambda$ i.e. $E_\lambda$ is also an invariant subspace of $B$!
+
+Now suppose we have a representation $(V,\rho)$ and a linear map $T:V \to V$ such that for all $g \in G, v \in V$,
+
+$$
+\rho(g)(Tv) = T \rho(g)(v).
+$$
+
+Treating $T$ as a matrix, this is equivalent to saying that $\rho(g)T = T\rho(g)$ for all $g \in G$. In that case, the eigenspaces of $T$ are $G$-invariant subspaces, and will yield decompositions of $(V,\rho)$  if they are not the whole of $V$. But if $E_\lambda = V$, then $Tv = \lambda v$ for all $v \in V$, so in fact $T = \lambda I$, where $I$ is the identity matrix. We have thus shown a variant of [Schur's lemma](http://en.wikipedia.org/wiki/Schur%27s_lemma){:target="_blank"}:
+
+*If $(V,\rho)$ is irreducible, and $T$ is such that $\rho(g) T = T \rho(g)$ for all $g \in G$, then $T =\lambda I$ for some $\lambda$. *
+
+We already know that scalar matrices (i.e. matrices of the form $\lambda I$) commute with all matrices. If $(V,\rho)$ is irreducible, then this result says that there are no other matrices that commute with all $\rho(g)$. 
+
+The converse is also true:
+
+*If $(V,\rho)$ is a reducible, then there is some $T \neq \lambda I$ for any $\lambda$ such that $\rho(g) T = T\rho(g)$ for all $g \in G$. *
+
+I won't prove this. Instead, observe that if we can find such a $T$, then its eigenspaces will give a decomposition of $(V,\rho)$. This will be the subject of the next post.
+
+
 
 
 
