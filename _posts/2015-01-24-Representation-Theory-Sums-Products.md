@@ -120,4 +120,5 @@ The analogy is a poor one (not least because the roles of "sum" and "product" ar
 
 - What are the analogues of "primes" for representations?
 
-We'll try to answer this last question and Q1 in the next few posts, and see what it means for us when working with representations in Sage.
+We'll try to answer this last question and Q1 in the [next few posts]({% post_url 2015-01-26-Representation-Theory-Irreducibility-Indecomposability%}), and see what it means for us when working with representations in Sage.
+
