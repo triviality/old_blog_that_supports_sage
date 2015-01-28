@@ -119,13 +119,11 @@ $$
 
 Treating $T$ as a matrix, this is equivalent to saying that $\rho(g)T = T\rho(g)$ for all $g \in G$. In that case, the eigenspaces of $T$ are $G$-invariant subspaces, and will yield decompositions of $(V,\rho)$  if they are not the whole of $V$. But if $E_\lambda = V$, then $Tv = \lambda v$ for all $v \in V$, so in fact $T = \lambda I$, where $I$ is the identity matrix. We have thus shown a variant of [Schur's lemma](http://en.wikipedia.org/wiki/Schur%27s_lemma){:target="_blank"}:
 
-*If $(V,\rho)$ is irreducible, and $T$ is such that $\rho(g) T = T \rho(g)$ for all $g \in G$, then $T =\lambda I$ for some $\lambda$. *
+If $(V,\rho)$ is irreducible, and $T$ is such that $\rho(g) T = T \rho(g)$ for all $g \in G$, then $T =\lambda I$ for some $\lambda$.
 
-We already know that scalar matrices (i.e. matrices of the form $\lambda I$) commute with all matrices. If $(V,\rho)$ is irreducible, then this result says that there are no other matrices that commute with all $\rho(g)$. 
+We already know that scalar matrices (i.e. matrices of the form $\lambda I$) commute with all matrices. If $(V,\rho)$ is irreducible, this result says that there are no other matrices that commute with all $\rho(g)$. The converse is also true:
 
-The converse is also true:
-
-*If $(V,\rho)$ is a reducible, then there is some $T \neq \lambda I$ for any $\lambda$ such that $\rho(g) T = T\rho(g)$ for all $g \in G$. *
+If $(V,\rho)$ is a reducible, then there is some $T \neq \lambda I$ for any $\lambda$ such that $\rho(g) T = T\rho(g)$ for all $g \in G$.
 
 I won't prove this. Instead, observe that if we can find such a $T$, then its eigenspaces will give a decomposition of $(V,\rho)$. This will be the subject of the next post.
 
