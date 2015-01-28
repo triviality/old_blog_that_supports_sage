@@ -109,7 +109,7 @@ $$
 A(Bv) = B(Av) = B(\lambda v) = \lambda (Bv),
 $$
 
-so $Bv \in E_\lambda$, which means that $E_\lambda$ is also an invariant subspace of $B$!
+so $E_\lambda$ is also an invariant subspace of $B$!
 
 Now suppose we have a representation $(V,\rho)$ and a linear map $T:V \to V$ such that for all $g \in G, v \in V$,
 
