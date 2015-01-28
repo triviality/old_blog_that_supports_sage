@@ -5,7 +5,7 @@ tag:
 - Algebra
 ---
 
-Following up from the question at the end of the [previous post]({% post_url 2015-01-24-Representation-Theory-Sums-Products%}){:target="_blank"}, I'll define (ir)reducible and (in)decomposable representations, and discuss how we might detect them. Unlike previous posts, this post will have just text, and no code. This discussion will form the basis of the algorithm in the next post.
+Following up from the questions I asked at the end of the [previous post]({% post_url 2015-01-24-Representation-Theory-Sums-Products%}){:target="_blank"}, I'll define (ir)reducible and (in)decomposable representations, and discuss how we might detect them. Unlike previous posts, this post will have just text, and no code. This discussion will form the basis of the algorithm in the next post.
 
 <!--more-->
 
