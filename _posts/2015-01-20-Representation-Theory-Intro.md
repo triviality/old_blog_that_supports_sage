@@ -18,11 +18,11 @@ $$
 \rho(g h) = \rho(g) \rho(h) \,\, \forall g,h \in G.
 $$
 
-To define a representation in Sage, we thus need some function that takes group elements as input and returns matrices as output.
+For our purposes, we will assume that $G$ is a finite group and $V$ is an $n$-dimensional vector space over $\mathbb{C}$. Then $\mathrm{GL}(V)$ is isomorphic to the invertible $n \times n$ matrices over $\mathbb{C}$, which we will denote $\mathrm{GL}_n \mathbb{C}$. 
+
+So a representation is just a function that takes group elements and returns invertible matrices, in such a way that the above equation holds.
 
 Various authors refer to the map $\rho$, the vector space $V$, or the tuple $(V,\rho)$ as a representation; this shouldn't cause any confusion, as it's usually clear from context whether we are referring to a map or a vector space. When I need to be extra precise, I'll use $(V,\rho)$.
-
-For our purposes, we will assume that $G$ is a finite group and $V$ is an $n$-dimensional vector space over $\mathbb{C}$. Then $\mathrm{GL}(V)$ is isomorphic to the invertible $n \times n$ matrices over $\mathbb{C}$, which we will denote $\mathrm{GL}_n \mathbb{C}$.
 
 ## Some simple examples
 
