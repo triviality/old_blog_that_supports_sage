@@ -2,8 +2,7 @@
 layout: post
 title: Lattice of Subgroups III - Coloring Edges
 tag: 
-- Algebra
-- Combinatorics
+- Subgroup Lattices
 ---
 
 This post will cover the coloring of edges in the lattice of subgroups of a group. 
