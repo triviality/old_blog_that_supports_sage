@@ -2,7 +2,7 @@
 layout: post
 title: Direct Sums and Tensor Products
 tag: 
-- Algebra
+- Representation Theory
 ---
 
 In this short post, we will show two ways of combining existing representations to obtain new representations.
