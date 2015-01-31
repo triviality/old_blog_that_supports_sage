@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Argument Principle
-tag: Complex Analysis
+tag: Misc.
 ---
 
 !["Image of a quarter circle in the first quadrant under the map $f(z) = z^4 + z^3 + 5z^2 + 2z + 4$"](/images/Argument.png "Image of a quarter circle in the first quadrant under the map $f(z) = z^4 + z^3 + 5z^2 + 2z + 4$")
