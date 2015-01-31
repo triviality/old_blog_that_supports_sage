@@ -2,8 +2,7 @@
 layout: post
 title: Subgroup Explorer
 tag: 
-- Algebra
-- Combinatorics
+- Subgroup Lattices
 ---
 
 ![Subgroup Explorer](/images/SubgroupExplorer.png "Subgroup Lattice Generator")
