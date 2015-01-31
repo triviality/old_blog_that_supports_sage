@@ -2,7 +2,7 @@
 layout: post
 title: Representation Theory in Sage - Basics
 tag: 
-- Algebra
+- Representation Theory
 ---
 
 This is the first of a series of posts about working with group representations in Sage.
