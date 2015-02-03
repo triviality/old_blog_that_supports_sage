@@ -5,7 +5,18 @@ layout: default
 This blog is powered by the <a href="http://sagecell.sagemath.org/">Sage Cell Server</a>. You can type <a href="http://www.sagemath.org/">Sage</a>/Python code into the cell below, and press `Shift+Enter` to evaluate it (or click "Evaluate").
 
 <div class="all">
-  <script type="text/x-sage"> 1 + 2  </script>
+  <script type="text/x-sage">
+d = 0.05
+c = 0.05
+p = -0.15
+k = 0.05
+u = [random() for i in range(3)]
+
+x(t) = (sin(t*2*pi) + sin((1-c + u[2]*c*2)*t*2*pi) + p*pi)*exp(-d*t)
+y(t) = (sin((1-c+ u[0]*c*2)*t*2*pi + k*u[1]*pi) + cos((1-c + u[2]*c*2)*t*2*pi) + p*pi)*exp(-d*t)
+
+parametric_plot((x(t),y(t)),(t,0,100),color = u, axes= False, plot_points = 3000).show()    
+  </script>
 </div>
 
 <div class="posts">
