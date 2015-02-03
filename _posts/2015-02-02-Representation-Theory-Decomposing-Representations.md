@@ -41,7 +41,7 @@ For $G$ a finite group, all representations can be made unitary under an appropr
 
 ## Finding non-scalar, commuting matrices
 
-At the end of the [previous post]({% post_url 2015-01-26-Representation-Theory-Irreducibility-Indecomposability%}){:target="_blank"} we saw that in order to decompose a representation $(V,\rho)$, it is enough to find a non-scalar matrix $T$ that commutes with $\rho(g)$ for every $g \in G$.  This first step finds a [Hermitian](http://en.wikipedia.org/wiki/Hermitian_matrix) non-scalar $H$ that commutes with $\rho(G)$ (if there is one to be found).
+At the end of the [previous post]({% post_url 2015-01-26-Representation-Theory-Irreducibility-Indecomposability%}){:target="_blank"} we saw that in order to decompose a representation $(V,\rho)$, it is enough to find a non-scalar matrix $T$ that commutes with $\rho(g)$ for every $g \in G$.  This first step finds a [Hermitian](http://en.wikipedia.org/wiki/Hermitian_matrix){:target="_blank"} non-scalar $H$ that commutes with $\rho(G)$ (if there is one to be found).
 
 Let $E_{rs}$ denote the $n \times n$ matrix with a $1$ in the $(r,s)$th entry and zeros everywhere else. Here $n$ is the dimension of $V$ in the representation $(V,\rho)$. Define
 
@@ -53,7 +53,7 @@ i(E_{rs} - E_{sr}) &\text{if } r < s,
 \end{cases}
 $$
 
-then the set of matrices $H_{rs}$ forms a [hermitian](http://en.wikipedia.org/wiki/Hermitian_matrix){:target="_blank"} basis for the $n \times n$ matrices over $\mathbb{C}$.
+then the set of matrices $H_{rs}$ forms a Hermitian basis for the $n \times n$ matrices over $\mathbb{C}$.
 
 Now for each $r,s$, compute the sum
 
@@ -157,7 +157,9 @@ We have thus decomposed $\rho$ into two 1-dimensional representations and one 2-
 
 ## Getting all irreducible representations
 
-Now we know how to test for irreducibility and decompose reducible representations. But we still don't know how many irreducible representations a group has. It turns out that finite groups have finitely many irreducible representations! In the next post, we'll exhibit a representation for any finite group $G$ containing *all* the irreducible representations of $G$.
+Now we know how to test for irreducibility and decompose reducible representations. But we still don't know how many irreducible representations a group has. 
+
+It turns out that finite groups have finitely many irreducible representations! In the next post, we'll exhibit a representation for any finite group $G$ containing *all* the irreducible representations of $G$.
 
 
 
