@@ -43,7 +43,7 @@ For $G$ a finite group, all representations can be made unitary under an appropr
 
 At the end of the [previous post]({% post_url 2015-01-26-Representation-Theory-Irreducibility-Indecomposability%}){:target="_blank"} we saw that in order to decompose a representation $(V,\rho)$, it is enough to find a non-scalar matrix $T$ that commutes with $\rho(g)$ for every $g \in G$.  This first step finds a [Hermitian](http://en.wikipedia.org/wiki/Hermitian_matrix) non-scalar $H$ that commutes with $\rho(G)$ (if there is one to be found).
 
-Let $E_{rs}$ denote the $n \times n$ matrix with a $1$ in the $(r,s)$th entry and zeros everywhere else. Here $n$ is the dimension of $V$ in the representation $(V,\rho)$. Now define
+Let $E_{rs}$ denote the $n \times n$ matrix with a $1$ in the $(r,s)$th entry and zeros everywhere else. Here $n$ is the dimension of $V$ in the representation $(V,\rho)$. Define
 
 $$
 H_{rs} = \begin{cases}
@@ -64,9 +64,9 @@ $$
 Observe that $H$ has the following properties:
 
 - it is hermitian
-- it commutes with $\rho(g)$ for all $g \in G$!
+- it commutes with $\rho(g)$ for all $g \in G$
 
-If $\rho$ is irreducible, then $H$ is a scalar matrix for all $r,s$. Otherwise, it turns out that there **will** be some $r,s$ such that $H$ is non-scalar (this is due to the fact that the $H_{rs]$ matrices form a basis of the $n \times n$ matrices$).
+If $\rho$ is irreducible, then $H$ is a scalar matrix for all $r,s$. Otherwise, it turns out that there **will** be some $r,s$ such that $H$ is non-scalar (this is due to the fact that the $H_{rs}$ matrices form a basis of the $n \times n$ matrices$).
 
 Let's test this algorithm on our permutation representation of $D_4$:
 
@@ -110,7 +110,27 @@ show(H)
   </script>
 </div>
 
+We get a non-scalar $H$! So the permutation representation of $D_4$ is reducible!
 
+## Using $H$ to decompose $\rho$
+
+Our next step is to use the eigenspaces of $H$ to decompose $\rho$. At the end of the [previous post]({% post_url 2015-01-26-Representation-Theory-Irreducibility-Indecomposability%}){:target="_blank"}, we saw that $\rho(g)$ preserves the eigenspaces of $H$, so we need only find the eigenspaces of $H$ to decompose $\rho$. 
+
+Since $H$ is hermitian, it is [diagonalizable](http://en.wikipedia.org/wiki/Diagonalizable_matrix){:target="_blank"}, so its eigenvectors form an [orthonormal basis](http://en.wikipedia.org/wiki/Orthonormal_basis){:target="_blank"}. Let's find this basis:
+
+<div class="linked">
+  <script type="text/x-sage">
+# Compute J,P such that H = JPJ^(-1)
+J,P = H.jordan_form(QQbar,transformation=True)
+
+# Orthonormalize P
+P = P.transpose().gram_schmidt()[0].transpose()
+
+show(J)
+show(P)
+H == J*P*J^(-1)
+  </script>
+</div>
 
 
 
