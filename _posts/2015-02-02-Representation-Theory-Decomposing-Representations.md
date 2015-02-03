@@ -120,19 +120,27 @@ Since $H$ is hermitian, it is [diagonalizable](http://en.wikipedia.org/wiki/Diag
 
 <div class="linked">
   <script type="text/x-sage">
-# Compute J,P such that H = JPJ^(-1)
+# Compute J,P such that H = PJP^(-1)
 J,P = H.jordan_form(QQbar,transformation=True)
 
 # Orthonormalize P
-P = P.transpose().gram_schmidt()[0].transpose()
+P = matrix([v/(v.norm()) for v in P.columns()])
+assert P.conjugate_transpose() == P.inverse(), "Not orthonormal"
 
-show(J)
 show(P)
-H == J*P*J^(-1)
   </script>
 </div>
 
+Finally, we observe that $P^* \rho(g) P$ has the same block-diagonal form for each $g \in G$:
 
+<div class="linked">
+  <script type="text/x-sage">
+for g in G:
+    show(P.conjugate_transpose()*rho(g)*P)
+  </script>
+</div>
+
+We have thus decomposed $\rho$ into two 1-dimensional representations and one 2-dimensional one.
 
 
 
