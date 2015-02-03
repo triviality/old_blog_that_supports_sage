@@ -117,14 +117,16 @@ We get a non-scalar $H$! So the permutation representation of $D_4$ is reducible
 
 Our next step is to use the eigenspaces of $H$ to decompose $\rho$. At the end of the [previous post]({% post_url 2015-01-26-Representation-Theory-Irreducibility-Indecomposability%}){:target="_blank"}, we saw that $\rho(g)$ preserves the eigenspaces of $H$, so we need only find the eigenspaces of $H$ to decompose $\rho$. 
 
-Since $H$ is hermitian, it is [diagonalizable](http://en.wikipedia.org/wiki/Diagonalizable_matrix){:target="_blank"}, so its eigenvectors form an [orthonormal basis](http://en.wikipedia.org/wiki/Orthonormal_basis){:target="_blank"}. Let's find this basis:
+Since $H$ is hermitian, it is [diagonalizable](http://en.wikipedia.org/wiki/Diagonalizable_matrix){:target="_blank"}, so its eigenvectors form an [orthonormal basis](http://en.wikipedia.org/wiki/Orthonormal_basis){:target="_blank"}. We can find this basis by computing the [Jordan decomposition](http://en.wikipedia.org/wiki/Jordan_normal_form){:target="_blank"} of $H$:
 
 <div class="linked">
   <script type="text/x-sage">
 # Compute J,P such that H = PJP^(-1)
 J,P = H.jordan_form(QQbar,transformation=True)
 
-P == P*1 # (trick to force 1.0000000... to display as 1)
+# Normalize P
+P = matrix(QQbar, [v/v.norm() for v in P.columns()])
+
 show(P)
   </script>
 </div>
@@ -133,7 +135,7 @@ Finally, we observe that $P^* \rho(g) P$ has the same block-diagonal form for ea
 
 <div class="linked">
   <script type="text/x-sage">
-# Compute blocks (just for aesthetics)
+# Compute block subdivisions (just for aesthetics)
 edges = []
 for g in G:
     edges += (P.conjugate_transpose()*rho(g)*P).nonzero_positions()
@@ -148,13 +150,15 @@ for l in subrep_indices:
       
 # Display rho in block-diagonal form
 for g in G:
-    M = P.conjugate_transpose()*rho(g)*P
+    M = P.inverse()*rho(g)*P
     M.subdivide(subdivisions, subdivisions)
     show(M)
   </script>
 </div>
 
-We have thus decomposed $\rho$ into two 1-dimensional representations and one 2-dimensional one.
+We have thus decomposed $\rho$ into two 1-dimensional representations and one 2-dimensional one! 
+
+
 
 
 
