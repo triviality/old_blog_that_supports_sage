@@ -43,7 +43,7 @@ For $G$ a finite group, all representations can be made unitary under an appropr
 
 At the end of the [previous post]({% post_url 2015-01-26-Representation-Theory-Irreducibility-Indecomposability%}){:target="_blank"} we saw that in order to decompose a representation $(V,\rho)$, it is enough to find a non-scalar matrix $T$ that commutes with $\rho(g)$ for every $g \in G$.  This first step finds a [Hermitian](http://en.wikipedia.org/wiki/Hermitian_matrix) non-scalar $H$ that commutes with $\rho(G)$ (if there is one to be found).
 
-Let $E_{rs}$ denote the $n \times n$ matrix with a $1$ in the $(r,s)$th entry and zeros everywhere else. Here $n$ is the dimension of $V$ in the representation $(V,\rho)$. Then the set of matrices $E_{rs}$ as $r,s$ run from $1$ to $n$ forms a basis for all the $n \times n$ matrices. Now define
+Let $E_{rs}$ denote the $n \times n$ matrix with a $1$ in the $(r,s)$th entry and zeros everywhere else. Here $n$ is the dimension of $V$ in the representation $(V,\rho)$. Now define
 
 $$
 H_{rs} = \begin{cases}
@@ -53,7 +53,7 @@ i(E_{rs} - E_{sr}) &\text{if } r < s,
 \end{cases}
 $$
 
-then the set of matrices $H_{rs}$ also forms a basis for the $n \times n$ matrices over $\mathbb{C}$, with the additional property that it is [hermitian](http://en.wikipedia.org/wiki/Hermitian_matrix){:target="_blank"}.
+then the set of matrices $H_{rs}$ forms a [hermitian](http://en.wikipedia.org/wiki/Hermitian_matrix){:target="_blank"} basis for the $n \times n$ matrices over $\mathbb{C}$.
 
 Now for each $r,s$, compute the sum
 
