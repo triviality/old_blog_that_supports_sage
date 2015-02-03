@@ -125,7 +125,7 @@ We already know that scalar matrices (i.e. matrices of the form $\lambda I$) com
 
 If $(V,\rho)$ is a reducible, then there is some $T \neq \lambda I$ for any $\lambda$ such that $\rho(g) T = T\rho(g)$ for all $g \in G$.
 
-I won't prove this. Instead, observe that if we can find such a $T$, then its eigenspaces will give a decomposition of $(V,\rho)$. This will be the subject of the next post.
+I won't prove this. Instead, observe that if we can find such a $T$, then its eigenspaces will give a decomposition of $(V,\rho)$. This will be the subject of the [next post]({% post_url 2015-02-02-Representation-Theory-Decomposing-Representations%}).
 
 
 
