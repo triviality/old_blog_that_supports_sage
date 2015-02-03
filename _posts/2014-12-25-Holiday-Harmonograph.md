@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Holiday Harmonograph
-tag: Misc.
+tag: Uncategorized
 ---
 *(Guest post from the Annals of Harmonography)*
 ![#138783](/images/harmonograph.png)
