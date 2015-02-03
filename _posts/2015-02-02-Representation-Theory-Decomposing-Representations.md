@@ -106,6 +106,7 @@ def is_irreducible(rho,G):
 
 is_irred,H = is_irreducible(rho,G) 
 
+show(is_irred)
 show(H)
   </script>
 </div>
@@ -123,9 +124,8 @@ Since $H$ is hermitian, it is [diagonalizable](http://en.wikipedia.org/wiki/Diag
 # Compute J,P such that H = PJP^(-1)
 J,P = H.jordan_form(QQbar,transformation=True)
 
-# Orthonormalize P
-P = matrix([v/(v.norm()) for v in P.columns()])
-assert P.conjugate_transpose() == P.inverse(), "Not orthonormal"
+P == P*1 # (trick to force 1.0000000... to display as 1)
+show(P)
 
 show(P)
   </script>
@@ -135,8 +135,21 @@ Finally, we observe that $P^* \rho(g) P$ has the same block-diagonal form for ea
 
 <div class="linked">
   <script type="text/x-sage">
+# Compute blocks
+edges = [(P.conjugate_transpose()*rho(g)*P).nonzero_positions() for g in G]
+graph = Graph(edges)
+graph.remove_loops()
+graph.remove_multiple_edges()
+subrep_indices = graph.connected_components()
+subdivisions = graph.vertices()[1:]
+for l in subrep_indices:
+    for i in l[1:]:
+        subdivisions.remove(i)
+      
+# Display rho in block-diagonal form
 for g in G:
-    show(P.conjugate_transpose()*rho(g)*P)
+    M = P.conjugate_transpose()*rho(g)*P
+    show(M.subdivide(subdivisions, subdivisions))
   </script>
 </div>
 
