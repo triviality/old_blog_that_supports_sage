@@ -126,8 +126,6 @@ J,P = H.jordan_form(QQbar,transformation=True)
 
 P == P*1 # (trick to force 1.0000000... to display as 1)
 show(P)
-
-show(P)
   </script>
 </div>
 
@@ -136,7 +134,9 @@ Finally, we observe that $P^* \rho(g) P$ has the same block-diagonal form for ea
 <div class="linked">
   <script type="text/x-sage">
 # Compute blocks
-edges = [(P.conjugate_transpose()*rho(g)*P).nonzero_positions() for g in G]
+edges = []
+for g in G:
+    edges += (P.conjugate_transpose()*rho(g)*P).nonzero_positions()
 graph = Graph(edges)
 graph.remove_loops()
 graph.remove_multiple_edges()
