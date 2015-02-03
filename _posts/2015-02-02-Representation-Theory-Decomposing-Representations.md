@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Decomposing Representations
-draft_tag: 
+tag: 
 - Representation Theory
 ---
 
@@ -117,21 +117,18 @@ We get a non-scalar $H$! So the permutation representation of $D_4$ is reducible
 
 Our next step is to use the eigenspaces of $H$ to decompose $\rho$. At the end of the [previous post]({% post_url 2015-01-26-Representation-Theory-Irreducibility-Indecomposability%}){:target="_blank"}, we saw that $\rho(g)$ preserves the eigenspaces of $H$, so we need only find the eigenspaces of $H$ to decompose $\rho$. 
 
-Since $H$ is hermitian, it is [diagonalizable](http://en.wikipedia.org/wiki/Diagonalizable_matrix){:target="_blank"}, so its eigenvectors form an [orthonormal basis](http://en.wikipedia.org/wiki/Orthonormal_basis){:target="_blank"}. We can find this basis by computing the [Jordan decomposition](http://en.wikipedia.org/wiki/Jordan_normal_form){:target="_blank"} of $H$:
+Since $H$ is hermitian, it is [diagonalizable](http://en.wikipedia.org/wiki/Diagonalizable_matrix){:target="_blank"}, so its eigenvectors form a basis of $V$. We can find this basis by computing the [Jordan decomposition](http://en.wikipedia.org/wiki/Jordan_normal_form){:target="_blank"} of $H$:
 
 <div class="linked">
   <script type="text/x-sage">
 # Compute J,P such that H = PJP^(-1)
 J,P = H.jordan_form(QQbar,transformation=True)
 
-# Normalize P
-P = matrix(QQbar, [v/v.norm() for v in P.columns()])
-
 show(P)
   </script>
 </div>
 
-Finally, we observe that $P^* \rho(g) P$ has the same block-diagonal form for each $g \in G$:
+Finally, we observe that $P^{-1} \rho(g) P$ has the same block-diagonal form for each $g \in G$:
 
 <div class="linked">
   <script type="text/x-sage">
@@ -158,9 +155,9 @@ for g in G:
 
 We have thus decomposed $\rho$ into two 1-dimensional representations and one 2-dimensional one! 
 
+## Getting all irreducible representations
 
-
-
+Now we know how to test for irreducibility and decompose reducible representations. But we still don't know how many irreducible representations a group has. It turns out that finite groups have finitely many irreducible representations! In the next post, we'll exhibit a representation for any finite group $G$ containing *all* the irreducible representations of $G$.
 
 
 
