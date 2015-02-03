@@ -5,7 +5,7 @@ tag:
 - Representation Theory
 ---
 
-In this post, we'll implement an algorithm for decomposing representations that [Dixon published in 1970](http://www.ams.org/journals/mcom/1970-24-111/S0025-5718-1970-0280611-6/S0025-5718-1970-0280611-6.pdf).
+In this post, we'll implement an algorithm for decomposing representations that [Dixon published in 1970](http://www.ams.org/journals/mcom/1970-24-111/S0025-5718-1970-0280611-6/S0025-5718-1970-0280611-6.pdf){:target="_blank"}.
 
 <!--more-->
 
