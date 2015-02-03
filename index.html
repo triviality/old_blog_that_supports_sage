@@ -6,10 +6,7 @@ This blog is powered by the <a href="http://sagecell.sagemath.org/">Sage Cell Se
 
 <div class="all">
   <script type="text/x-sage">
-d = 0.05
-c = 0.05
-p = -0.15
-k = 0.05
+d,c,p,k = [0.05, 0.05, -0.15, 0.05]
 u = [random() for i in range(3)]
 
 x(t) = (sin(t*2*pi) + sin((1-c + u[2]*c*2)*t*2*pi) + p*pi)*exp(-d*t)
