@@ -133,7 +133,7 @@ Finally, we observe that $P^* \rho(g) P$ has the same block-diagonal form for ea
 
 <div class="linked">
   <script type="text/x-sage">
-# Compute blocks
+# Compute blocks (just for aesthetics)
 edges = []
 for g in G:
     edges += (P.conjugate_transpose()*rho(g)*P).nonzero_positions()
@@ -149,7 +149,8 @@ for l in subrep_indices:
 # Display rho in block-diagonal form
 for g in G:
     M = P.conjugate_transpose()*rho(g)*P
-    show(M.subdivide(subdivisions, subdivisions))
+    M.subdivide(subdivisions, subdivisions)
+    show(M)
   </script>
 </div>
 
