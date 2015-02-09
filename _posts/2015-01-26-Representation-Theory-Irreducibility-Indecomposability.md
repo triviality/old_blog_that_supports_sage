@@ -103,7 +103,7 @@ $$
 E_\lambda = \{v \in \mathbb{C}^n: Av = \lambda v \}.
 $$
 
-Clearly, each eigenspace is an invariant subspace of $A$. Now suppose we have another matrix $B \in \mathbb{C}^{n \times n}$ such that $AB = BA$, then $B$ preserves the eigenspaces of $A$ as well. To see this, take $v \in E_\lambda$, then
+Clearly, each eigenspace is an invariant subspace of $A$. If we have another matrix $B \in \mathbb{C}^{n \times n}$ such that $AB = BA$, then $B$ preserves the eigenspaces of $A$ as well. To see this, take $v \in E_\lambda$, then
 
 $$
 A(Bv) = B(Av) = B(\lambda v) = \lambda (Bv),
