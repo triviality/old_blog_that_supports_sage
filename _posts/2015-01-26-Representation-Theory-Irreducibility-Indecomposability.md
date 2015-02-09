@@ -87,9 +87,9 @@ and irreducible otherwise.
 
 Note that a decomposable representation is also reducible, but the converse is not generally true.
 (Equivalently: an irreducible representation is also indecomposable, but the converse is not generally true.)
-[Maschke's Theorem](http://en.wikipedia.org/wiki/Maschke%27s_theorem){:target="_blank"} tells us that the converse is true over fields of characteristic zero! 
+[Maschke's Theorem](http://en.wikipedia.org/wiki/Maschke%27s_theorem){:target="_blank"} tells us that the converse is true over fields of characteristic zero! In other words:
 
-In other words, suppose $V$ is a vector space over a field of characteristic zero, say $\mathbb{C}$, and $(V,\rho)$ has a subrepresentation $(W_1,\rho)$. Then there is a subspace $W_2$ (called the direct complement of $W_1$) such that $V = W_1 \otimes W_2$.
+> Suppose $V$ is a vector space over a field of characteristic zero, say $\mathbb{C}$, and $(V,\rho)$ has a subrepresentation $(W_1,\rho)$. Then there is a subspace $W_2$ (called the direct complement of $W_1$) such that $V = W_1 \oplus W_2$.
 
 Since we will be working over $\mathbb{C}$, we can thus treat (in)decomposability as equivalent to (ir)reducibility. To understand representations of $G$, we need only understand its irreducible representations, because any other representation can be decomposed into a direct sum of irreducibles.
 
@@ -119,13 +119,13 @@ $$
 
 Treating $T$ as a matrix, this is equivalent to saying that $\rho(g)T = T\rho(g)$ for all $g \in G$. In that case, the eigenspaces of $T$ are $G$-invariant subspaces, and will yield decompositions of $(V,\rho)$  if they are not the whole of $V$. But if $E_\lambda = V$, then $Tv = \lambda v$ for all $v \in V$, so in fact $T = \lambda I$, where $I$ is the identity matrix. We have thus shown a variant of [Schur's lemma](http://en.wikipedia.org/wiki/Schur%27s_lemma){:target="_blank"}:
 
-If $(V,\rho)$ is irreducible, and $T$ is such that $\rho(g) T = T \rho(g)$ for all $g \in G$, then $T =\lambda I$ for some $\lambda$.
+> If $(V,\rho)$ is irreducible, and $T$ is such that $\rho(g) T = T \rho(g)$ for all $g \in G$, then $T =\lambda I$ for some $\lambda$.
 
 We already know that scalar matrices (i.e. matrices of the form $\lambda I$) commute with all matrices. If $(V,\rho)$ is irreducible, this result says that there are no other matrices that commute with all $\rho(g)$. The converse is also true:
 
-If $(V,\rho)$ is a reducible, then there is some $T \neq \lambda I$ for any $\lambda$ such that $\rho(g) T = T\rho(g)$ for all $g \in G$.
+> If $(V,\rho)$ is a reducible, then there is some $T \neq \lambda I$ for any $\lambda$ such that $\rho(g) T = T\rho(g)$ for all $g \in G$.
 
-I won't prove this, but note that if $V$ has a decomposition $W_1 \otimes W_2$, then the projection onto either $W_i$ will have the desired properties.  If we have such a $T$, then its eigenspaces will give a decomposition of $(V,\rho)$. This will be the subject of the [next post]({% post_url 2015-02-02-Representation-Theory-Decomposing-Representations%}).
+I won't prove this, but note that if $V$ has a decomposition $W_1 \oplus W_2$, then the projection onto either $W_i$ will have the desired properties.  If we have such a $T$, then its eigenspaces will give a decomposition of $(V,\rho)$. This will be the subject of the [next post]({% post_url 2015-02-02-Representation-Theory-Decomposing-Representations%}).
 
 
 
