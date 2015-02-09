@@ -89,7 +89,7 @@ Note that a decomposable representation is also reducible, but the converse is n
 (Equivalently: an irreducible representation is also indecomposable, but the converse is not generally true.)
 [Maschke's Theorem](http://en.wikipedia.org/wiki/Maschke%27s_theorem){:target="_blank"} tells us that the converse is true over fields of characteristic zero! 
 
-In other words, suppose $V$ is a vector space over a field of characteristic zero, say $\mathbb{C}$, and $(V,\rho)$ has a subrepresentation $(W_1,\rho)$. Then there is a subspace $W_2 \subset V$ such that $(V,\rho)$ is given by the direct sum of $(W_1,\rho)$ and $(W_2,\rho)$. Such a $W_2$ is called a direct complement of $W_1$.
+In other words, suppose $V$ is a vector space over a field of characteristic zero, say $\mathbb{C}$, and $(V,\rho)$ has a subrepresentation $(W_1,\rho)$. Then there is a subspace $W_2$ (called the direct complement of $W_1$) such that $V = W_1 \otimes W_2$.
 
 Since we will be working over $\mathbb{C}$, we can thus treat (in)decomposability as equivalent to (ir)reducibility. To understand representations of $G$, we need only understand its irreducible representations, because any other representation can be decomposed into a direct sum of irreducibles.
 
@@ -125,7 +125,7 @@ We already know that scalar matrices (i.e. matrices of the form $\lambda I$) com
 
 If $(V,\rho)$ is a reducible, then there is some $T \neq \lambda I$ for any $\lambda$ such that $\rho(g) T = T\rho(g)$ for all $g \in G$.
 
-I won't prove this, but note that if $V$ has a decomposition $V_1 \otimes V_2$, then the projection onto either $V_i$ will have the desired properties.  If we have such a $T$, then its eigenspaces will give a decomposition of $(V,\rho)$. This will be the subject of the [next post]({% post_url 2015-02-02-Representation-Theory-Decomposing-Representations%}).
+I won't prove this, but note that if $V$ has a decomposition $W_1 \otimes W_2$, then the projection onto either $W_i$ will have the desired properties.  If we have such a $T$, then its eigenspaces will give a decomposition of $(V,\rho)$. This will be the subject of the [next post]({% post_url 2015-02-02-Representation-Theory-Decomposing-Representations%}).
 
 
 
