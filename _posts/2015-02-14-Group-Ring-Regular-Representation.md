@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Group Ring and the Regular Representation
-tag: 
+draft_tag: 
 - Representation Theory
 ---
 
