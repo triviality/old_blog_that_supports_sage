@@ -64,7 +64,7 @@ $$
   <script type="text/x-sage">
 w = FG.random_element()  
 print 'w = {}'.format(w.to_vector())
-print 'v + w = {}'.format((w + v).to_vector())
+print 'v + w = {}'.format((v + w).to_vector())
   </script>
 </div>
 
@@ -76,7 +76,7 @@ $$
 
 <div class="linked">
   <script type="text/x-sage">
-print 'v * w = {}'.format((w * v).to_vector())
+print 'v * w = {}'.format((v * w).to_vector())
   </script>
 </div>
 
@@ -91,7 +91,7 @@ w &\mapsto vw.
 \end{align*}
 $$
 
-One can check that each $T_v$ is a linear transformation! We can thus represent $T_v$ as a matrix in the basis given above:
+One can check that each $T_v$ is a linear transformation! We can thus represent $T_v$ as a matrix whose columns are $T_v(g), g \in G$:
 
 <div class="linked">
   <script type="text/x-sage">
@@ -106,7 +106,7 @@ show(T)
 
 ## The regular representation
 
-We're especially interested in $T_g, g \in G$. These are invertible, with inverse $T_{g^{-1})$, and their matrices are all permutation matrices, because multiplying by $g \in G$ simply permutes elements of $G$:
+We're especially interested in $T_g, g \in G$. These are invertible, with inverse $T_{g^{-1}}$, and their matrices are all permutation matrices, because multiplying by $g \in G$ simply permutes elements of $G$:
 
 <div class="linked">
   <script type="text/x-sage">
@@ -116,16 +116,88 @@ for v in G:
   </script>
 </div>
 
-Define a function $\rho$ which assigns the each $g\in G$ the corresponding $T_g$:
+Define a function $\rho_{FG}$ which assigns the each $g\in G$ the corresponding $T_g$:
 
 $$
 \begin{align*}
-\rho: G &\to \mathrm{GL}(FG) \\
+\rho_{FG}: G &\to \mathrm{GL}(FG) \\
 g &\mapsto T_g
 \end{align*}
 $$
 
-Then the [**regular representation**](http://en.wikipedia.org/wiki/Regular_representation){:target="_blank"} of $G$ over $F$ is $(FG,\rho)$. 
+Then $(FG,\rho_{FG})$ is the [**regular representation**](http://en.wikipedia.org/wiki/Regular_representation){:target="_blank"} of $G$ over $F$. 
+
+The regular representation of any group with $|G| > 1$ is not irreducible. In fact, it is a direct sum of *all* the irreducible representations of $G$! What's more, if $(V,\rho)$ is an irreducible representation of $G$ and $\dim V = k$, then $V$ occurs $k$ times in the direct-sum decomposition of $FG$!
+
+Let's apply the decomposition algorithm in the [previous post]({% post_url 2015-02-02-Representation-Theory-Decomposing-Representations%}){:target="_blank"} to $(FG,\rho_{FG})$:
+
+<div class="linked">
+  <script type="text/x-sage">
+# Define the regular representation
+def rho(h):
+    h = FG(h)
+    return matrix([(v*FG(g)).to_vector() for g in G]).transpose()
+
+# Find non-scalar H that commutes with all elements of G
+def is_irreducible(rho,G):
+  """
+  If rho is irreducible, returns (True, I)  where I is the n-by-n identity matrix.
+  Otherwise, returns (False, H) where H is a non-scalar matrix that commutes with rho(G).
+  """
+  # Compute the dimension of the representation
+  n = rho(G.identity()).dimensions()[0]
+  
+  # Run through all r,s = 1,2,...,n
+  for r in range(n):
+      for s in range(n):
+          # Define H_rs
+          H_rs = matrix.zero(QQbar,n)
+          if r == s:
+              H_rs[r,s] = 1
+          elif r > s:
+              H_rs[r,s] = 1
+              H_rs[s,r] = 1
+          else: # r < s
+              H_rs[r,s] = I
+              H_rs[s,r] = -I
+          
+          # Compute H
+          H = sum([rho(g).conjugate_transpose()*H_rs*rho(g) for g in G])/G.cardinality()
+          
+          # Check if H is scalar
+          if H[0,0]*matrix.identity(n) != H:
+              return False,H
+  
+  # If all H are scalar
+  return True, matrix.identity(n)
+
+is_irred,H = is_irreducible(rho,G)
+
+# Compute J,P such that H = PJP^(-1)
+J,P = H.jordan_form(QQbar,transformation=True)
+
+# Compute block subdivisions (just for aesthetics)
+edges = []
+for g in G:
+    edges += (P.conjugate_transpose()*rho(g)*P).nonzero_positions()
+graph = Graph(edges)
+graph.remove_loops()
+graph.remove_multiple_edges()
+subrep_indices = graph.connected_components()
+subdivisions = graph.vertices()[1:]
+for l in subrep_indices:
+    for i in l[1:]:
+        subdivisions.remove(i)
+      
+# Display rho in block-diagonal form
+for g in G:
+    M = P.inverse()*rho(g)*P
+    M.subdivide(subdivisions, subdivisions)
+    show(M)
+  </script>
+</div>
+
+
 
 
 
