@@ -5,7 +5,7 @@ draft_tag:
 - Representation Theory
 ---
 
-In the [previous post]({% post_url 2015-02-02-Representation-Theory-Decomposing-Representations%}){:target="_blank"}, we saw how to decompose a given group representation into irreducibles. But we still don't know much about the irreducible representations of a (finite) group. What do they look like? How many are there? And is there even a finite number of irreducible representations?
+In the [previous post]({% post_url 2015-02-02-Representation-Theory-Decomposing-Representations%}){:target="_blank"}, we saw how to decompose a given group representation into irreducibles. But we still don't know much about the irreducible representations of a (finite) group. What do they look like? How many are there? Infinitely many?
 
 In this post, we'll construct the [group ring](http://en.wikipedia.org/wiki/Group_ring){:target="_blank"} of a group. Treating this as a vector space, we get the [regular representation](http://en.wikipedia.org/wiki/Regular_representation){:target="_blank"}, which turns out to contain *all* the irreducible representations of $G$!
 
@@ -36,7 +36,7 @@ v
   </script>
 </div>
 
-We can view $v \in FG$ as vector in $F^n$, where $n = |G|$: 
+We can view $v \in FG$ as vector in $F^n$, where $n$ is the size of $G$ : 
 
 <div class="linked">
   <script type="text/x-sage">
@@ -116,7 +116,7 @@ for v in G:
   </script>
 </div>
 
-Define a function $\rho_{FG}$ which assigns the each $g\in G$ the corresponding $T_g$:
+Define a function $\rho_{FG}$ which assigns to each $g\in G$ the corresponding $T_g$:
 
 $$
 \begin{align*}
