@@ -136,7 +136,7 @@ Let's apply the decomposition algorithm in the [previous post]({% post_url 2015-
 # Define the regular representation
 def rho(h):
     h = FG(h)
-    return matrix([(v*FG(g)).to_vector() for g in G]).transpose()
+    return matrix([(h*FG(g)).to_vector() for g in G]).transpose()
 
 # Find non-scalar H that commutes with all elements of G
 def is_irreducible(rho,G):
