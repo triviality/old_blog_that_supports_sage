@@ -25,7 +25,7 @@ $$
 \left(\sum_{g \in G} \alpha_g g\right) + \left(\sum_{g\in G} \beta_g g\right) = \sum_{g \in G} (\alpha_g+\beta_g) g.
 $$
 
-Let's do this is Sage with the group $G = D_4$:
+Let's do this is Sage with the group $G = D_4$ and the field $F = \mathbb{Q}$:
 
 *(The Sage cells in this post are linked, so things may not work if you don't execute them in order.)*
 
@@ -39,11 +39,28 @@ FG = GroupAlgebra(G,F)
 v = FG.an_element()
 w = FG.random_element()
 
-print v
-print w
-print w + v
+print 'v = ' + str(v)
+print 'w = ' + str(w)
+print 'v + w = ' + str(w + v)
   </script>
 </div>
+
+In fact this is a *ring*, because we can also multiply "vectors" by using the multiplication rule of the group $G$
+
+$$
+\left(\sum_{h \in G} \alpha_h h\right) \left(\sum_{g\in G} \beta_g g\right) = \sum_{h,g \in G} (\alpha_h+\beta_g) hg.
+$$
+
+<div class="linked">
+  <script type="text/x-sage">
+print 'v * w = ' + str(w * v)
+  </script>
+</div>
+
+## Group multiplication as a linear transformation
+
+
+
 
 
 
