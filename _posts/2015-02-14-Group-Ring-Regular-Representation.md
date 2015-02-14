@@ -36,7 +36,7 @@ v
   </script>
 </div>
 
-We can view $v \in FG$ as a row vector:
+We can view $v \in FG$ as vector in $F^n$, where $n = |G|$: 
 
 <div class="linked">
   <script type="text/x-sage">
@@ -87,22 +87,45 @@ We can treat multiplication by $v \in FG$ as a function
 $$
 \begin{align*}
 T_v: FG &\to FG \\
-w &\mapsto v*w.
+w &\mapsto vw.
 \end{align*}
 $$
 
-One can check that $T_v$ is indeed a linear transformation! We can thus represent $T_v$ as a matrix in the basis given above:
+One can check that each $T_v$ is a linear transformation! We can thus represent $T_v$ as a matrix in the basis given above:
 
 <div class="linked">
   <script type="text/x-sage">
 for g in G:
     g = FG(g)
-    print "v*g = {}".format((v*g).to_vector())
+    print "v*{} = {}".format(g.to_vector(),(v*g).to_vector())
 
 T = matrix([(v*FG(g)).to_vector() for g in G]).transpose()
 show(T)
   </script>
 </div>
+
+## The regular representation
+
+We're especially interested in $T_g, g \in G$. These are invertible, with inverse $T_{g^{-1})$, and their matrices are all permutation matrices, because multiplying by $g \in G$ simply permutes elements of $G$:
+
+<div class="linked">
+  <script type="text/x-sage">
+for v in G:
+    v = FG(v)
+    show(matrix([(v*FG(g)).to_vector() for g in G]).transpose())
+  </script>
+</div>
+
+Define a function $\rho$ which assigns the each $g\in G$ the corresponding $T_g$:
+
+$$
+\begin{align*}
+\rho: G &\to \mathrm{GL}(FG) \\
+g &\mapsto T_g
+\end{align*}
+$$
+
+Then the [**regular representation**](http://en.wikipedia.org/wiki/Regular_representation){:target="_blank"} of $G$ over $F$ is $(FG,\rho)$. 
 
 
 
