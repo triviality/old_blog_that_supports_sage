@@ -32,7 +32,7 @@ F = QQ
 FG = GroupAlgebra(G,F)
 
 v = FG.an_element()
-print v
+v
   </script>
 </div>
 
@@ -50,7 +50,7 @@ Here, we're treating each $g \in G$ as a basis element of $FG$
   <script type="text/x-sage">
 for g in G:
     g = FG(g)
-    print g, g.to_vector()
+    print "{} = {}".format(g.to_vector(),g)
   </script>
 </div>
 
@@ -63,12 +63,12 @@ $$
 <div class="linked">
   <script type="text/x-sage">
 w = FG.random_element()  
-print 'w = ' + str(w.to_vector())
-print 'v + w = ' + str((w + v).to_vector())
+print 'w = {}'.format(w.to_vector())
+print 'v + w = {}'.format((w + v).to_vector())
   </script>
 </div>
 
-In fact $FG$ is also a  *ring* (called the [group ring](http://en.wikipedia.org/wiki/Group_ring){:target="_blank"}), because we can multiply vectors using the multiplication rule of the group $G$:
+In fact $FG$ is also a  *ring* (called the [**group ring**](http://en.wikipedia.org/wiki/Group_ring){:target="_blank"}), because we can multiply vectors using the multiplication rule of the group $G$:
 
 $$
 \left(\sum_{h \in G} \alpha_h h\right) \left(\sum_{g\in G} \beta_g g\right) = \sum_{h,g \in G} (\alpha_h \beta_g) hg.
@@ -76,10 +76,33 @@ $$
 
 <div class="linked">
   <script type="text/x-sage">
-print 'v * w = ' + str((w * v).to_vector())
+print 'v * w = {}'.format((w * v).to_vector())
   </script>
 </div>
 
+## Multiplication as a linear transformation
+
+We can treat multiplication by $v \in FG$ as a function
+
+$$
+\begin{align*}
+T_v: FG &\to FG \\
+w &\mapsto v*w.
+\end{align*}
+$$
+
+One can check that $T_v$ is indeed a linear transformation! We can thus represent $T_v$ as a matrix in the basis given above:
+
+<div class="linked">
+  <script type="text/x-sage">
+for g in G:
+    g = FG(g)
+    print "v*g = {}".format((v*g).to_vector())
+
+T = matrix([(v*FG(g)).to_vector() for g in G]).transpose()
+show(T)
+  </script>
+</div>
 
 
 
