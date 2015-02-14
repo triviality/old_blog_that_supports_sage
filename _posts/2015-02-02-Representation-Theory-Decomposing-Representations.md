@@ -153,13 +153,13 @@ for g in G:
   </script>
 </div>
 
-We have thus decomposed $\rho$ into two 1-dimensional representations and one 2-dimensional one! 
+We have thus decomposed $\rho$ into two 1-dimensional representations and one 2-dimensional one! We can then applying the algorithm again on each of these representations to see if they further decompose.
 
 ## Getting all irreducible representations
 
 Now we know how to test for irreducibility and decompose reducible representations. But we still don't know how many irreducible representations a group has. 
 
-It turns out that finite groups have finitely many irreducible representations! In the next post, we'll exhibit a representation for any finite group $G$ containing *all* the irreducible representations of $G$.
+It turns out that finite groups have finitely many irreducible representations! In the [next post]({% post_url 2015-02-14-Group-Ring-Regular-Representation%}), we'll construct a representation for any finite group $G$ that contains *all* the irreducible representations of $G$.
 
 
 
