@@ -270,6 +270,7 @@ P,irrep_indices = irr_decompose(rho,G)
 show_irreps(rho,G,P,irrep_indices)    
   </script>
 </div>
+
 ## Getting all irreducible representations
 
 Now we know how to test for irreducibility and decompose reducible representations. But we still don't know how many irreducible representations a group has. 
