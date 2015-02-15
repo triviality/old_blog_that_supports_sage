@@ -154,11 +154,17 @@ for g in G:
   </script>
 </div>
 
-We have thus decomposed $\rho$ into two 1-dimensional representations and one 2-dimensional one! We can then applying the algorithm again on each of these representations to see if they further decompose. Here's a stand-alone script that decomposes a representation into its irreducible components:
+We have thus decomposed $\rho$ into two 1-dimensional representations and one 2-dimensional one! 
+
+## Decomposing into irreducibles
+
+Finally, to get a decomposition into irreducibles,  we can apply the algorithm recursively on each of the subrepresentations to see if they further decompose. 
+
+Here's a stand-alone script that decomposes a representation into its irreducible components:
 
 <div class="sage">
   <script type="text/x-sage">
-# Define group and representation
+# Define group and representation here
 G = DihedralGroup(4)
 def rho(g):
     return g.matrix()
