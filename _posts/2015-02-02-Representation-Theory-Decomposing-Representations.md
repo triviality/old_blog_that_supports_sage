@@ -72,13 +72,14 @@ Let's test this algorithm on our permutation representation of $D_4$:
 
 <div class="linked">
   <script type="text/x-sage">
-def is_irreducible(rho,G):
+def is_irreducible(rho,G, n= None):
   """
-  If rho is irreducible, returns (True, I)  where I is the n-by-n identity matrix.
+  If rho is irreducible, returns (True, I)  where I is the n-by-n identity matrix, n = dimension of rho.
   Otherwise, returns (False, H) where H is a non-scalar matrix that commutes with rho(G).
   """
   # Compute the dimension of the representation
-  n = rho(G.identity()).dimensions()[0]
+  if n is None:
+      n = rho(G.identity()).dimensions()[0]
   
   # Run through all r,s = 1,2,...,n
   for r in range(n):
@@ -153,8 +154,122 @@ for g in G:
   </script>
 </div>
 
-We have thus decomposed $\rho$ into two 1-dimensional representations and one 2-dimensional one! We can then applying the algorithm again on each of these representations to see if they further decompose.
+We have thus decomposed $\rho$ into two 1-dimensional representations and one 2-dimensional one! We can then applying the algorithm again on each of these representations to see if they further decompose. Here's a stand-alone script that decomposes a representation into its irreducible components:
 
+<div class="sage">
+  <script type="text/x-sage">
+# Define group and representation
+G = DihedralGroup(4)
+def rho(g):
+    return g.matrix()
+    
+# Algorithms
+import numpy as np
+
+def is_irreducible(rho,G, n= None):
+  """
+  If rho is irreducible, returns (True, I)  where I is the n-by-n identity matrix, n = dimension of rho.
+  Otherwise, returns (False, H) where H is a non-scalar matrix that commutes with rho(G).
+  """
+  # Compute the dimension of the representation
+  if n is None:
+      n = rho(G.identity()).dimensions()[0]
+  
+  # Run through all r,s = 1,2,...,n
+  for r in range(n):
+      for s in range(n):
+          # Define H_rs
+          H_rs = matrix.zero(QQbar,n)
+          if r == s:
+              H_rs[r,s] = 1
+          elif r > s:
+              H_rs[r,s] = 1
+              H_rs[s,r] = 1
+          else: # r < s
+              H_rs[r,s] = I
+              H_rs[s,r] = -I
+          
+          # Compute H
+          H = sum([rho(g).conjugate_transpose()*H_rs*rho(g) for g in G])/G.cardinality()
+          
+          # Check if H is scalar
+          if H[0,0]*matrix.identity(n) != H:
+              return False,H
+  
+  # If all H are scalar
+  return True, matrix.identity(n)
+
+def decompose(rho,G,H):
+    """
+    Uses the eigenspaces of H to decompose G into subrepresentations.
+    Returns a change of basis matrix P and the indices of the block-decomposition of rho in this basis.
+    """
+    
+    # Compute J,P such that H = PJP^(-1)
+    J,P = H.jordan_form(QQbar,transformation=True)
+
+    # Compute block subdivisions
+    edges = []
+    for g in G:
+        edges += (P.conjugate_transpose()*rho(g)*P).nonzero_positions()
+    graph = Graph(edges)
+    graph.remove_loops()
+    graph.remove_multiple_edges()
+    subrep_indices = sorted(graph.connected_components(), key=lambda x: x[0])    
+    
+    return P,subrep_indices  
+
+def irr_decompose(rho,G,index = None):
+    """
+    Decomposes rho into irreducible representations of G.
+    Returns a change of basis matrix P and the indices of the block-decomposition of rho in this basis.
+    """
+    n = rho(G.identity()).dimensions()[0]
+    if index is None:
+        index = range(n)
+        
+    # Test for irreducibility
+    is_irred, H = is_irreducible(rho,G,n)
+    
+    if is_irred:
+        subrep_indices = list(np.array(index)[range(n)])
+        print subrep_indices
+        return H, [subrep_indices]
+    else:
+        P, subrep_indices = decompose(rho,G,H)
+        #print [list(np.array(index)[subrep_index]) for subrep_index in subrep_indices]
+
+        new_subrep_indices = []
+        new_P_list = []
+        
+        for subrep_index in subrep_indices:
+            
+            def subrep(g):
+                return (P.inverse()*rho(g)*P)[subrep_index,subrep_index]
+            new_P, new_indices = irr_decompose(subrep,G, list(np.array(index)[subrep_index]))
+            
+            new_subrep_indices += new_indices
+            new_P_list += [new_P]
+        
+        return P*block_diagonal_matrix(new_P_list), new_subrep_indices
+
+def show_irreps(rho,G,P,irrep_indices):
+    subdivisions = [i for subrep_index in irrep_indices for i in subrep_index][1:]
+    for subrep in irrep_indices:
+        for i in subrep[1:]:
+            subdivisions.remove(i)
+
+    # Display rho in block-diagonal form
+    for g in G:
+        M = P.inverse()*rho(g)*P
+        M.subdivide(subdivisions, subdivisions)
+        show(M)
+
+# Execute!
+P,irrep_indices = irr_decompose(rho,G)
+show_irreps(rho,G,P,irrep_indices)    
+  </script>
+</div>
 ## Getting all irreducible representations
 
 Now we know how to test for irreducibility and decompose reducible representations. But we still don't know how many irreducible representations a group has. 
