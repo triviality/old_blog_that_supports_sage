@@ -249,7 +249,7 @@ show_irreps(rho,G,P,irrep_indices)
   </script>
 </div>
 
-So the regular representation of $D_4$ decomposes into four (distinct) $1$-dim representations and two (identical) $2$-dim ones.
+So the regular representation of $D_4$ decomposes into four (distinct) $1$-dim representations and two (isomorphic) $2$-dim ones.
 
 ## Building character
 
