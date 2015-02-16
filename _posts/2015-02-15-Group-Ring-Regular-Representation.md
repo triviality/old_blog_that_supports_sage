@@ -129,7 +129,7 @@ Then $(FG,\rho_{FG})$ is the [**regular representation**](http://en.wikipedia.or
 
 The regular representation of any non-trivial group is not irreducible. In fact, it is a direct sum of *all* the irreducible representations of $G$! What's more, if $(V,\rho)$ is an irreducible representation of $G$ and $\dim V = k$, then $V$ occurs $k$ times in the direct-sum decomposition of $FG$!
 
-Let's apply the decomposition algorithm in the [previous post]({% post_url 2015-02-02-Representation-Theory-Decomposing-Representations%}){:target="_blank"} to $(FG,\rho_{FG})$:
+Let's apply the decomposition algorithm in the [previous post]({% post_url 2015-02-02-Representation-Theory-Decomposing-Representations%}){:target="_blank"} to $(FG,\rho_{FG})$ (this might take a while to run):
 
 <div class="sage">
   <script type="text/x-sage">
