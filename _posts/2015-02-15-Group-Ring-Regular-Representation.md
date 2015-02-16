@@ -239,6 +239,7 @@ def show_irreps(rho,G,P,irrep_indices):
     # Display rho in block-diagonal form
     for g in G:
         M = P.inverse()*rho(g)*P
+        M == M*1 # Just for aesthetics
         M.subdivide(subdivisions, subdivisions)
         show(M)
 
