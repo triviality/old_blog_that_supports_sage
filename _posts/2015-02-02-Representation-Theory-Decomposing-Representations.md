@@ -280,7 +280,7 @@ show_irreps(rho,G,P,irrep_indices)
 
 Now we know how to test for irreducibility and decompose reducible representations. But we still don't know how many irreducible representations a group has. 
 
-It turns out that finite groups have finitely many irreducible representations! In the [next post]({% post_url 2015-02-14-Group-Ring-Regular-Representation%}), we'll construct a representation for any finite group $G$ that contains *all* the irreducible representations of $G$.
+It turns out that finite groups have finitely many irreducible representations! In the [next post]({% post_url 2015-02-15-Group-Ring-Regular-Representation%}), we'll construct a representation for any finite group $G$ that contains *all* the irreducible representations of $G$.
 
 
 
