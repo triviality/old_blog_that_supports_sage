@@ -244,6 +244,7 @@ def show_irreps(rho,G,P,irrep_indices):
 
 # Execute!
 P,irrep_indices = irr_decompose(rho,G)
+print irrep_indices
 show_irreps(rho,G,P,irrep_indices)    
   </script>
 </div>
