@@ -254,4 +254,4 @@ So the regular representation of $D_4$ decomposes into four (distinct) $1$-dim r
 
 We've spent a lot of time working directly with representations of a group. While more concrete, the actual matrix representations themselves tend to be a little clumsy, especially when the groups in question get large. 
 
-In the next few posts, I'll switch gears to [character theory](http://en.wikipedia.org/wiki/Character_theory), which is a simpler but more powerful way of working with group representations.
+In the next few posts, I'll switch gears to [character theory](http://en.wikipedia.org/wiki/Character_theory){:target="_blank"}, which is a simpler but more powerful way of working with group representations.
