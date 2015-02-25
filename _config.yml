@@ -18,6 +18,7 @@ avatar: http://www.sagemath.org/files/marketing/sagemath-icon-128.png
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble: 
+  rss: rss # just type anything here for a working RSS icon, make sure you set the "url" above!
   email: wonglz@uw.edu
   facebook: 
   flickr: 
@@ -25,7 +26,6 @@ footer-links:
   instagram: 
   linkedin: 
   pinterest: 
-  rss: rss # just type anything here for a working RSS icon, make sure you set the "url" above!
   twitter: sheaves_of_math
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
 
