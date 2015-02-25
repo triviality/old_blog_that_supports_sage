@@ -25,7 +25,7 @@ Many of the following properties of characters can be deduced from properties of
 
 - The **dimension** of a character is the dimension of $V$ in $(V,\rho)$. Since $\rho(\text{Id})$ is always the identity matrix, the dimension of $\chi$ is $\chi(\text{Id})$.
 - Because the trace is invariant under similarity transformations, $\chi(hgh^{-1}) = \chi(g)$ for all $g,h \in G$. Characters are constant on conjugacy classes, and are thus [**class functions**](http://en.wikipedia.org/wiki/Class_function){:target="_blank"}.
-- Letting $\chi_V$ denote the character of $(V,\rho)$, and recalling the definitions of [direct sums and tensor products]({% post_url 2015-01-24-Representation-Theory-Sums-Products%}){:target="_blank"}, 
+- Letting $\chi_V$ denote the character of $(V,\rho)$, and recalling the definitions of [direct sums and tensor products]({% post_url 2015-01-24-Representation-Theory-Sums-Products%}){:target="_blank"}, we see that
 
 $$
 \begin{align*}
