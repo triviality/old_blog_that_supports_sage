@@ -21,7 +21,22 @@ A character $\chi$ is **irreducible** if the corresponding $\rho$ is [irreducibl
 
 That's it! Despite the simplicity of the definition, the (irreducible) characters of a group contain a surprisingly amount of information about the group. Many results in group theory and representation theory can be proved using only characters, and quite a few big results have only been proved using characters.
 
-The **dimension** of a character is the dimension of $V$ in $(V,\rho)$. Since $\rho(\Id)$ is always the identity matrix, $\dim \chi = \chi(\Id)$.
+Many of the following properties of characters can be deduced from properties of the trace.
+
+- The **dimension** of a character is the dimension of $V$ in $(V,\rho)$. Since $\rho(\text{Id})$ is always the identity matrix, the dimension of $\chi$ is $\chi(\text{Id})$.
+- Because the trace is invariant under similarity transformations, $\chi(hgh^{-1}) = \chi(g)$ for all $g,h \in G$. Characters are constant on conjugacy classes, and are thus [**class functions**](http://en.wikipedia.org/wiki/Class_function){:target="_blank"}.
+- Letting $\chi_V$ denote the character of $(V,\rho)$,
+
+$$
+\begin{align*}
+\chi_{V_1 \oplus V_2} &= \chi_{V_1} + \chi_{V_2}  \\
+\chi_{V_1 \otimes V_2} &= \chi_{V_1} \cdot \chi_{V_2}.
+\end{align*}
+$$
+
+
+
+
 
 
 
