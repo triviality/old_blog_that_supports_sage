@@ -68,6 +68,8 @@ print 'v + w = {}'.format((v + w).to_vector())
   </script>
 </div>
 
+## Multiplication as a linear transformation
+
 In fact $FG$ is also a  *ring* (called the [**group ring**](http://en.wikipedia.org/wiki/Group_ring){:target="_blank"}), because we can multiply vectors using the multiplication rule of the group $G$:
 
 $$
@@ -80,18 +82,16 @@ print 'v * w = {}'.format((v * w).to_vector())
   </script>
 </div>
 
-## Multiplication as a linear transformation
-
-We can treat multiplication by $v \in FG$ as a function
+That wasn't very illuminating. However, treating multiplication by $v \in FG$ as a function
 
 $$
 \begin{align*}
 T_v: FG &\to FG \\
-w &\mapsto vw.
+w &\mapsto vw,
 \end{align*}
 $$
 
-One can check that each $T_v$ is a linear transformation! We can thus represent $T_v$ as a matrix whose columns are $T_v(g), g \in G$:
+one can check that each $T_v$ is a linear transformation! We can thus represent $T_v$ as a matrix whose columns are $T_v(g), g \in G$:
 
 <div class="linked">
   <script type="text/x-sage">
