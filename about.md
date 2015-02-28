@@ -4,13 +4,17 @@ title: About
 permalink: /about/
 ---
 
-This blog is powered by [**SageMath**](http://www.sagemath.org/){:target="_blank"}, the [Sage Cell Server](http://sagecell.sagemath.org/){:target="_blank"}   and [Jekyll](https://github.com/jekyll/jekyll){:target="_blank"}, based on a theme from [Jekyll Now](http://www.jekyllnow.com){:target="_blank"}.
+This blog is powered by 
+
+- [**SageMath**](http://www.sagemath.org/){:target="_blank"}, 
+- the [Sage Cell Server](http://sagecell.sagemath.org/){:target="_blank"},  and
+- [Jekyll](https://github.com/jekyll/jekyll){:target="_blank"}, based on a theme from [Jekyll Now](http://www.jekyllnow.com){:target="_blank"}.
 
 It's my collection of SageMath code that can be run directly in your browser.
 
 Read more [about the Sage Cell Server](http://sagecell.sagemath.org/static/about.html){:target="_blank"}, including how to embed executable Sage code into your website. Or [fork](https://github.com/barryclark/jekyll-now#quick-start){:target="_blank"} this  [repository](https://github.com/sheaves/sheaves.github.io){:target="_blank"} on Github to get started right away! 
 
-To get even more Sage power (with lots more fancy stuff like privacy settings, collaboration,... basically your own Sage server), sign up for a free [**SageMath Cloud**](https://cloud.sagemath.com/){:target="_blank"} account! Or [download and run a local copy](http://www.sagemath.org/download.html){:target="_blank"} of Sage.
+To get even more out of SageMath (fancy stuff like privacy settings, collaboration, organizing courses, your own Linux server etc.), sign up for a free [**SageMath Cloud**](https://cloud.sagemath.com/){:target="_blank"} account! You can also [download and run a local copy](http://www.sagemath.org/download.html){:target="_blank"} of SageMath.
 
 Here are more resources for computing with Sage:
 
