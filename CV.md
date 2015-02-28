@@ -4,7 +4,7 @@ title: CV
 description: "About me"
 ---
 
-I am a first-year math PhD student at the University of Washington, Seattle. <img align="right" src="/images/photo.jpg" width="220" />
+I am a first-year math PhD student at the University of Washington, Seattle. <img align="right" src="/images/photo.jpg" width="150" />
 
 My friends call me Liang Ze, but I have been known to respond to various combinations of the following:
 
