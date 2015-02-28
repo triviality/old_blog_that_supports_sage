@@ -4,7 +4,7 @@ title: CV
 description: "About me"
 ---
 
-I am a first-year PhD math student at UW, Seattle, WA. 
+I am a first-year PhD math student at UW, Seattle, WA. <img align="right" src="/images/photo.jpg" />
 
 ## History
 
