@@ -25,7 +25,7 @@ I am a first-year math PhD student at the University of Washington, Seattle.
 My friends call me Liang Ze, but I have been known to respond to various combinations of the following:
 
 - Wong (Family/last name)
-- Liang ([Generational name](http://en.wikipedia.org/wiki/Generation_name){:target="_blank"}; all my male cousins have this "middle" name)
+- Liang ([Generation name](http://en.wikipedia.org/wiki/Generation_name){:target="_blank"}; all my male cousins have this "middle" name)
 - Ze (Given name)
 
 In my spare time, I write simple snippets of code for this site, mostly in Python/Sage.
