@@ -12,10 +12,12 @@ Read more [about the Sage Cell Server](http://sagecell.sagemath.org/static/about
 
 To get even more Sage power (with lots more fancy stuff like privacy settings, collaboration,... basically your own Sage server), sign up for a free [Sage Math Cloud](https://cloud.sagemath.com/) account! Or [download and run a local copy](http://www.sagemath.org/download.html) of Sage.
 
-## Sage quick links
+# About SageMath
 Here are more resources for computing with Sage:
 
   - [**Quick reference cards**](http://wiki.sagemath.org/quickref): Reference cards to help get you started in Sage. Includes cards for linear algebra, number theory, graph theory, calculus and abstract algebra. In other languages as well!
   - [**Documentation**](http://www.sagemath.org/doc/index.html): Includes a quick tutorial, as well as a full reference manual.
   - [**Interactive examples**](http://wiki.sagemath.org/interact/): This page contains lots more examples, from various fields of math and science.
   - [**Ask Sagemath**](http://ask.sagemath.org/questions/): Get answers to Sage-related questions here.
+
+# [About me](http://sheaves.github.io/me)
