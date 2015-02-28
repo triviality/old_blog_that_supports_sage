@@ -11,7 +11,7 @@ I am a first-year math PhD student at the University of Washington, Seattle. <im
 ### History
 
 - 2009 - 2012: Cornell University
-- Fall 2010: Budapest Semesters in Math
+- Fall 2010: [Budapest Semesters in Math](http://www.budapestsemesters.com/){:target="_blank"}
 - 2012 - 2014: Institute for Infocomm Research, Singapore
 - 2014 - Present: University of Washington, Seattle
 
