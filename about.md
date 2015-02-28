@@ -8,7 +8,7 @@ This blog is powered by
 
 - [**SageMath**](http://www.sagemath.org/){:target="_blank"}, 
 - the [Sage Cell Server](http://sagecell.sagemath.org/){:target="_blank"},  and
-- [Jekyll](https://github.com/jekyll/jekyll){:target="_blank"}, based on a theme from [Jekyll Now](http://www.jekyllnow.com){:target="_blank"}.
+- [Jekyll](https://github.com/jekyll/jekyll){:target="_blank"} + [GitHub pages](https://pages.github.com/){:target="_blank"}, based on a theme from [Jekyll Now](http://www.jekyllnow.com){:target="_blank"}.
 
 It's my collection of SageMath code that can be run directly in your browser.
 
