@@ -6,7 +6,7 @@ description: "About me"
 
 ## Liang Ze Wong <img align="right" src="/images/photo.jpg" width="150" />
 
-I am a first-year math PhD student at the University of Washington, Seattle. 
+I am a first-year [math](http://www.math.washington.edu/){:target="_blank"} PhD student at the University of Washington, Seattle. 
 
 ### History
 
