@@ -19,4 +19,4 @@ Here are more resources for computing with Sage:
   - [**Interactive examples**](http://wiki.sagemath.org/interact/){:target="_blank"}: This page contains lots more examples, from various fields of math and science.
   - [**Ask Sagemath**](http://ask.sagemath.org/questions/){:target="_blank"}: Get answers to Sage-related questions here.
 
-## [About me](http://sheaves.github.io/me){:target="_blank"}
+# [About me](http://sheaves.github.io/me){:target="_blank"}
