@@ -5,9 +5,11 @@ draft_tag:
 - Representation Theory
 ---
 
-This posts illustrates some of SageMath's character theory functionality, as well as some basic results about characters of finite groups.
+This post illustrates some of SageMath's character theory functionality, as well as some basic results about characters of finite groups. 
 
 <!--more-->
+
+This really should have come out earlier, but I got side-tracked by some cosmetic issues for this site (notice any changes?). I'm also trying to embed SageCells into Markdown-generated slideshows that can be served on GitHub Pages, so look out for that!
 
 ## Basic Definitions and Properties
 
@@ -19,7 +21,33 @@ $$
 
 A character $\chi$ is **irreducible** if the corresponding $(V,\rho)$ is [irreducible]({% post_url 2015-01-26-Representation-Theory-Irreducibility-Indecomposability%}){:target="_blank"}.
 
-That's it! Despite the simplicity of the definition, the (irreducible) characters of a group contain a surprising amount of information about the group. Many results in group theory and representation theory can be proved using only characters, and quite a few big results have only been proved using characters.
+Despite the simplicity of the definition, the (irreducible) characters of a group contain a surprising amount of information about the group. Some [big theorems](http://en.wikipedia.org/wiki/Character_theory#Applications){:target="_blank"} in group theory depend heavily on character theory.
+
+Let's calculate the character of the permutation representation of $D_4$:
+
+*(The Sage cells in this post are linked, so things may not work if you don't execute them in order.)*
+
+<div class="sage">
+  <script type="text/x-sage">
+# Define group and its permutation representation
+G = DihedralGroup(4)
+
+def rho(g):
+    return g.matrix()
+
+# Define a function that returns the character of a representation
+def character(rho):
+    def chi(g):
+        return rho(g).trace()
+    return chi
+
+# Compute the character
+chi = character(rho)
+
+for g in G:
+    show([rho(g),chi(g)])
+  </script>
+</div>
 
 Many of the following properties of characters can be deduced from properties of the trace:
 
@@ -33,8 +61,6 @@ $$
 \chi_{V_1 \otimes V_2} &= \chi_{V_1} \cdot \chi_{V_2}.
 \end{align*}
 $$
-
-Let's pull up a representaton of $D_4$ 
 
 ## The Character Table
 
