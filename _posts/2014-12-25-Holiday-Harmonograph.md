@@ -4,7 +4,7 @@ title: Holiday Harmonograph
 tag: Uncategorized
 ---
 *(Guest post from the Annals of Harmonography)*
-![#138783](/images/harmonograph.png)
+![harmonograph](/images/harmonograph_loop.gif)
 
 <!--more-->
 
