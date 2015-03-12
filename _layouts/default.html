@@ -50,8 +50,10 @@
     sagecell.makeSagecell({inputLocation: '.auto', autoeval: 'True'});
     // No editor, auto evaluate Sage. Use <div class="auto_out">
     sagecell.makeSagecell({inputLocation: '.auto_out', autoeval: 'True', hide: ["editor", "evalButton", "editorToggle"]}); 
-   // No evalButton, no output. Use <div class="no_eval">
+   // No evalButton. Use <div class="no_eval">
     sagecell.makeSagecell({inputLocation: '.no_eval', hide: ["evalButton", "editorToggle"]});     
+   // No output. Use <div class="no_out">
+    sagecell.makeSagecell({inputLocation: '.no_out', hide: ["evalButton", "editorToggle","output"]});      
     // Only the 'Go!' button; no input displayed. Use <div class="go">
     sagecell.makeSagecell({inputLocation:  '.go', autoeval: 'True',
                        template:       sagecell.templates.minimal,
