@@ -18,7 +18,8 @@ To get even more out of SageMath (fancy stuff like privacy settings, collaborati
 
 Here are more resources for computing with Sage:
 
-  - [**Quick reference cards**](http://wiki.sagemath.org/quickref){:target="_blank"}: Reference cards to help get you started in Sage. Includes cards for linear algebra, number theory, graph theory, calculus and abstract algebra. In other languages as well!
+  - [**Sage Workshop**](http://theronhitchman.github.io/sage-workshop/){:target="_blank"}: A very nice tutorial to help you get started with SageMath Cloud. Includes [videos](http://theronhitchman.github.io/sage-workshop/videos/){:target="_blank"}.
+  - [**Quick reference cards**](http://wiki.sagemath.org/quickref){:target="_blank"}: Reference cards for linear algebra, number theory, graph theory, calculus and abstract algebra. In other languages as well!
   - [**Documentation**](http://www.sagemath.org/doc/index.html){:target="_blank"}: Includes a quick tutorial, as well as a full reference manual.
   - [**Interactive examples**](http://wiki.sagemath.org/interact/){:target="_blank"}: This page contains lots more examples, from various fields of math and science.
   - [**Ask Sagemath**](http://ask.sagemath.org/questions/){:target="_blank"}: Get answers to Sage-related questions here.

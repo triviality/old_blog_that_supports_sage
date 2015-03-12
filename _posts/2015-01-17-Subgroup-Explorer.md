@@ -241,15 +241,15 @@ def subgroup_class_lattices(Cardinality= selector(values = range(2,33),default=6
   </script>
 </div>
 
-[Normal subgroups](http://en.wikipedia.org/wiki/Normal_subgroup) are colored green. Additionally, the [center](http://en.wikipedia.org/wiki/Center_%28group_theory%29) is blue while the [commutator subgroup](http://en.wikipedia.org/wiki/Commutator_subgroup) is pink.
+[Normal subgroups](http://en.wikipedia.org/wiki/Normal_subgroup){:target="_blank"} are colored green. Additionally, the [center](http://en.wikipedia.org/wiki/Center_%28group_theory%29){:target="_blank"} is blue while the [commutator subgroup](http://en.wikipedia.org/wiki/Commutator_subgroup){:target="_blank"} is pink.
 
-Showing the full subgroup lattice can get messy for large groups. If the option `Conjugacy classes of subgroups` is selected, the viewer only shows the [conjugacy classes of subgroups](http://en.wikipedia.org/wiki/Conjugacy_class#Conjugacy_of_subgroups_and_general_subsets) (i.e. all subgroups that are conjugate are combined into a single vertex).
+Showing the full subgroup lattice can get messy for large groups. If the option `Conjugacy classes of subgroups` is selected, the viewer only shows the [conjugacy classes of subgroups](http://en.wikipedia.org/wiki/Conjugacy_class#Conjugacy_of_subgroups_and_general_subsets){:target="_blank"} (i.e. all subgroups that are conjugate are combined into a single vertex).
 
 The edge labels indicate how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class **contains**, or how many subgroups of one conjugacy class a given representative subgroup of another conjugacy class is **contained by**. The labels are omitted if these numbers are 1. The edge colors indicate whether the subgroups in the "smaller" conjugacy class are normal subgroups of those in "larger" conjugacy class.
 
-In the image at the top of the post, the group `C15 : C4` (the colon stands for [semi-direct product](http://en.wikipedia.org/wiki/Semidirect_product) and is usually written $\rtimes$) contains 5 subgroups isomorphic to `C3 : C4`, which in turn contains 3 subgroups isomorphic to `C4` and 1 subgroup isomorphic to `C6` (the 5 belows to another edge). The edge colors indicate that `C6` is a normal subgroup of `C3 : C3` whereas `C4` is not. For further information on group descriptors, click [here](http://groupprops.subwiki.org/wiki/GAP:StructureDescription#Aspects_of_structure_description).
+In the image at the top of the post, the group `C15 : C4` (the colon stands for [semi-direct product](http://en.wikipedia.org/wiki/Semidirect_product){:target="_blank"} and is usually written $\rtimes$) contains 5 subgroups isomorphic to `C3 : C4`, which in turn contains 3 subgroups isomorphic to `C4` and 1 subgroup isomorphic to `C6` (the 5 belows to another edge). The edge colors indicate that `C6` is a normal subgroup of `C3 : C3` whereas `C4` is not. For further information on group descriptors, click [here](http://groupprops.subwiki.org/wiki/GAP:StructureDescription#Aspects_of_structure_description){:target="_blank"}.
 
-And here's the code for a version that you can run on [SageMathCloud](https://cloud.sagSageMathCloudemath.com). It allows you to input much larger groups. This was used to produce the image at the top of the post. Don't try running it here, however, since the SageCellServer doesn't have the `database_gap` package installed.
+And here's the code for a version that you can run on [SageMathCloud](https://cloud.sagemath.com/){:target="_blank"}. It allows you to input much larger groups. This was used to produce the image at the top of the post. Don't try running it here, however, since the SageCellServer doesn't have the `database_gap` package installed.
 
 <div class="no_eval">
   <script type="text/x-sage">
@@ -473,6 +473,6 @@ def subgroup_class_lattices(Cardinality= 6):
   </script>
 </div>            
 
-Finally, while verifying the results of this program, I found an error in [this book](http://www.cambridge.org/us/academic/subjects/mathematics/algebra/representations-groups-computational-approach)!
+Finally, while verifying the results of this program, I found an error in [this book](http://www.cambridge.org/us/academic/subjects/mathematics/algebra/representations-groups-computational-approach){:target="_blank"}!
 The correction has been pencilled in. The original number printed was 1.
 ![A5 Lattice](/images/A5Lattice_CompareSmall.jpg "A5 Subgroup Lattice")
