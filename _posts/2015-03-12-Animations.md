@@ -16,6 +16,6 @@ I really should be posting about character theory, but I got distracted making s
     a = animate([parametric_plot((x(t,u),y(t,u)),(t,0,30),color = [u,1-u,0.52], axes= False, plot_points = 200) for u in [0.48+0.45*sin(v) for v in srange(0,2*pi,0.1)]])
     a.gif(savefile='my_animation.gif', delay=20, iterations=0)
   
-I'm not putting this in a SageCell because this could take quite a while, especially if you increase the number of frames (by changing the last parameter in `srange'). It saves an animated GIF that loops forever (`iterations = 0') at the location specified.
+I'm not putting this in a SageCell because this could take quite a while, especially if you increase the number of frames (by changing the parameters in `srange`), but feel free to try it out on your own copy of Sage. It saves an animated GIF that loops forever (`iterations = 0`) at the location specified by `savefile`.
 
-For more information, checkout the [Sage Reference Manual](http://www.sagemath.org/doc/reference/plotting/sage/plot/animate.html)
+For more information, checkout the [Sage reference for animated plots](http://www.sagemath.org/doc/reference/plotting/sage/plot/animate.html).
