@@ -1,13 +1,15 @@
 ---
 layout: post
 title: Animated GIFs
-draft_tag: 
+tag: 
 - Uncategorized
 ---
 
 I really should be posting about character theory, but I got distracted making some aesthetic changes to this blog (new icon and favicon!) and creating animations like this:
 
 ![harmonograph](/images/harmonograph_loop.gif)
+
+<!--more-->
 
 <div class="no_out">
   <script type="text/x-sage">
