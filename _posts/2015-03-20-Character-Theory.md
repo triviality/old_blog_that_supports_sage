@@ -21,11 +21,11 @@ A character $\chi$ is **irreducible** if the corresponding $(V,\rho)$ is [irredu
 
 Despite the simplicity of the definition, the (irreducible) characters of a group contain a surprising amount of information about the group. Some [big theorems](http://en.wikipedia.org/wiki/Character_theory#Applications){:target="_blank"} in group theory depend heavily on character theory.
 
-Let's calculate the character of the permutation representation of $D_4$:
+Let's calculate the character of the permutation representation of $D_4$. We'll display pairs $[\rho(g),\chi(g)]$ for each $g \in G$:
 
 *(The Sage cells in this post are linked, so things may not work if you don't execute them in order.)*
 
-<div class="sage">
+<div class="linked">
   <script type="text/x-sage">
 # Define group and its permutation representation
 G = DihedralGroup(4)
@@ -42,9 +42,8 @@ def character(rho):
 # Compute the character
 chi = character(rho)
 
-print "[rho(g), chi(g)] for each g in G:"
 for g in G:
-    show([g, rho(g),chi(g)])
+    show([rho(g),chi(g)])
   </script>
 </div>
 
@@ -61,10 +60,9 @@ Many of the following properties of characters can be deduced from properties of
 
 Let's ignore the representation $\rho$ for now, and just look at the character $\chi$:
 
-<div class="sage">
+<div class="linked">
   <script type="text/x-sage">
-print "chi(g)    g"
-table([[chi(g) for g in G],G.list()]).transpose()
+[chi(g) for g in G]
   </script>
 </div>
 
