@@ -55,7 +55,7 @@ Many of the following properties of characters can be deduced from properties of
 1. Because the trace is [invariant under similarity transformations](http://en.wikipedia.org/wiki/Similarity_invariance){:target="_blank"}, $\chi(hgh^{-1}) = \chi(g)$ for all $g,h \in G$. So characters are constant on conjugacy classes, and are thus [**class functions**](http://en.wikipedia.org/wiki/Class_function){:target="_blank"}.
 1. Let $\chi_V$ denote the character of $(V,\rho)$. Recalling the definitions of [direct sums and tensor products]({% post_url 2015-01-24-Representation-Theory-Sums-Products%}){:target="_blank"}, we see that
 
-  - A $\chi_{V_1 \oplus V_2} &= \chi_{V_1} + \chi_{V_2}$
+  - $\chi_{V_1 \oplus V_2} &= \chi_{V_1} + \chi_{V_2}$
   - $\chi_{V_1 \otimes V_2} &= \chi_{V_1} \times \chi_{V_2}$
 
 ## The Character Table
