@@ -9,8 +9,6 @@ This post illustrates some of SageMath's character theory functionality, as well
 
 <!--more-->
 
-This really should have come out earlier, but I got side-tracked by some cosmetic issues for this site (notice any changes?). I'm also trying to embed SageCells into Markdown-generated slideshows that can be served on GitHub Pages, so look out for that!
-
 ## Basic Definitions and Properties
 
 Given a representation $(V,\rho)$ of a group $G$, its [**character**](http://en.wikipedia.org/wiki/Character_theory){:target="_blank"} is a map $ \chi: G \to \mathbb{C}$ that returns the [trace](http://en.wikipedia.org/wiki/Trace_(linear_algebra)){:target="_blank"} of the matrices given by $\rho$:
@@ -44,25 +42,35 @@ def character(rho):
 # Compute the character
 chi = character(rho)
 
+print "[rho(g), chi(g)] for each g in G:"
 for g in G:
-    show([rho(g),chi(g)])
+    show([g, rho(g),chi(g)])
   </script>
 </div>
 
 Many of the following properties of characters can be deduced from properties of the trace:
 
-- The **dimension** of a character is the dimension of $V$ in $(V,\rho)$. Since $\rho(\text{Id})$ is always the identity matrix, the dimension of $\chi$ is $\chi(\text{Id})$.
-- Because the trace is [invariant under similarity transformations](http://en.wikipedia.org/wiki/Similarity_invariance){:target="_blank"}, $\chi(hgh^{-1}) = \chi(g)$ for all $g,h \in G$. So characters are constant on conjugacy classes, and are thus [**class functions**](http://en.wikipedia.org/wiki/Class_function){:target="_blank"}.
-- Let $\chi_V$ denote the character of $(V,\rho)$. Recalling the definitions of [direct sums and tensor products]({% post_url 2015-01-24-Representation-Theory-Sums-Products%}){:target="_blank"}, we see that
-
-$$
-\begin{align*}
-\chi_{V_1 \oplus V_2} &= \chi_{V_1} + \chi_{V_2}, \\
-\chi_{V_1 \otimes V_2} &= \chi_{V_1} \cdot \chi_{V_2}.
-\end{align*}
-$$
+1. The **dimension** of a character is the dimension of $V$ in $(V,\rho)$. Since $\rho(\text{Id})$ is always the identity matrix, the dimension of $\chi$ is $\chi(\text{Id})$.
+1. Because the trace is [invariant under similarity transformations](http://en.wikipedia.org/wiki/Similarity_invariance){:target="_blank"}, $\chi(hgh^{-1}) = \chi(g)$ for all $g,h \in G$. So characters are constant on conjugacy classes, and are thus [**class functions**](http://en.wikipedia.org/wiki/Class_function){:target="_blank"}.
+1. Let $\chi_V$ denote the character of $(V,\rho)$. Recalling the definitions of [direct sums and tensor products]({% post_url 2015-01-24-Representation-Theory-Sums-Products%}){:target="_blank"}, we see that
+  
+    -$\chi_{V_1 \oplus V_2} &= \chi_{V_1} + \chi_{V_2}$, 
+    -$\chi_{V_1 \otimes V_2} &= \chi_{V_1} \times \chi_{V_2}$ 
 
 ## The Character Table
+
+Let's ignore the representation $\rho$ for now, and just look at the character $\chi$:
+
+<div class="sage">
+  <script type="text/x-sage">
+print "chi(g)    g"
+table([[chi(g) for g in G],G.list()]).transpose()
+  </script>
+</div>
+
+This is succinct, but we can make it even shorter. From point 2. above, $\chi$ is constant on 
+
+## The orthogonality relations
 
 
 
