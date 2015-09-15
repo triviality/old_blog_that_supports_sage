@@ -34,7 +34,7 @@ P.plot(element_labels = label, vertex_shape= None, vertex_size = 800)
 </div>
 
 ## Normal subgroups
-Now suppose we wish to know which subgroups are [normal](http://en.wikipedia.org/wiki/Normal_subgroup). We can do so with the following:
+Now suppose we wish to know which subgroups are [normal](http://en.wikipedia.org/wiki/Normal_subgroup){:target="_blank"}. We can do so with the following:
 
 <div class="linked">
   <script type="text/x-sage">
@@ -52,7 +52,7 @@ Coloring takes place after labelling, so when we're defining the color dictionar
 Here are some more examples. They're all just variations of the above.
 
 ## Abelian subgroups and the center
-Let's say we want to highlight the [abelian](http://en.wikipedia.org/wiki/Abelian_group) subgroups, with special emphasis on the [center](http://en.wikipedia.org/wiki/Center_%28group_theory%29) of the group. We can do this with a slight modification to the color dictionary:
+Let's say we want to highlight the [abelian](http://en.wikipedia.org/wiki/Abelian_group){:target="_blank"} subgroups, with special emphasis on the [center](http://en.wikipedia.org/wiki/Center_%28group_theory%29){:target="_blank"} of the group. We can do this with a slight modification to the color dictionary:
 
 <div class="linked">
   <script type="text/x-sage">
@@ -66,9 +66,9 @@ P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colo
 </div>
 
 ## Maximal subgroups and the Frattini subgroup
-The [Frattini subgroup](http://en.wikipedia.org/wiki/Frattini_subgroup) is the intersection of all the [maximal subgroups](http://en.wikipedia.org/wiki/Maximal_subgroup) of $G$. We can see this by highlighting the Frattini and maximal subgroups.
+The [Frattini subgroup](http://en.wikipedia.org/wiki/Frattini_subgroup){:target="_blank"} is the intersection of all the [maximal subgroups](http://en.wikipedia.org/wiki/Maximal_subgroup){:target="_blank"} of $G$. We can see this by highlighting the Frattini and maximal subgroups.
 
-Sage has a built-in function for getting the Frattini subgroup. To get the maximal subgroups, however, we'll have to find the elements [covered](http://en.wikipedia.org/wiki/Covering_relation) by the [greatest element (or top)](http://en.wikipedia.org/wiki/Greatest_element) of the poset $P$.
+Sage has a built-in function for getting the Frattini subgroup. To get the maximal subgroups, however, we'll have to find the elements [covered](http://en.wikipedia.org/wiki/Covering_relation){:target="_blank"} by the [greatest element (or top)](http://en.wikipedia.org/wiki/Greatest_element){:target="_blank"} of the poset $P$.
 
 <div class="linked">
   <script type="text/x-sage">
@@ -88,9 +88,9 @@ P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colo
 </div>
 
 ## Sylow subgroups
-Getting the [Sylow $p$-subgroups](http://mathworld.wolfram.com/Sylowp-Subgroup.html) takes a little more work, since Sage doesn't have a single function that generates all the Sylow subgroups at once.
+Getting the [Sylow $p$-subgroups](http://mathworld.wolfram.com/Sylowp-Subgroup.html){:target="_blank"} takes a little more work, since Sage doesn't have a single function that generates all the Sylow subgroups at once.
 
-In Sage, `G.sylow_subgroup(p)` returns *one* Sylow $p$-subgroups. To get *all* the Sylow $p$-subgroups, we could take all conjugates of this Sylow subgroup (since [all Sylow $p$-subgroups are conjugate](http://en.wikipedia.org/wiki/Sylow_theorems#Theorems)). A faster way, however, is to use the fact that the cardinality of all Sylow $p$-subgroups is the maximal $p^{th}$ power dividing the order of $G$.
+In Sage, `G.sylow_subgroup(p)` returns *one* Sylow $p$-subgroups. To get *all* the Sylow $p$-subgroups, we could take all conjugates of this Sylow subgroup (since [all Sylow $p$-subgroups are conjugate](http://en.wikipedia.org/wiki/Sylow_theorems#Theorems){:target="_blank"}). A faster way, however, is to use the fact that the cardinality of all Sylow $p$-subgroups is the maximal $p^{th}$ power dividing the order of $G$.
 
 <div class="linked">
   <script type="text/x-sage">
@@ -199,4 +199,4 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
   </script>
 </div>
 
-In the next post, we'll look at labelling edges. This is particularly useful if we want to determine if $G$ has  [subgroup series](http://en.wikipedia.org/wiki/Subgroup_series) with certain properties.
+In the [next post](http://sheaves.github.io/Subgroup-Lattice-Edges/), we'll look at labelling edges. This is particularly useful if we want to determine if $G$ has  [subgroup series](http://en.wikipedia.org/wiki/Subgroup_series){:target="_blank"} with certain properties.
