@@ -11,7 +11,7 @@ In my [previous post]({% post_url 2014-12-15-Subgroup-Lattice %}), I showed how 
 
 <!--more-->
 
-First, let's rerun the code from the previous post. We'll choose a group we like and generate its poset. For this post, I'll label the subgroups by their cardinality. If you're trying this code in [SageMathCloud](https://cloud.sagemath.com/) or your own version of  Sage that has the `database_gap` package installed, I strongly recommend labelling the subgroups using `structure_description()` instead).
+First, let's rerun the code from the previous post. We'll choose a group we like and generate its poset.
 
 *(The Sage cells in this post are linked, so things may not work if you don't execute them in order.)*
 
@@ -25,8 +25,7 @@ subgroups = G.subgroups()
 f = lambda h,k: h.is_subgroup(k)
 
 # Define labels (structure_description requires database_gap package)
-label = {subgroups[i] :"." + " "*floor(i/2) + str(len(subgroups[i])) + " "*ceil(i/2) + "." for i in range(len(subgroups))}
-# label = {subgroups[i]: "." +" "*floor(i/2) + subgroups[i].structure_description()  + " "*ceil(i/2) + "." for i in range(len(subgroups))}
+label = {subgroups[i]: " "*floor(i/2) + subgroups[i].structure_description()  + " "*i for i in range(len(subgroups))}
 
 # Define and display the poset
 P = Poset((subgroups, f))
@@ -138,8 +137,8 @@ some_colors = ['lightgreen','pink','yellow','lightblue']
 
 @interact
 def subgroup_lattices(Group = selector(values = group_list, buttons=False),
-                      Label = selector(values =['None','Generators','Cardinality','Structure Description (requires database_gap)'], default='Cardinality', buttons=False),
-                      Color = selector(values =['None','Normal','Abelian and Center','Maximal and Frattini', 'Sylow'], default='Abelian and Center', buttons=False)):
+                      Label = selector(values =['None','Generators','Cardinality','Structure Description'], default='Structure Description', buttons=False),
+                      Color = selector(values =['None','Normal (Green)','Abelian (Green) and Center (Yellow)','Maximal (Green) and Frattini (Blue)', 'Sylow (one color per prime)'], default='Abelian and Center', buttons=False)):
     # Define group and poset of subgroups
     G = Group
     subgroups = G.subgroups()
@@ -153,9 +152,9 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
     elif Label == 'Generators':        
         element_labels = {x : str(x.gens())[1:-1] for x in subgroups}
     elif Label == 'Cardinality':
-        element_labels = {subgroups[i] : "." + " "*floor(i/2) + str(len(subgroups[i])) + " "*ceil(i/2) + "." for i in range(len(subgroups))}
-    elif Label == 'Structure Description (requires database_gap)':
-        element_labels = {subgroups[i]: "." +" "*floor(i/2) + subgroups[i].structure_description()  + " "*ceil(i/2) + "." for i in range(len(subgroups))}
+        element_labels = {subgroups[i] : " "*floor(i/2) + str(len(subgroups[i])) + " "*i for i in range(len(subgroups))}
+    elif Label == 'Structure Description':
+        element_labels = {subgroups[i]: " "*floor(i/2) + subgroups[i].structure_description()  + " "*i for i in range(len(subgroups))}
     
     if label_elements:
         label = element_labels
@@ -165,20 +164,20 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
     # Define colors
     if Color == 'None':
         color = 'white'
-    elif Color == 'Normal':
+    elif Color == 'Normal (Green)':
         color = {'lightgreen':[label[x] for x in subgroups if x.is_normal()],
         'white':[label[x] for x in subgroups if not x.is_normal()]}
-    elif Color == 'Abelian and Center':
+    elif Color == 'Abelian (Green) and Center (Yellow)':
         color = {'lightgreen':[label[x] for x in subgroups if x != G.center() and x.is_abelian()],
         'white':[label[x] for x in subgroups if not x.is_abelian()],
         'yellow':[label[G.center()]]}
-    elif Color == 'Maximal and Frattini':
+    elif Color == 'Maximal (Green) and Frattini (Blue)':
         frattini = G.frattini_subgroup()
         maximals = [x for x in subgroups if P.covers(x,P.top()) and x not in [frattini]]
         color = {'lightgreen':[label[x] for x in maximals],
         'white':[label[x] for x in subgroups if x not in maximals + [frattini]],
         'lightblue':[label[x] for x in subgroups if x in [frattini]]}
-    elif Color == 'Sylow': 
+    elif Color == 'Sylow (one color per prime)': 
         prime_factors = [p^e for p,e in list(G.cardinality().factor())]
         
         # List Sylow p-subgroups for each p
