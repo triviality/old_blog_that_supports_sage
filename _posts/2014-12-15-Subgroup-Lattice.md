@@ -110,7 +110,7 @@ group_list = KQ + Symm + Alte + Cycl + Dicy + Dihe
 
 @interact
 def subgroup_lattices(Group = selector(values = group_list, buttons=False),
-                      Label = selector(values =['None','Generators', 'Cardinality','Structure Description'], default='Cardinality', buttons=False)):
+                      Label = selector(values =['None','Generators', 'Cardinality','Structure Description'], default='Structure Description', buttons=False)):
     # Define group and list of subgroups
     G = Group
     subgroups = G.subgroups()
