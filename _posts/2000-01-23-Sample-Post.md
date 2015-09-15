@@ -22,7 +22,22 @@ The things in the `---` are the front matter. To make this post your own, change
 
 This post is a **draft** post, because it has `draft_tag` in the front matter instead of just `tag`. Draft posts will not appear on the [front page](http://sheaves.github.io/){:target="_blank"}, nor on the Topics or Archive page. No one will know of their existence, except  However, they can be accessed via their URL so that you can preview what it looks like.
 
-To convert a draft post to a normal post, simply remove the `draft_` from `draft_tag` in the front matter.
+To convert a draft post to a normal post, simply remove the `draft_` from `draft_tag` in the front matter. Once that happens, the post will appear on the front page of this site, **as well as on subscribers' feeds**, so be careful! Any new tags you've created will also appear on the Topics page.
+
+## Writing in Markdown
+
+Most standard markdown syntax works. Here's a [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet){:target="_blank"}.
+
+You can also type $\LaTex$ inline, like $x + 2$ or 
+
+$$ \int_0^1 x dx $$
+
+Note empty line before and after the `$$`.
+
+For hyperlinks, I prefer to add `{:target="_blank"}` so that the link opens in a new page, but that's personal preference.
+
+## Writing SageMath code
+
 
 
   
