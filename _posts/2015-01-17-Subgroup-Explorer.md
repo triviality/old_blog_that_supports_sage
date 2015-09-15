@@ -251,7 +251,7 @@ In the image at the top of the post, the group `C15 : C4` (the colon stands for 
 
 And here's the code for a version that you can run here, or on [SageMathCloud](https://cloud.sagemath.com/){:target="_blank"}. It allows you to input much larger groups. This was used to produce the image at the top of the post. ~~Don't try running it here, however, since the SageCellServer doesn't have the `database_gap` package installed.~~
 
-<div class="no_eval">
+<div class="sage">
   <script type="text/x-sage">
 from collections import defaultdict
 
