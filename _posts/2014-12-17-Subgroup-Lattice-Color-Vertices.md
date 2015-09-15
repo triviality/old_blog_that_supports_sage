@@ -7,7 +7,7 @@ tag:
 
 In my [previous post]({% post_url 2014-12-15-Subgroup-Lattice %}), I showed how to use Sage to generate the subgroup lattice of a group, and define labels for the subgroups. In this post, I'll demonstrate how to color subgroups with different colors according to some desired property. If you're not interested in code, scroll to the bottom of the post for a visual collection of groups and their subgroup lattices. 
 
-![Lattice of the dicyclic group $Dic_3$](/images/Dic3Lattice.png "Lattice of the dicyclic group $Dic_3$")
+![Lattice of the dicyclic group $Dic_3$](/images/Dic3Lattice_2.svg "Lattice of the dicyclic group $Dic_3$")
 
 <!--more-->
 
@@ -29,7 +29,7 @@ label = {subgroups[i]: " "*floor(i/2) + subgroups[i].structure_description()  + 
 
 # Define and display the poset
 P = Poset((subgroups, f))
-P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800)
+P.plot(element_labels = label, vertex_shape= None, vertex_size = 800)
   </script>
 </div>
 
@@ -138,7 +138,7 @@ some_colors = ['lightgreen','pink','yellow','lightblue']
 @interact
 def subgroup_lattices(Group = selector(values = group_list, buttons=False),
                       Label = selector(values =['None','Generators','Cardinality','Structure Description'], default='Structure Description', buttons=False),
-                      Color = selector(values =['None','Normal (Green)','Abelian (Green) and Center (Yellow)','Maximal (Green) and Frattini (Blue)', 'Sylow (one color per prime)'], default='Abelian and Center', buttons=False)):
+                      Color = selector(values =['None','Normal (Green)','Abelian (Green) and Center (Yellow)','Maximal (Green) and Frattini (Blue)', 'Sylow (one color per prime)'], default='Abelian (Green) and Center (Yellow)', buttons=False)):
     # Define group and poset of subgroups
     G = Group
     subgroups = G.subgroups()
