@@ -11,16 +11,17 @@ This is the first of a series of posts about working with group representations 
 
 ## Basic Definitions
 
-Given a group $G$, a linear representation of $G$ is a group homomorphism $\rho: G \to \mathrm{GL}(V)$ 
-such that 
-
-$$
-\rho(g h) = \rho(g) \rho(h) \,\, \forall g,h \in G.
-$$
+Given a group $G$, a linear representation of $G$ is a group homomorphism $\rho: G \to \mathrm{GL}(V)$. 
 
 For our purposes, we will assume that $G$ is a finite group and $V$ is an $n$-dimensional vector space over $\mathbb{C}$. Then $\mathrm{GL}(V)$ is isomorphic to the invertible $n \times n$ matrices over $\mathbb{C}$, which we will denote $\mathrm{GL}_n \mathbb{C}$. 
 
-So a representation is just a function that takes group elements and returns invertible matrices, in such a way that the above equation holds.
+So a representation is just a function that takes group elements and returns invertible matrices, such that
+
+$$
+\rho(g h) = \rho(g) \rho(h) \,\, \forall g,h \in G,
+$$
+
+where we have matrix multiplication on the right-hand side.
 
 Various authors refer to the map $\rho$, the vector space $V$, or the tuple $(V,\rho)$ as a representation; this shouldn't cause any confusion, as it's usually clear from context whether we are referring to a map or a vector space. When I need to be extra precise, I'll use $(V,\rho)$.
 
