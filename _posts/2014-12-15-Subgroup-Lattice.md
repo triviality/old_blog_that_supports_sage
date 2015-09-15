@@ -7,10 +7,6 @@ tag:
 
 This is the first in a series of posts on visualizing groups via their lattice of subgroups.
 
-![Lattice of the dihedral group $D_4$](/images/D4LatticeWhite.png "Lattice of the dihedral group $D_4$.")
-
-![Lattice of the dihedral group $D_4$](/images/D4LatticeWhite_2.png "Lattice of the dihedral group $D_4$.")
-
 ![Lattice of the dihedral group $D_4$](/images/D4LatticeWhite_2.svg "Lattice of the dihedral group $D_4$.")
 
 <!--more-->
