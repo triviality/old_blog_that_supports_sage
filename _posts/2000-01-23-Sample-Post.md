@@ -38,13 +38,13 @@ Note empty line before and after the `$$`.
 
 For hyperlinks, I prefer to add `{:target="_blank"}` so that the link opens in a new page, but that's personal preference.
 
-## Writing SageMath code
+## Inserting SageMath cells
 
-SageMath code can be inserted in HTML blocks:
+Basic SageMath code can be inserted using HTML blocks:
 
-<div class="all">
+<div class="sage">
   <script type="text/x-sage">
-G = PermutationGroup(3)
+G = SymmetricGroup(3)
 
 for g in G:
     print g
@@ -54,9 +54,41 @@ G.structure_description()
 </div>
 
 Note the following:
-  - There should be an empty line before and after the block
-  - The SageMath/Python code should be indented **all the way to the left**. Standard Python indenting applies within the block.
 
+  - There should be an empty separting the block of HTML from your markdown text.
+  - The SageMath/Python code should start **all the way to the left**. Standard Python indenting applies within the block.
+
+These cells can be inserted anywhere in the post. The code in each cell runs independently from other cells - variable names won't carry over, for instance. 
+
+### Linking SageMath cells
+
+To write code in linked cells, use the following syntax:
+
+*(The Sage cells in this post are linked, so things may not work if you don't execute them in order.)*
+
+<div class="linked">
+  <script type="text/x-sage">
+F.<x> = NumberField(x^2 + x + 1)
+F
+  </script>
+</div>
+
+The only difference is that we use `div class = "linked"` instead of `div class = 'sage'`. Now the variables defined in the previous cell can be used in the next cell, and all cells that are marked `div class = "linked"`:
+
+<div class="linked">
+  <script type="text/x-sage">
+G = F.galois_group()
+G.structure_description()
+  </script>
+</div>
+
+Linked cells have to be executed in the order that variables are defined. That's why I normally include the following note right before the first linked cell of a post:
+
+*(The Sage cells in this post are linked, so things may not work if you don't execute them in order.)*
+
+There are other kinds of SageMath cells that can do different things, or that have various options enabled or disable. But this should suffice for most purposes.
+
+Happy writing!
 
   
 
