@@ -8,7 +8,6 @@ tag:
 To sum up the subgroup lattice series, I've written a subgroup lattice generator. It's powered by Sage and GAP, and allows you to view the lattice of subgroups or subgroup conjugacy classes of a group from your browser.
 
 <!--more-->
-(Click "Go!" if it doesn't load.)
 
 <div class="auto">
   <script type="text/x-sage">
