@@ -68,7 +68,7 @@ If you ran the preceding code, you probably encountered an error message. This i
 <div class = "linked">
   <script type="text/x-sage">
 # Label by size
-label = {subgroups[i] :"." + " "*floor(i/2) + str(len(subgroups[i])) + " "*ceil(i/2) + "." for i in range(len(subgroups))}
+label = {subgroups[i] : " "*floor(i/2) + str(len(subgroups[i])) + " "*i for i in range(len(subgroups))}
 P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colors = 'white')
   </script>
 </div>
@@ -76,16 +76,16 @@ P.plot(element_labels = label, vertex_shape= 'H', vertex_size = 800, vertex_colo
 ## Labelling by structure description
 However, cardinalities still don't tell me very much about the subgroup. Fortunately, Sage has a method for describing the structure of a small group: `H.structure_description()` where `H` is the group in question.
 
-*Un*fortunately, this method requires the [GAP](http://www.gap-system.org/) group database, which is not installed with the Sagecell version of Sage. However, the free [SageMathCloud](https://cloud.sagemath.com/) service's installation of Sage *does* have the group database installed, so you can try the following code there. This code was used to produce the image at the start of this post:
+This code was used to produce the image at the start of this post:
 
-<div class="no_eval">
+<div class="linked">
   <script type="text/x-sage">
 # Define group and list of subgroups
 G = DihedralGroup(4)
 subgroups = G.subgroups()
 
 # Label using structure_description()
-label = {subgroups[i]: "." +" "*floor(i/2) + subgroups[i].structure_description()  + " "*ceil(i/2) + "." for i in range(len(subgroups))}
+label = {subgroups[i]: " "*floor(i/2) + subgroups[i].structure_description()  + " "*i for i in range(len(subgroups))}
 
 # Display poset
 G_Poset = Poset((subgroups,lambda h,k: h.is_subgroup(k)))
@@ -110,7 +110,7 @@ group_list = KQ + Symm + Alte + Cycl + Dicy + Dihe
 
 @interact
 def subgroup_lattices(Group = selector(values = group_list, buttons=False),
-                      Label = selector(values =['None','Generators', 'Cardinality','Structure Description (requires database_gap)'], default='Cardinality', buttons=False)):
+                      Label = selector(values =['None','Generators', 'Cardinality','Structure Description'], default='Cardinality', buttons=False)):
     # Define group and list of subgroups
     G = Group
     subgroups = G.subgroups()
@@ -123,9 +123,9 @@ def subgroup_lattices(Group = selector(values = group_list, buttons=False),
     elif Label == 'Generators':        
         element_labels = {x : str(x.gens())[1:-1] for x in subgroups}
     elif Label == 'Cardinality':
-        element_labels = {subgroups[i] : "." + " "*floor(i/2) + str(len(subgroups[i])) + " "*ceil(i/2) + "." for i in range(len(subgroups))}
-    elif Label == 'Structure Description (requires database_gap)':
-        element_labels = {subgroups[i]: "." +" "*floor(i/2) + subgroups[i].structure_description()  + " "*ceil(i/2) + "." for i in range(len(subgroups))}
+        element_labels = {subgroups[i] : " "*floor(i/2) + str(len(subgroups[i])) + " "*i for i in range(len(subgroups))}
+    elif Label == 'Structure Description':
+        element_labels = {subgroups[i]: " "*floor(i/2) + subgroups[i].structure_description()  + " "*i for i in range(len(subgroups))}
     
     # Define and display poset
     P = Poset((subgroups, lambda h,k: h.is_subgroup(k) ))
