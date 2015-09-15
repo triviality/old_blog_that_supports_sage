@@ -31,7 +31,7 @@ Most standard markdown syntax works. Here's a [cheatsheet](https://github.com/ad
 You can also type Latex inline, like $x^2$, or in equation mode:
 
 $$ 
-\int_D d\omega = \int_{\del D} \omega
+\int_D d\omega = \int_{\partial D} \omega
 $$
 
 Note empty line before and after the `$$`.
@@ -68,7 +68,7 @@ To write code in linked cells, use the following syntax:
 
 <div class="linked">
   <script type="text/x-sage">
-F.<x> = NumberField(x^2 + x + 1)
+F.<a> = NumberField(x^2 + x + 1)
 F
   </script>
 </div>
