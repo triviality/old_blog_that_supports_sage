@@ -11,6 +11,7 @@
 
 <title>Group Homology slides</title>
 
+
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
 <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
@@ -32,7 +33,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 <![endif]-->
 
 <!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
+
 
 <style type="text/css">
     /*!
@@ -220,7 +221,7 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Group-Homology">Group Homology<a class="anchor-link" href="#Group-Homology">&#182;</a></h1><h3 id="Liang-Ze-Wong">Liang Ze Wong<a class="anchor-link" href="#Liang-Ze-Wong">&#182;</a></h3><h3 id="Math-564">Math 564<a class="anchor-link" href="#Math-564">&#182;</a></h3>
+<h1 id="Group-Homology">Group Homology<a class="anchor-link" href="#Group-Homology">&#182;</a></h1><h4 id="Liang-Ze-Wong">Liang Ze Wong<a class="anchor-link" href="#Liang-Ze-Wong">&#182;</a></h4><h4 id="Math-564">Math 564<a class="anchor-link" href="#Math-564">&#182;</a></h4>
 </div>
 </div>
 </div></section>
@@ -232,24 +233,187 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Outline:">Outline:<a class="anchor-link" href="#Outline:">&#182;</a></h1><ul>
-<li>Homological algebra</li>
-<li>Topology</li>
+<h1 id="Outline:">Outline:<a class="anchor-link" href="#Outline:">&#182;</a></h1><ol>
+<li>Homological algebra recap</li>
+<li>Homology of a group</li>
+<li>Group actions on CW-complexes</li>
+</ol>
+
+</div>
+</div>
+</div></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Homological-algebra-recap">Homological algebra recap<a class="anchor-link" href="#Homological-algebra-recap">&#182;</a></h1><p>Let $R$ be a ring, $M$ an $R$-module,</p>
+<p>A <strong>projective resolution</strong> of $M$ is an exact sequence of $R$-modules</p>
+$$ \cdots \to F_2 \xrightarrow{\partial_2} F_1 \xrightarrow{\partial_1} F_0 \xrightarrow{\varepsilon} M \to 0$$<p>such that each $F_i$ is a projective $R$-module.</p>
+<p>Also written:</p>
+$$ F_{\bullet} \xrightarrow{\varepsilon} M $$
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Free modules are projective, and we can always get a free, hence projective, resolution</li>
+<li>$\varepsilon$ is an <strong>augmentation</strong> of $F_\bullet$</li>
 </ul>
 
 </div>
 </div>
-</div></section><section>
+</div>
+    </aside></section><section>
     
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is a subslide</p>
+<p>Let $N$ be another $R$-module.</p>
+<p>Tensoring $N$ with $F_\bullet$, we get another chain complex</p>
+$$ F_{\bullet} \otimes_R N =  \cdots \to F_2 \otimes N \to F_1 \otimes N \to F_0 \otimes N \to 0.$$<p>Taking the homology of this complex yields:</p>
+$$ \text{Tor}^R_n(M,N) := H_n(F_{\bullet}\otimes_R N)$$
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Tensoring is right exact in general</li>
+<li>If $N$ is <strong>flat</strong> then tensoring with $N$ is an exact functor, so all the homology groups are trivial</li>
+<li>Note that we only tensor with $F_\bullet$, not $F_\bullet \to M$</li>
+<li>$\text{Tor}(-,N)$ is the derived functor of $-\otimes N$</li>
+<li>Tor is independent of the resolution of $M$</li>
+<li>We can also define Tor using resolutions of $N$; the results are isomorphic</li>
+</ul>
 
 </div>
 </div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Homology-of-a-group">Homology of a group<a class="anchor-link" href="#Homology-of-a-group">&#182;</a></h1><p>Let $G$ be a (finite) group. Want to do the above with the <strong>integral group ring</strong></p>
+$$R = \mathbb{Z}G$$<p>and its modules.</p>
+
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$\mathbb{Z}G$ is the free $\mathbb{Z}$-module generated by elements of $G$, with multiplication extended linearly from that of $G$</li>
+<li>This is the ring we will be using from now on</li>
+<li>If $G$ is not finite, we require that elements of $\mathbb{Z}G$ have only finitely many nonzero $a_g$</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </aside></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <strong>group homology</strong> of $G$ is</p>
+$$ H_{\bullet}G := \text{Tor}^{\mathbb{Z}G}_{\bullet}(\mathbb{Z},\mathbb{Z})$$
+</div>
+</div>
+</div><div class="fragment" data-fragment-index="9">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>which is the homology of the chain complex</p>
+$$ \cdots \to F_2 \otimes_{\mathbb{Z}G} \mathbb{Z} \to F_1 \otimes_{\mathbb{Z}G} \mathbb{Z} \to F_0 \otimes_{\mathbb{Z}G} \mathbb{Z} \to 0$$<p>where</p>
+$$\cdots \to F_2 \to F_1 \to F_0 \to \mathbb{Z} \to 0$$<p>is a projective resolution of $\mathbb{Z}$.</p>
+
+</div>
+</div>
+</div>
+    </div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$\mathbb{Z}$ is a trivial $\mathbb{Z}G$-module</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </aside><div class="fragment" data-fragment-index="11">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Topology-provides-a-free-resolution-of-$\mathbb{Z}$!">Topology provides a free resolution of $\mathbb{Z}$!<a class="anchor-link" href="#Topology-provides-a-free-resolution-of-$\mathbb{Z}$!">&#182;</a></h4>
+</div>
+</div>
+</div>
+    </div></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Group-actions-on-CW-complexes">Group actions on CW-complexes<a class="anchor-link" href="#Group-actions-on-CW-complexes">&#182;</a></h1><p>A <strong>$G$-complex</strong> is a CW-complex  $X$ with a $G$-action such that:</p>
+<ul>
+<li>$\forall g \in G$,   $g: X \to X$ is a homeomorphism</li>
+<li>$\forall$ cells $\sigma \subset X$, $g\sigma$ is also a cell</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div></section>
     </section><section>
     <section>
@@ -259,19 +423,9 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>$\cdots \to C_n(X) \to \cdots$</p>
-
-</div>
-</div>
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ul>
+<li>[Kenneth Brown] Cohomology of Groups</li>
+</ul>
 
 </div>
 </div>
