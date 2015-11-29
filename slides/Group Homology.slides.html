@@ -11,7 +11,6 @@
 
 <title>Group Homology slides</title>
 
-
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
 <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
@@ -31,8 +30,6 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 <!--[if lt IE 9]>
 <script src="reveal.js/lib/js/html5shiv.js"></script>
 <![endif]-->
-
-<!-- Get Font-awesome from cdn -->
 
 
 <style type="text/css">
@@ -221,10 +218,24 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Group-Homology">Group Homology<a class="anchor-link" href="#Group-Homology">&#182;</a></h1><h4 id="Liang-Ze-Wong">Liang Ze Wong<a class="anchor-link" href="#Liang-Ze-Wong">&#182;</a></h4><h4 id="Math-564">Math 564<a class="anchor-link" href="#Math-564">&#182;</a></h4>
+<h1 id="Group-Homology">Group Homology<a class="anchor-link" href="#Group-Homology">&#182;</a></h1><h4 id="group-actions-+-homological-algebra">group actions + homological algebra<a class="anchor-link" href="#group-actions-+-homological-algebra">&#182;</a></h4>
 </div>
 </div>
-</div></section>
+</div><div style=display:none>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$\DeclareMathOperator{\ZZ}{\mathbb{Z}}$</p>
+<p>$\DeclareMathOperator{\SS}{\mathbb{S}}$</p>
+<p>$\DeclareMathOperator{\RP}{\mathbb{RP}}$</p>
+
+</div>
+</div>
+</div>
+    </div></section>
     </section><section>
     <section>
     
@@ -236,7 +247,7 @@ div.output_prompt {
 <h1 id="Outline:">Outline:<a class="anchor-link" href="#Outline:">&#182;</a></h1><ol>
 <li>Homological algebra recap</li>
 <li>Homology of a group</li>
-<li>Group actions on CW-complexes</li>
+<li>$K(G,1)$-spaces</li>
 </ol>
 
 </div>
@@ -252,9 +263,8 @@ div.output_prompt {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Homological-algebra-recap">Homological algebra recap<a class="anchor-link" href="#Homological-algebra-recap">&#182;</a></h1><p>Let $R$ be a ring, $M$ an $R$-module,</p>
 <p>A <strong>projective resolution</strong> of $M$ is an exact sequence of $R$-modules</p>
-$$ \cdots \to F_2 \xrightarrow{\partial_2} F_1 \xrightarrow{\partial_1} F_0 \xrightarrow{\varepsilon} M \to 0$$<p>such that each $F_i$ is a projective $R$-module.</p>
-<p>Also written:</p>
-$$ F_{\bullet} \xrightarrow{\varepsilon} M $$
+$$ \cdots \to C_2 \xrightarrow{\partial_2} C_1 \xrightarrow{\partial_1} C_0 \xrightarrow{\varepsilon} M \to 0$$<p>such that each $C_i$ is a projective $R$-module.</p>
+
 </div>
 </div>
 </div><aside class="notes">
@@ -280,9 +290,9 @@ $$ F_{\bullet} \xrightarrow{\varepsilon} M $$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let $N$ be another $R$-module.</p>
-<p>Tensoring $N$ with $F_\bullet$, we get another chain complex</p>
-$$ F_{\bullet} \otimes_R N =  \cdots \to F_2 \otimes N \to F_1 \otimes N \to F_0 \otimes N \to 0.$$<p>Taking the homology of this complex yields:</p>
-$$ \text{Tor}^R_n(M,N) := H_n(F_{\bullet}\otimes_R N)$$
+<p>Tensoring $N$ with $C_\bullet$, we get another chain complex</p>
+$$ \cdots \to N \otimes C_2  \to N \otimes C_1\to N \otimes C_0 \to 0.$$<p>Taking the homology of this complex yields:</p>
+$$ \text{Tor}^R_n(N,M) := H_n(N \otimes_R C_{\bullet})$$
 </div>
 </div>
 </div><aside class="notes">
@@ -293,12 +303,7 @@ $$ \text{Tor}^R_n(M,N) := H_n(F_{\bullet}\otimes_R N)$$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Tensoring is right exact in general</li>
-<li>If $N$ is <strong>flat</strong> then tensoring with $N$ is an exact functor, so all the homology groups are trivial</li>
-<li>Note that we only tensor with $F_\bullet$, not $F_\bullet \to M$</li>
-<li>$\text{Tor}(-,N)$ is the derived functor of $-\otimes N$</li>
 <li>Tor is independent of the resolution of $M$</li>
-<li>We can also define Tor using resolutions of $N$; the results are isomorphic</li>
 </ul>
 
 </div>
@@ -313,36 +318,21 @@ $$ \text{Tor}^R_n(M,N) := H_n(F_{\bullet}\otimes_R N)$$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Homology-of-a-group">Homology of a group<a class="anchor-link" href="#Homology-of-a-group">&#182;</a></h1><p>Let $G$ be a (finite) group. Want to do the above with the <strong>integral group ring</strong></p>
+<h1 id="Homology-of-a-group">Homology of a group<a class="anchor-link" href="#Homology-of-a-group">&#182;</a></h1><p>Let $G$ be a (discrete) group. Want to do the above with the <strong>integral group ring</strong></p>
 $$R = \mathbb{Z}G$$<p>and its modules.</p>
 
 </div>
 </div>
-</div><aside class="notes">
+</div></section><section>
     
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>$\mathbb{Z}G$ is the free $\mathbb{Z}$-module generated by elements of $G$, with multiplication extended linearly from that of $G$</li>
-<li>This is the ring we will be using from now on</li>
-<li>If $G$ is not finite, we require that elements of $\mathbb{Z}G$ have only finitely many nonzero $a_g$</li>
-</ul>
+<p>The <strong>group homology</strong> of $G$ is
+$$ H_{\bullet}G := \text{Tor}^{\mathbb{Z}G}_{\bullet}(\ZZ,\ZZ)$$</p>
 
-</div>
-</div>
-</div>
-    </aside></section><section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The <strong>group homology</strong> of $G$ is</p>
-$$ H_{\bullet}G := \text{Tor}^{\mathbb{Z}G}_{\bullet}(\mathbb{Z},\mathbb{Z})$$
 </div>
 </div>
 </div><div class="fragment" data-fragment-index="9">
@@ -353,8 +343,33 @@ $$ H_{\bullet}G := \text{Tor}^{\mathbb{Z}G}_{\bullet}(\mathbb{Z},\mathbb{Z})$$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>which is the homology of the chain complex</p>
-$$ \cdots \to F_2 \otimes_{\mathbb{Z}G} \mathbb{Z} \to F_1 \otimes_{\mathbb{Z}G} \mathbb{Z} \to F_0 \otimes_{\mathbb{Z}G} \mathbb{Z} \to 0$$<p>where</p>
-$$\cdots \to F_2 \to F_1 \to F_0 \to \mathbb{Z} \to 0$$<p>is a projective resolution of $\mathbb{Z}$.</p>
+$$ \cdots \to \ZZ \otimes_{\mathbb{Z}G} C_2 \to \ZZ \otimes_{\mathbb{Z}G} C_1 \to \ZZ \otimes_{\mathbb{Z}G} C_0 \to 0$$<p>where</p>
+$$\cdots \to C_2 \to C_1 \to C_0 \to \mathbb{Z} \to 0$$<p>is a projective resolution of $\mathbb{Z}$.</p>
+
+</div>
+</div>
+</div>
+    </div><div class="fragment" data-fragment-index="10">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>How do we get projective resolutions of $M = \mathbb{Z}$?</p>
+<p>Why do we tensor with $N = \mathbb{Z}$?</p>
+
+</div>
+</div>
+</div>
+    </div><div class="fragment" data-fragment-index="11">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Topology has the answers!</strong></p>
 
 </div>
 </div>
@@ -367,20 +382,114 @@ $$\cdots \to F_2 \to F_1 \to F_0 \to \mathbb{Z} \to 0$$<p>is a projective resolu
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>$\mathbb{Z}$ is a trivial $\mathbb{Z}G$-module</li>
+<li>$G$ acts trivially on $\mathbb{Z}$</li>
+<li>In fact, we get free resolutions</li>
 </ul>
 
 </div>
 </div>
 </div>
-    </aside><div class="fragment" data-fragment-index="11">
+    </aside></section>
+    </section><section>
+    <section>
     
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Topology-provides-a-free-resolution-of-$\mathbb{Z}$!">Topology provides a free resolution of $\mathbb{Z}$!<a class="anchor-link" href="#Topology-provides-a-free-resolution-of-$\mathbb{Z}$!">&#182;</a></h4>
+<h3 id="Free-actions-and-free-resolutions">Free actions and free resolutions<a class="anchor-link" href="#Free-actions-and-free-resolutions">&#182;</a></h3><p><strong><em>Proposition.</em></strong> Let $G$ act freely on a space $E$.</p>
+<p>Then $S_n E$ is a free $G$-set and $C_n E = \mathbb{Z}S_n E$ is a free $\mathbb{Z}G$-module.</p>
+
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$S_n E$ is the set of singular $n$-simplices $\{\sigma: \Delta^n \to E\}$. The action of $G$ on $E$ induces an action on $S_n E$ by composition: $g\cdot \sigma := g \circ \sigma$</li>
+<li>The induced action is free because $g \circ\sigma = \sigma \iff g = e$</li>
+<li>$C_n E$ is the $n^{th}$ singular chain of $E$</li>
+<li>Although "free" appears many times, it means different things. In particular, the last statement requires proving.</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </aside><div class="fragment" data-fragment-index="15">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><em>Lemma.</em></strong> If $S$ is a free $G$-set, then $\mathbb{Z}S$ is a free $\mathbb{Z}G$-module.</p>
+
+</div>
+</div>
+</div>
+    </div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Proof.</em> For $s \in S$, we have
+$$Gx \cong G/G_s.$$</p>
+<p>Since $S$ is the disjoint union of its orbits and
+$$ \mathbb{Z}\left(\coprod S_i\right) = \oplus \mathbb{Z}S_i$$
+we get
+$$ \mathbb{Z}S \cong \oplus\mathbb{Z}\left(G/G_s\right).$$</p>
+<p>Since $G$ acts <em>freely</em>, $G_s = \{e\}$ so $G/G_s = G$ and
+$$\mathbb{Z}S \cong \oplus \mathbb{Z}G.$$</p>
+
+</div>
+</div>
+</div>
+    </aside><div class="fragment" data-fragment-index="17">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So we get a chain complex of <em>free</em> $G$-modules</p>
+$$ \cdots \to C_2 E \to C_1 E \to C_0 E \xrightarrow{\varepsilon} \mathbb{Z} \to 0$$<p>and if $E$ is <em>contractible</em>, $\tilde{H}_\bullet E = 0$, so this is exact.</p>
+
+</div>
+</div>
+</div>
+    </div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>This is the augmented chain complex</li>
+<li>Of course, have to check that the boundary maps are $\mathbb{Z}G$-module homomorphisms:</li>
+<li>If $\sigma: \Delta^n \to E$, then $\partial \sigma = \sum (-1)^i \sigma \circ \epsilon_i$ where $\epsilon_i: \Delta^{n-1} \to \Delta^n$ is the standard inclusion into the $i^{th}$ face. </li>
+<li>Since $g$ is post-composition while $\epsilon_i$ are pre-composition, it's easy to see that $g \cdot \partial \sigma = \partial (g \cdot \sigma)$.</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </aside><div class="fragment" data-fragment-index="19">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We get a <em>free</em> resolution of $\mathbb{Z}$!</p>
+
 </div>
 </div>
 </div>
@@ -393,28 +502,338 @@ $$\cdots \to F_2 \to F_1 \to F_0 \to \mathbb{Z} \to 0$$<p>is a projective resolu
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Group-actions-on-CW-complexes">Group actions on CW-complexes<a class="anchor-link" href="#Group-actions-on-CW-complexes">&#182;</a></h1><p>A <strong>$G$-complex</strong> is a CW-complex  $X$ with a $G$-action such that:</p>
+<h3 id="Co-invariants-and-tensoring-with-$\mathbb{Z}$">Co-invariants and tensoring with $\mathbb{Z}$<a class="anchor-link" href="#Co-invariants-and-tensoring-with-$\mathbb{Z}$">&#182;</a></h3><p>Let $M$ be a $\mathbb{Z}G$-module. The <strong>co-invariants</strong> of $M$ are</p>
+$$M_G := M/\langle gm - m\rangle$$
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>$\forall g \in G$,   $g: X \to X$ is a homeomorphism</li>
-<li>$\forall$ cells $\sigma \subset X$, $g\sigma$ is also a cell</li>
+<li>$M_G$ is the largest <em>quotient</em> on which $G$ acts trivially (compare to $M^G$, the largest <em>submodule</em> on which $G$ acts trivially)</li>
 </ul>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+    </aside><div class="fragment" data-fragment-index="22">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre> 
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><em>Proposition.</em></strong> Let $X$ be a space with $\pi_1(X) = G$ and contractible universal cover $E$. Then</p>
+$$(C_\bullet E)_G \cong C_\bullet X.$$
+</div>
+</div>
+</div>
+    </div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$G$ acts freely on $E$, and is in fact a covering space action.</li>
+</ul>
 
 </div>
 </div>
 </div>
+    </aside><div class="fragment" data-fragment-index="24">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This follows from observing that</p>
+$$(S_n E)/G \cong S_n X$$<p>and setting $S = S_n E$ in the lemma:</p>
+<p><strong><em>Lemma.</em></strong> For $S$ an arbitrary $G$-set, $\left(\mathbb{Z}S\right)_G \cong \mathbb{Z}(S/G)$.</p>
 
-</div></section>
+</div>
+</div>
+</div>
+    </div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Proof.</em> $(\mathbb{Z}S)_G \cong (\oplus \mathbb{Z}(G/G_s))_G \cong  \oplus (\mathbb{Z}(G/G_s))_G \cong \oplus \mathbb{Z}(Gs) \cong \mathbb{Z}(S/G)  $</p>
+
+</div>
+</div>
+</div>
+    </aside><div class="fragment" data-fragment-index="26">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><em>Proposition.</em></strong> $M_G \cong \mathbb{Z} \otimes_{\mathbb{Z}G} M$.</p>
+
+</div>
+</div>
+</div>
+    </div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Proof.</em> Note that
+$$
+1 \otimes g\cdot m = 1\cdot g \otimes m = 1 \otimes m
+$$
+so the map $M \to \mathbb{Z}\otimes M, m \mapsto 1 \otimes m$ factors through $M_G$.</p>
+<p>We also have a bilinear map $\mathbb{Z} \times M \to M_G, (a,m) \mapsto am$, yielding a map $\mathbb{Z} \otimes M \to M_G, a\otimes m \mapsto am$.</p>
+<p>These maps are mutual inverses.</p>
+
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Putting it together...</strong></p>
+<p>Let $X$ be a <em>path-connected</em> space with $\pi_1(X) = G$ and <em>contractible</em> universal cover $E$.</p>
+<p>Then $G$ acts freely on $E$, so we get a free resolution of $\ZZ$:</p>
+$$ \cdots \to C_1 E \to C_0 E \xrightarrow{\varepsilon} \ZZ \to 0,$$<p></p>
+<p>Tensoring $C_\bullet E$ with $\ZZ$ yields</p>
+$$\cdots \to \ZZ \otimes C_1 E \to \ZZ \otimes C_0 E \to 0,$$<p>which is isomorphic to</p>
+$$\cdots \to C_1 X \to C_0 X \to 0.$$<p>Taking homology, $$H_\bullet X \cong H_\bullet G.$$</p>
+
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>In fact, the map on chains induced by $q:E\to X$ is isomorphic to $\ZZ \otimes -$</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="$K(G,1)$-spaces">$K(G,1)$-spaces<a class="anchor-link" href="#$K(G,1)$-spaces">&#182;</a></h1><p>$X$ is a $K(G,1)$-<strong>space (complex)</strong> if:</p>
+<ol>
+<li>$X$ is a path-connected space (CW-complex)</li>
+<li>$\pi_1(X) = G$ </li>
+<li>Its universal cover $E$ is contractible</li>
+</ol>
+
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$K(G,n)$-spaces are called Eilenberg-MacLane spaces, and require $\pi_m(X) = 0$ for $m \neq n$.</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </aside><div class="fragment" data-fragment-index="32">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><em>Theorem.</em></strong> The homotopy type of a $K(G,1)$-complex is uniquely determined by $G$.</p>
+<p>We could have thus defined:</p>
+$$H_\bullet G :=\, H_\bullet\, K(G,1)$$
+</div>
+</div>
+</div>
+    </div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><em>Proposition.</em></strong> [Hatcher, 1B.9]</p>
+<p>Let $X$ be a connected CW-complex, $Y$ a $K(G,1)$-complex. Then every</p>
+$$\varphi: \pi_1(X,x_0) \to \pi_1(Y,y_0)$$<p>is induced by</p>
+$$f: (X,x_0) \to (Y,y_0),$$<p>and $f$ is unique up to homotopy (relative to $x_0$).</p>
+
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>To get the theorem, let $X$ and $Y$ both be $K(G,1)$ complexes, then use the isomorphism $\pi_1 X \cong \pi_1 Y$ to get maps $f:X \to Y, g: Y\to X$ whose compositions are homotopic to identity.</li>
+<li>Proof of proposition: See Hatcher Prop 1B.9:</li>
+<li>Map on fundamental group gives map on 1-skeleton</li>
+<li>Extend this to 2- and higher cells</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Examples-of-$K(G,1)$-spaces">Examples of $K(G,1)$-spaces<a class="anchor-link" href="#Examples-of-$K(G,1)$-spaces">&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment" data-fragment-index="36">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Any $X$ with <em>contractible</em> universal covering space $E$:<ul>
+<li>$\SS^1$ is a $K(\ZZ,1)$</li>
+<li>Compact surfaces with <em>infinite</em> $\pi_1$ (i.e. all except $\SS^2$ and $\RP^2$)</li>
+<li>Can "fill-in" non-contractible $E$ with cells</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </div><div class="fragment" data-fragment-index="37">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$K(A,1)$ for abelian $A$:<ul>
+<li>Lens spaces: $\SS^\infty/\ZZ_m$ is a $K(\ZZ_m,1)$</li>
+<li>$K(G,1) \times K(H,1)$ is a $K(G\times H,1)$</li>
+<li>If $K(G,1)$ is finite-dimensional, then $G$ is torsion-free (hence infinite!)</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </div><div class="fragment" data-fragment-index="38">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Amalgamated free products:<ul>
+<li>Any graph is a $K(\ZZ * \cdots * \ZZ,1)$</li>
+<li>$X \cup_f Y$, with $f: A \to X$ injective, is a $K(G *_K H,1)$</li>
+<li>Graphs of groups</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </div></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="$K(G,1)$-spaces-exist!">$K(G,1)$-spaces exist!<a class="anchor-link" href="#$K(G,1)$-spaces-exist!">&#182;</a></h3><p>In fact, $K(G,1)$-<em>complexes</em> exist!</p>
+
+</div>
+</div>
+</div><div class="fragment" data-fragment-index="40">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Two-constructions">Two constructions<a class="anchor-link" href="#Two-constructions">&#182;</a></h4><ul>
+<li>From group presentation:<ul>
+<li>Construct a surface $X_G$ (generators are 1-cells, relations are 2-cells)</li>
+<li>Make $E$ contractible by attaching $n$-cells (infinitely many!)</li>
+<li>Not functorial</li>
+<li>Different presentations can give different (non-homotopic) $X_G$</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </div><div class="fragment" data-fragment-index="41">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Classifying space construction:<ul>
+<li>$EG = $ complex whose $n$-cells are <em>all</em> $n$-tuples $(g_0,g_1,\dots,g_n), g_i \in G$</li>
+<li>$g\cdot (g_0,\dots,g_n) = (gg_0,\dots,gg_n)$</li>
+<li>$BG = EG/G$ is the <strong>classifying space</strong> of $G$</li>
+<li>Functorial (group homomorphisms give cellular maps)</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </div></section>
     </section><section>
     <section>
     
@@ -424,24 +843,12 @@ $$\cdots \to F_2 \to F_1 \to F_0 \to \mathbb{Z} \to 0$$<p>is a projective resolu
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ul>
-<li>[Kenneth Brown] Cohomology of Groups</li>
+<li>[Kenneth Brown] Cohomology of Groups <em>(first two chapters)</em></li>
+<li>[Allen Hatcher] Algebraic Topology <em>(various places. Just search for "<code>K(G,1)</code>")</em></li>
 </ul>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div></section>
     </section>
 </div>
