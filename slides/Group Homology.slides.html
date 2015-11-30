@@ -31,6 +31,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 <script src="reveal.js/lib/js/html5shiv.js"></script>
 <![endif]-->
 
+<!-- Get Font-awesome from cdn -->
 
 <style type="text/css">
     /*!
@@ -503,7 +504,7 @@ $$ \cdots \to C_2 E \to C_1 E \to C_0 E \xrightarrow{\varepsilon} \mathbb{Z} \to
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Co-invariants-and-tensoring-with-$\mathbb{Z}$">Co-invariants and tensoring with $\mathbb{Z}$<a class="anchor-link" href="#Co-invariants-and-tensoring-with-$\mathbb{Z}$">&#182;</a></h3><p>Let $M$ be a $\mathbb{Z}G$-module. The <strong>co-invariants</strong> of $M$ are</p>
-$$M_G := M/\langle gm - m\rangle$$
+$$M_G := M/\langle gm - m\rangle.$$
 </div>
 </div>
 </div><aside class="notes">
@@ -527,7 +528,32 @@ $$M_G := M/\langle gm - m\rangle$$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><em>Lemma.</em></strong> For $S$ an arbitrary $G$-set,</p>
+$$\left(\mathbb{Z}S\right)_G \cong \mathbb{Z}(S/G).$$
+</div>
+</div>
+</div>
+    </div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Proof.</em> $(\mathbb{Z}S)_G \cong (\oplus \mathbb{Z}(G/G_s))_G \cong  \oplus (\mathbb{Z}(G/G_s))_G \cong \oplus \mathbb{Z}(Gs) \cong \mathbb{Z}(S/G)  $</p>
+
+</div>
+</div>
+</div>
+    </aside><div class="fragment" data-fragment-index="24">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p><strong><em>Proposition.</em></strong> Let $X$ be a space with $\pi_1(X) = G$ and contractible universal cover $E$. Then</p>
+$$(S_n E)/G \cong S_n (E/G),$$<p>and thus,</p>
 $$(C_\bullet E)_G \cong C_\bullet X.$$
 </div>
 </div>
@@ -546,32 +572,6 @@ $$(C_\bullet E)_G \cong C_\bullet X.$$
 </div>
 </div>
 </div>
-    </aside><div class="fragment" data-fragment-index="24">
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This follows from observing that</p>
-$$(S_n E)/G \cong S_n X$$<p>and setting $S = S_n E$ in the lemma:</p>
-<p><strong><em>Lemma.</em></strong> For $S$ an arbitrary $G$-set, $\left(\mathbb{Z}S\right)_G \cong \mathbb{Z}(S/G)$.</p>
-
-</div>
-</div>
-</div>
-    </div><aside class="notes">
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Proof.</em> $(\mathbb{Z}S)_G \cong (\oplus \mathbb{Z}(G/G_s))_G \cong  \oplus (\mathbb{Z}(G/G_s))_G \cong \oplus \mathbb{Z}(Gs) \cong \mathbb{Z}(S/G)  $</p>
-
-</div>
-</div>
-</div>
     </aside><div class="fragment" data-fragment-index="26">
     
 <div class="cell border-box-sizing text_cell rendered">
@@ -579,7 +579,7 @@ $$(S_n E)/G \cong S_n X$$<p>and setting $S = S_n E$ in the lemma:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong><em>Proposition.</em></strong> $M_G \cong \mathbb{Z} \otimes_{\mathbb{Z}G} M$.</p>
+<p><strong><em>Proposition.</em></strong> $$M_G \cong \mathbb{Z} \otimes_{\mathbb{Z}G} M.$$</p>
 
 </div>
 </div>
@@ -731,10 +731,10 @@ $$f: (X,x_0) \to (Y,y_0),$$<p>and $f$ is unique up to homotopy (relative to $x_0
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Any $X$ with <em>contractible</em> universal covering space $E$:<ul>
+<li>Common spaces with <em>contractible</em> universal covering space:<ul>
 <li>$\SS^1$ is a $K(\ZZ,1)$</li>
 <li>Compact surfaces with <em>infinite</em> $\pi_1$ (i.e. all except $\SS^2$ and $\RP^2$)</li>
-<li>Can "fill-in" non-contractible $E$ with cells</li>
+<li>Can "fill-in" non-contractible covering space with cells</li>
 </ul>
 </li>
 </ul>
