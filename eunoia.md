@@ -8,12 +8,12 @@ Latest status and links:
 
 # [Dog Show](http://dog-show-xermyjsbls.muttsteryhunt.com/)
 
-	-You Complete Me
-	-Spot the Dog
-	-Faced off
-	-Dog Food
-	-Dad days
-	-Meta - Whistle
+-You Complete Me
+-Spot the Dog
+-Faced off
+-Dog Food
+-Dad days
+-Meta - Whistle
 
 	-Road Trip
 	-Pictocryptolists
@@ -49,14 +49,26 @@ Latest status and links:
 	-Meta - Obedience
 
 # 0	[Dog Show](http://dog-show-xermyjsbls.muttsteryhunt.com/)
+
 # H	[Rip van Winkle](http://rip-van-winkle-whlcpzepnb.muttsteryhunt.com/)
+
 # U	[Sleeping Beauty](http://sleeping-beauty-fgrtntsudx.muttsteryhunt.com/)
+
 # N	[Vote for Opus](http://opus-izqxvrtqwn.muttsteryhunt.com/)
+
 # T	[King Arthur](http://king-arthur-ioppufuswb.muttsteryhunt.com/)
+
 # C	[Ysera](http://ysera-iozyrwndwd.muttsteryhunt.com/round/ysera/)
+
 # E	[Dreamtime](http://opus-izqxvrtqwn.muttsteryhunt.com/)
+
 # P	[Pam Ewing](http://pam-ewing-xuihfxprhn.muttsteryhunt.com/)
+
 # T	[Randolph Carter](http://randolph-carter-sdgmfkqraw.muttsteryhunt.com/round/randolph_carter/)
+
 # I
+
 # O
+
 # N
+
