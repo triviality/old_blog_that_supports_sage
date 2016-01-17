@@ -7,15 +7,16 @@ permalink: /ccc/
 Latest status and links:
 
 # [Dog Show](http://dog-show-xermyjsbls.muttsteryhunt.com/)
+[Google spreadsheet](https://drive.google.com/open?id=1ZDZ4p7--0bac9Xl5W9IwqSV3RYiPpgjLHbtPk248vMU)
 
--You Complete Me
--Spot the Dog
--Faced off
--Dog Food
--Dad days
--Meta - Whistle
+* You Complete Me
+* Spot the Dog
+* Faced off
+* Dog Food
+* Dad days
+* Meta - Whistle
 
-	-Road Trip
+	- Road Trip
 	-Pictocryptolists
 	-Paddywhack
 	-Off the leash
