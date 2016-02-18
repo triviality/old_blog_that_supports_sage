@@ -137,6 +137,8 @@ Just as we could decompose every representation of $G$ into a sum of irreducible
 
 The next post discusses how to do this easily, by making use of the [Schur orthogonality relations](http://en.wikipedia.org/wiki/Schur_orthogonality_relations). These are really cool relations among the rows and columns of the character table. Apart from decomposing representations into irreducibles, we'll also be able to prove that the character table is always square!
 
+**Edit:** The promised "next post" about these topics never happened. Maybe sometime in the far future, I might come back to these topics, but no promises for now!
+
 
 
 
