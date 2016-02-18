@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Weyl Algebra and $\mathfrak{sl}_2$
-draft_tag: 
+tag: 
 - Noncommutative Algebra
 ---
 <!--more-->
@@ -19,7 +19,7 @@ $$
 x \partial_x = \partial_x x - 1.
 $$
 
-If we treat $x$ and $\partial_x$ as operators on $\mathbb{F}[x]$ corresponding to "multiplication by $x$" and "differentiation w.r.t. $x$", resp., then this relation is really just an application of the chain rule:
+If we treat $x$ as "multiplication by $x$" and $\partial_x$ as  "differentiation w.r.t. $x$", this relation is really just an application of the chain rule:
 
 $$
 \partial_x (x (f(x)) = f(x) + x \partial_x f(x)
@@ -49,7 +49,17 @@ dx * dy * dz * (x + y + z)^2
   </script>
 </div>
 
-Keep in mind that $x$ does not refer to the polynomial $x$, so one should *not* expect `dx*x == 1` to be true. (Also, for some reason `show` does not give the right output. Try `show(x)`, for example.)
+By default, Sage chooses to represent monomials of the Weyl algebra with the $x_i$s in front of the $\partial_{x_i}$s:
+
+<div class="linked">
+  <script type="text/x-sage">
+dx*x
+  </script>
+</div>
+
+Keep in mind that $x$ does not refer to the polynomial $x$, so one should not expect `dx*x` to be `1`. 
+
+(For some reason `show` does not give the right output. Try `show(x)` or `show(x*dx)`, for example.)
 
 ## Representations of $\mathfrak{sl}_2$
 It turns out that the $1$-dim. Weyl algebra gives a representation of $\mathfrak{sl}_2(\mathbb{F})$. 
