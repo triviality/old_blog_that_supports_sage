@@ -125,6 +125,7 @@ $$
 0 & 0 & 1 \\
 0 & 0 & 0
 \end{pmatrix}
+*
 \begin{pmatrix}
 0 & ef & eh \\
 0 & 0  & fh \\
@@ -135,10 +136,10 @@ $$
 0 & -h & 2e \\
 0 & 0  & -2f \\
 0 & 0 & 0
-\end{pmatrix}.
+\end{pmatrix},
 $$
 
-Let $N,C,S,D$ be the matrices above, in that order, so that $N = CS + D$. 
+where $*$ denotes element-wise multiplication (so there isn't any linear algebra going on here; we're just using matrices to organize the information). Let $N,C,S,D$ be the matrices above, in that order, so that $N = C*S + D$. 
 
 If we let $x_1 = e, x_2 = f, x_3 = h$ (so that $x_i \leq x_j$ if $i \leq j$) then for $i < j$
 
