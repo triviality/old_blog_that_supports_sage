@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Noncommutative Algebras in Sage
-draft_tag: 
+tag: 
 - Noncommutative Algebra
 ---
 
