@@ -139,7 +139,7 @@ $$
 \end{pmatrix},
 $$
 
-where $*$ denotes element-wise multiplication (so there isn't any linear algebra going on here; we're just using matrices to organize the information). Let $N,C,S,D$ be the matrices above, in that order, so that $N = C*S + D$. 
+where $ * $ denotes element-wise multiplication (so there isn't any linear algebra going on here; we're just using matrices to organize the information). Let $N,C,S,D$ be the matrices above, in that order, so that $N = C*S + D$. 
 
 If we let $x_1 = e, x_2 = f, x_3 = h$ (so that $x_i \leq x_j$ if $i \leq j$) then for $i < j$
 
