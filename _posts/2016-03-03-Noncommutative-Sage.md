@@ -63,7 +63,7 @@ Let's unravel what's going on here.
 Most algorithms for commutative and non-commutative rings require an ordering on the generators. In our case, let's use the ordering
 
 $$
-e < f < h.
+e \leq f \leq h.
 $$
 
 This is implicitly stated in our code: we wrote `F.<e,f,h>` instead of `F.<h,e,f>`, for example.
@@ -138,35 +138,9 @@ $$
 \end{pmatrix}.
 $$
 
-Let
+Let $N,C,S,D$ be the matrices above, in that order, so that $N = CS + D$. 
 
-$$
-N = \begin{pmatrix}
-0 & fe & he \\
-0 & 0  & hf \\
-0 & 0 & 0
-\end{pmatrix},
-\qquad
-C = \begin{pmatrix}
-0 & 1 & 1 \\
-0 & 0 & 1 \\
-0 & 0 & 0
-\end{pmatrix},
-\qquad
-S = \begin{pmatrix}
-0 & ef & eh \\
-0 & 0  & fh \\
-0 & 0 & 0
-\end{pmatrix},
-\qquad
-D = \begin{pmatrix}
-0 & -h & 2e \\
-0 & 0  & -2f \\
-0 & 0 & 0
-\end{pmatrix},
-$$
-
-so that $N = CS + D$. If we let $x_1 = e, x_2 = f, x_3 = h$, in accordance with our ordering $e < f < h$, then for $i < j$
+If we let $x_1 = e, x_2 = f, x_3 = h$ (so that $x_i \leq x_j$ if $i \leq j$) then for $i < j$
 
 $$
 n_{ij} = x_j x_i, \qquad s_{ij} = x_i x_j.
@@ -182,7 +156,7 @@ $$
 
 with zeros everywhere else ($i \geq j$). If $C = D = 0$, the resulting algebra will be commutative.
 
-We can use the structural matrices $C$ and $D$ to define our algebra via Sage's  [`NCPolynomialRing_plural`](http://www.sagemath.org/documentation/html/en/reference/polynomial_rings/sage/rings/polynomial/plural.html){:target="_blank"} function:
+We can use the structural matrices $C$ and $D$ to define our algebra via Sage's  [`NCPolynomialRing_plural`](http://www.sagemath.org/documentation/html/en/reference/polynomial_rings/sage/rings/polynomial/plural.html){:target="_blank"} function (note that Python uses zero-indexing for matrices):
 
 <div class="sage">
   <script type="text/x-sage">
