@@ -20,31 +20,88 @@ Commutative Algebra*](http://www.cimpa-icpam.org/archivesecoles/20130130100834/s
 
 ## $U(\mathfrak{sl}_2)$ and its homogenization
 
-The running example throughout this post will be the universal enveloping algebra $U(\mathfrak{sl}_2)$ over $\mathbb{Q}$. This is the (non-commutative) $\mathbb{Q}$-algebra $U$ with generators $e,f,h$ subject to the relations
+The running example throughout this post will be the universal enveloping algebra $U(\mathfrak{sl}_2)$ over $\mathbb{Q}$. 
+
+We'll define this to be the (non-commutative) $\mathbb{Q}$-algebra $U$ with generators $e,f,h$ subject to the relations
 
 $$
-[h,e] = 2e, \qquad [h,f] = -2f, \qquad [e,f] = h.
+[e,f] = h, \qquad [h,e] = 2e, \qquad [h,f] = -2f.
 $$
 
-If we put $e,f,h$ in degree 1, these relations are not homogeneous. Their left-hand sides all have degree 2, while the right-hand sides have degree 1. This won't be a problem with the first two methods, but won't work for method 3, which requires homogeneous relations.
+If we put $e,f,h$ in degree 1, these relations are not homogeneous. Their left-hand sides all have degree 2, while their right-hand sides have degree 1. This is fine with the first two methods, but won't work for method 3 (which requires homogeneous relations).
 
 To demonstrate the third method, we'll define the $\mathbb{Q}$-algebra $H$ with generators $e,f,h,t$ subject to the relations
 
 $$
-[t,h] = [t,e] = [t,f] = 0,
+[t,e] = [t,f] = [t,h] = 0,
 $$
 
 $$
-[h,e] = 2et, \qquad [h,f] = -2ft, \qquad [e,f] = ht.
+[e,f] = ht, \qquad [h,e] = 2et, \qquad [h,f] = -2ft.
 $$
 
 We can obtain $U$ both as a quotient and a localization of $H$:
 
 $$
-H/(1-t) \cong U \cong H[t^{-1}]_0.
+H/(1-t) \;\;\cong\;\; U \;\;\cong\;\; H[t^{-1}]_0.
 $$
 
 ## $G$-algebras
+Using the `g_algebra` method of Sage's `FreeAlgebra` class, we can simply plug our noncommutative relations in, and get our non-commutative ring. This is about as easy as it gets:
+
+<div class="sage">
+  <script type="text/x-sage">
+ F.<e,f,h> = FreeAlgebra(QQ,3)
+ U = F.g_algebra({f*e: e*f - h, h*e: e*h + 2*e, h*f: f*h-2*f})
+ U
+  </script>
+</div>
+
+Let's unravel what's going on here.
+
+### Monomial orderings and PBW basis
+Most algorithms for commutative and non-commutative rings require an ordering on the generators. In our case, let's use the ordering
+
+$$
+e < f < h.
+$$
+
+This is implicitly stated in our code: we wrote `F.<e,f,h>` instead of `F.<h,e,f>` or any other ordering.
+
+In the free algebra $F = \mathbb{Q}<e,f,h>$ with the above ordering, a *standard word* is a monomial of the form
+
+$$
+e^if^jh^k.
+$$
+
+In the polynomial ring $\mathbb{Q}[e,f,h]$, every monomial can be expressed in this form, so the set of standard words $\{e^if^jh^k : i,j,k \in \mathbb{N}\}$ forms a $\mathbb{Q}$-basis for $\mathbb{Q}[e,f,h]$.
+
+In a non-commutative ring, whether or not the standard words form a basis depends on what relations we have. Such a basis, if it exists, is called a [PBW basis](https://en.wikipedia.org/wiki/Poincar%C3%A9%E2%80%93Birkhoff%E2%80%93Witt_theorem){:target="_blank"}. 
+
+The free algebra $F$ has no relations, so does not have a PBW basis. Fortunately, our algebra $U$ does have a PBW basis. 
+
+This means that we can always express a non-standard monomial (e.g. $fe$) as a sum of standard monomials (e.g. $ef - h$). The non-commutative relations that define $U$ can thus be thought of as an algorithm for turning non-standard words into sums of standard words.
+
+To do this in Sage, we define a [dictionary](https://docs.python.org/2/tutorial/datastructures.html#dictionaries){:target="_blank"} whose keys are non-standard words and values are the standard words they become.
+
+In the above example, our dictionary was short enough to fit into one line, but we could also define a dictionary separately and pass it into `g_algebra`:
+
+<div class="sage">
+  <script type="text/x-sage">
+ F.<e,f,h> = FreeAlgebra(QQ,3)
+ 
+ U_relations = {
+   f*e : e*f - h,
+   h*e : e*h + 2*e,
+   h*f : f*h - 2*f
+ }
+ 
+ U = F.g_algebra(U_relations)
+ U
+   </script>
+</div>
+
+It's very important that the keys are non-standard words and the values are sums of standard words. Mathematically, the relation $fe = ef - h$ is the same as $ef = fe + h$, but if we replace `f*e : e*f - h` with `e*f : f*e + h` in the code (try it!), we'll get an error.
 
 ## Structural matrices for a $G$-algebra
 
