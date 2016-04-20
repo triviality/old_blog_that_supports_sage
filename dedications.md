@@ -25,6 +25,10 @@ This is a compilation of amusing dedications and acknowledgments.
 >
 > - Charles Weibel, [*An Introduction to Homological Algebra*](http://www.amazon.com/Introduction-Homological-Cambridge-Advanced-Mathematics/dp/0521559871){:target="_blank"}
 
+> To Marilyn,  who made me a shirt
+>
+> - Moss Sweedler, *Hopf Algebras*
+
 
 
 
