@@ -6,11 +6,6 @@ permalink: /dedications/
 
 This is a compilation of amusing dedications and acknowledgments.
 
-> I wish to thank Prof. Pavel Etingof and his co-authors for adding technical notes to my historical monograph. While they have made a commendable effort at a concise exposition, their notes, unfortunately, have grown in size and in the end occupied a better part of this volume. I hope the reader will forgive this preponderance of technicalities in what, in essence, is a history book.
-> 
-> - Slava Gerovitch, who wrote the historical interludes in [*Introduction to Representation Theory*](http://www.amazon.com/Introduction-Representation-Student-Mathematical-Library/dp/0821853511){:target="_blank"} by Pavel Etingof et al.
-
-
 > (I would thank the children, but frankly, they’ve been no help.)
 >
 > - Piper Harron, in her PhD thesis [*The Equidistribution of Lattice Shapes of Rings of Integers of Cubic, Quartic, and Quintic Number Fields: an Artist’s Rendering*](http://www.theliberatedmathematician.com/wp-content/uploads/2015/11/PiperThesisPostPrint.pdf){:target="_blank"}
@@ -29,7 +24,9 @@ This is a compilation of amusing dedications and acknowledgments.
 >
 > - Moss Sweedler, *Hopf Algebras*
 
-
+> I wish to thank Prof. Pavel Etingof and his co-authors for adding technical notes to my historical monograph. While they have made a commendable effort at a concise exposition, their notes, unfortunately, have grown in size and in the end occupied a better part of this volume. I hope the reader will forgive this preponderance of technicalities in what, in essence, is a history book.
+> 
+> - Slava Gerovitch, who wrote the historical interludes in [*Introduction to Representation Theory*](http://www.amazon.com/Introduction-Representation-Student-Mathematical-Library/dp/0821853511){:target="_blank"} by Pavel Etingof et al.
 
 
 
