@@ -118,18 +118,23 @@ We get a non-scalar $H$! So the permutation representation of $D_4$ is reducible
 
 Our next step is to use the eigenspaces of $H$ to decompose $\rho$. At the end of the [previous post]({% post_url 2015-01-26-Representation-Theory-Irreducibility-Indecomposability%}){:target="_blank"}, we saw that $\rho(g)$ preserves the eigenspaces of $H$, so we need only find the eigenspaces of $H$ to decompose $\rho$. 
 
-Since $H$ is hermitian, it is [diagonalizable](http://en.wikipedia.org/wiki/Diagonalizable_matrix){:target="_blank"}, so its eigenvectors form a basis of $V$. We can find this basis by computing the [Jordan decomposition](http://en.wikipedia.org/wiki/Jordan_normal_form){:target="_blank"} of $H$:
+Since $H$ is hermitian, it is [diagonalizable](http://en.wikipedia.org/wiki/Diagonalizable_matrix){:target="_blank"}, so its eigenvectors form a basis of $V$. In fact, the eigenbasis can be chosen to be orthonormal.
+
+We can find this basis by computing the [Jordan decomposition](http://en.wikipedia.org/wiki/Jordan_normal_form){:target="_blank"} of $H$, and then orthonormalizing it:
 
 <div class="linked">
   <script type="text/x-sage">
 # Compute J,P such that H = PJP^(-1)
 J,P = H.jordan_form(QQbar,transformation=True)
+P = P.transpose().gram_schmidt(orthonormal=True)[0].transpose()
 
 show(P)
   </script>
 </div>
 
-Finally, we observe that $P^{-1} \rho(g) P$ has the same block-diagonal form for each $g \in G$:
+It's important that we orthonormalize $P$ so that $P$ becomes unitary. This will ensure that the subrepresentations remain unitary.
+
+Observe that $P^{-1} \rho(g) P$ has the same block-diagonal form for each $g \in G$:
 
 <div class="linked">
   <script type="text/x-sage">
@@ -211,6 +216,7 @@ def decompose(rho,G,H):
     
     # Compute J,P such that H = PJP^(-1)
     J,P = H.jordan_form(QQbar,transformation=True)
+    P = P.transpose().gram_schmidt(orthonormal=True)[0].transpose()
 
     # Compute block subdivisions
     edges = []
