@@ -28,6 +28,10 @@ This is a compilation of amusing dedications and acknowledgments.
 > 
 > - Slava Gerovitch, who wrote the historical interludes in [*Introduction to Representation Theory*](http://www.amazon.com/Introduction-Representation-Student-Mathematical-Library/dp/0821853511){:target="_blank"} by Pavel Etingof et al.
 
+> Dedicated to the many bright young theoretical physicists that failed to escape the fate of having to work in institutions like banks.
+> 
+> - Bob Coecke, editor of [*New Structures for Physics*](http://www.springer.com/us/book/9783642128202){:target="_blank"}
+
 
 
 
