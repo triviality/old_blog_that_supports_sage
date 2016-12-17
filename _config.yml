@@ -3,10 +3,10 @@
 #
 
 # Name of your site (displayed in the header)
-name: Sheaves
+name: بوريطش الحكماء
 
 # Short bio or description (displayed in the header)
-description: Making math concrete with Sage
+description: فامزجْهما مزج امرئٍ ذي حكمةٍ واحكمْ مزاوجـة الهواء بالماءِ
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 #avatar: http://www.sagemath.org/files/marketing/sagemath-icon-128.png
@@ -19,25 +19,25 @@ avatar: http://sheaves.github.io/images/favicons/android-icon-192x192.png
 footer-links:
   dribbble: 
   rss: rss # just type anything here for a working RSS icon, make sure you set the "url" above!
-  email: wonglz@uw.edu
+  email: 
   facebook: 
   flickr: 
-  github: sheaves/sheaves.github.io
+  github: triviality/triviality.github.io
   instagram: 
   linkedin: 
   pinterest: 
-  twitter: sheavze
+  twitter: 
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
 
 # Your disqus shortname, entering this will enable commenting on posts
-disqus: sheaves
+#disqus: sheaves
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
-google_analytics: UA-56773660-1
+#google_analytics: UA-56773660-1
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url: http://sheaves.github.io
+url: http://triviality.github.io
 
 excerpt_separator: <!--more--> 
 # If you're hosting your site at a Project repository on GitHub pages 
@@ -46,6 +46,14 @@ excerpt_separator: <!--more-->
 # then add in the baseurl here, like this: "/repository-name"
 baseurl: ""
 
+# Assets Pipeline
+assets:
+  sources:
+    - _assets
+    - _assets/images
+    - _assets/javascripts
+    - _assets/stylesheets
+    - _assets/font
 #
 # !! You don't need to change any of the configuration flags below !!
 #
