@@ -5,7 +5,7 @@ tag:
 - Noncommutative Algebra
 ---
 
-In this post, I'll demonstrate 3 ways to define non-commutative rings in Sage. They're essentially different ways of expressing the non-commutative relations in the ring:
+سأبين ثلاث طرق لتعريف حلقة غير إبدالية في سيْج They're essentially different ways of expressing the non-commutative relations in the ring:
 
   1. [Via `g_algebra`](http://doc.sagemath.org/html/en/reference/algebras/sage/algebras/free_algebra.html#sage.algebras.free_algebra.FreeAlgebra_generic.g_algebra){:target="_blank"}: define the relations directly
   1. [Via `NCPolynomialRing_plural`](http://www.sagemath.org/documentation/html/en/reference/polynomial_rings/sage/rings/polynomial/plural.html){:target="_blank"}: define a pair of structural matrices
