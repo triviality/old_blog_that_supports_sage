@@ -8,7 +8,7 @@ tag:
 سأبين ثلاث طرق لتعريف حلقة غير إبدالية في سيْج They're essentially different ways of expressing the non-commutative relations 
 In the above example, our dictionary was short enough to fit into one line, but we could also define a dictionary separately and pass it into `g_algebra`:
 
-<div class="sage">
+<div dir='ltr' class="sage">
   <script type="text/x-sage">
 F.<e,f,h> = FreeAlgebra(QQ,3)
  
