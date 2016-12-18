@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Archive
+title: أرشيف
 ---
 
 {% for post in site.posts %}

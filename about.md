@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: حول
 permalink: /about/
 ---
 قالب المدونة نُسخ من [https://github.com/sheaves/sheaves.github.io](https://github.com/sheaves/sheaves.github.io) وأشكر الأخ عمّار على مساعدته في تعديل الخط واتجاه الكتابة
