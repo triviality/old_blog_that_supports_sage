@@ -10,14 +10,12 @@ layout: default
 
 <div dir='ltr' class="all">
   <script type="text/x-sage">
-d,c,p,k = [0.05, 0.05, -0.15, 0.05]
-u = [random() for i in range(3)]
+def numberOfKeyExchange(n):
+    return str(int(n*(n-1)/2))+" keys exchanges"
 
-x(t) = (sin(t*2*pi) + sin((1-c + u[2]*c*2)*t*2*pi) + p*pi)*exp(-d*t)
-y(t) = (sin((1-c+ u[0]*c*2)*t*2*pi + k*u[1]*pi) + cos((1-c + u[2]*c*2)*t*2*pi) + p*pi)*exp(-d*t)
-
-parametric_plot((x(t),y(t)),(t,0,100),color = u, axes= False, plot_points = 3000).show()    
-  </script>
+@interact
+def nofke(n=(1,251),):
+      print(numberOfKeyExchange(n))  </script>
 </div>
 
 <div class="posts">
