@@ -1,8 +1,9 @@
 
 //
 // VARIABLES
-//
-@import url(http://fonts.googleapis.com/earlyaccess/amiri.css);
+//<link href='http://fonts.googleapis.com/earlyaccess/amiri.css' rel='stylesheet' type='text/css'/>
+//@import url(http://fonts.googleapis.com/earlyaccess/amiri.css);
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css)
 
 // Colors
 $blue: #4183C4; 
@@ -16,9 +17,14 @@ $lightGray: #eee;
 $white: #fff;
 
 // Font stacks
-$helvetica: 'Amiri', serif;
-$helveticaNeue: 'Amiri', serif;
-$georgia: 'Amiri', serif;
+//$helvetica: 'Amiri', serif;
+//$helveticaNeue: 'Amiri', serif;
+//$georgia: 'Amiri', serif;
+$helvetica: “Droid Arabic Kufi” , serif;
+$helveticaNeue: “Droid Arabic Kufi” , serif;
+$georgia: “Droid Arabic Kufi” , serif;
+
+
 
 // Mobile breakpoints
 @mixin mobile {
