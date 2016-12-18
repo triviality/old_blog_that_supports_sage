@@ -49,7 +49,7 @@ $$
 ## $G$-algebras
 Using the  [`g_algebra`](http://doc.sagemath.org/html/en/reference/algebras/sage/algebras/free_algebra.html#sage.algebras.free_algebra.FreeAlgebra_generic.g_algebra){:target="_blank"} method of Sage's `FreeAlgebra` class, we can simply plug our noncommutative relations in, and get our non-commutative ring. This is about as easy as it gets:
 
-<div class="sage">
+<div  dir= 'ltr' class="sage">
   <script type="text/x-sage">
 F.<e,f,h> = FreeAlgebra(QQ,3)
 U = F.g_algebra({f*e: e*f - h, h*e: e*h + 2*e, h*f: f*h-2*f})
